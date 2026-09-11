@@ -1,8 +1,10 @@
 <!DOCTYPE html>
+
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Pagamento concluído | VT Store</title>
 
   <style>
@@ -18,72 +20,236 @@
       align-items: center;
       justify-content: center;
       padding: 20px;
-      background: #07080d;
+      background:
+        radial-gradient(circle at top, rgba(139,92,246,.18), transparent 40%),
+        #07080d;
       color: #fff;
       font-family: Arial, sans-serif;
-      text-align: center;
     }
 
     .box {
       width: 100%;
-      max-width: 500px;
-      padding: 45px 30px;
-      border: 1px solid rgba(255,255,255,.1);
-      border-radius: 20px;
+      max-width: 520px;
+      padding: 40px 28px;
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: 22px;
       background: #11141d;
-      box-shadow: 0 20px 60px rgba(0,0,0,.45);
+      box-shadow: 0 20px 70px rgba(0,0,0,.5);
+      text-align: center;
     }
 
     .icon {
-      width: 80px;
-      height: 80px;
-      margin: 0 auto 25px;
+      width: 82px;
+      height: 82px;
+      margin: 0 auto 22px;
       display: flex;
       align-items: center;
       justify-content: center;
       border-radius: 50%;
       background: #22c55e;
-      font-size: 42px;
+      color: #fff;
+      font-size: 44px;
       font-weight: bold;
+      box-shadow: 0 0 35px rgba(34,197,94,.25);
     }
 
     h1 {
-      margin-bottom: 15px;
+      margin-bottom: 12px;
       font-size: 30px;
     }
 
-    p {
+    .subtitle {
       color: #a1a1aa;
       line-height: 1.6;
-      margin-bottom: 30px;
+      margin-bottom: 25px;
     }
 
-    a {
-      display: inline-block;
-      padding: 14px 25px;
-      border-radius: 10px;
-      background: #8b5cf6;
+    .order-box {
+      display: none;
+      margin: 20px 0;
+      padding: 16px;
+      border-radius: 12px;
+      background: #0b0d13;
+      border: 1px solid rgba(255,255,255,.08);
+    }
+
+    .order-label {
+      display: block;
+      margin-bottom: 7px;
+      color: #71717a;
+      font-size: 13px;
+    }
+
+    .order-number {
+      color: #fff;
+      font-size: 16px;
+      font-weight: bold;
+      word-break: break-all;
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 25px;
+      padding: 9px 15px;
+      border-radius: 999px;
+      background: rgba(34,197,94,.12);
+      color: #4ade80;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .button {
+      display: block;
+      width: 100%;
+      padding: 15px 20px;
+      border-radius: 11px;
       color: #fff;
       text-decoration: none;
       font-weight: bold;
+      transition: .2s;
+    }
+
+    .button:hover {
+      transform: translateY(-1px);
+      opacity: .92;
+    }
+
+    .store-button {
+      background: #8b5cf6;
+    }
+
+    .whatsapp-button {
+      background: #22c55e;
+    }
+
+    .small {
+      margin-top: 24px;
+      color: #71717a;
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 480px) {
+      .box {
+        padding: 35px 20px;
+      }
+
+      h1 {
+        font-size: 26px;
+      }
+
+      .icon {
+        width: 72px;
+        height: 72px;
+        font-size: 38px;
+      }
     }
   </style>
+
 </head>
 
 <body>
 
   <div class="box">
-    <div class="icon">✓</div>
 
-    <h1>Pagamento concluído!</h1>
+```
+<div class="icon">✓</div>
 
-    <p>
-      Obrigado pela sua compra na VT Store.
-      Seu pagamento foi recebido e seu pedido está sendo processado.
-    </p>
+<div class="status">
+  ● Pagamento recebido
+</div>
 
-    <a href="index.html">Voltar para a loja</a>
+<h1>Compra concluída!</h1>
+
+<p class="subtitle">
+  Obrigado pela sua compra na <strong>VT Store</strong>!
+  Seu pagamento foi recebido e seu pedido está sendo processado.
+</p>
+
+<div class="order-box" id="orderBox">
+  <span class="order-label">Número do pedido</span>
+  <span class="order-number" id="orderNumber"></span>
+</div>
+
+<div class="buttons">
+
+  <a
+    class="button whatsapp-button"
+    id="whatsappButton"
+    href="#"
+    target="_blank"
+    rel="noopener"
+  >
+    Falar com a VT Store
+  </a>
+
+  <a
+    class="button store-button"
+    href="index.html"
+  >
+    Voltar para a loja
+  </a>
+
+</div>
+
+<p class="small">
+  Guarde o número do seu pedido para facilitar o atendimento.
+  Em caso de dúvidas, fale conosco pelo WhatsApp.
+</p>
+```
+
   </div>
 
-</body>
-</html>
+  <script>
+    (function () {
+
+      const params = new URLSearchParams(window.location.search);
+
+      /*
+       * A InfinitePay pode devolver informações na URL.
+       * Tentamos encontrar o número do pedido em diferentes nomes.
+       */
+      const orderNsu =
+        params.get("order_nsu") ||
+        params.get("orderNsu") ||
+        params.get("nsu") ||
+        params.get("order") ||
+        localStorage.getItem("vt_last_order_nsu") ||
+        "";
+
+      const orderBox = document.getElementById("orderBox");
+      const orderNumber = document.getElementById("orderNumber");
+
+      if (orderNsu) {
+        orderNumber.textContent = orderNsu;
+        orderBox.style.display = "block";
+
+        localStorage.setItem("vt_last_order_nsu", orderNsu);
+      }
+
+      /*
+       * WhatsApp da VT Store
+       */
+      const whatsappNumber = "5515991713864";
+
+      let message =
+        "Olá! Acabei de realizar uma compra na VT Store.";
+
+      if (orderNsu) {
+        message +=
+          "\n\nNúmero do pedido: " + orderNsu;
+      }
+
+      message +=
+        "\n\nGostaria de confirmar minha compra.";
+
+      const whatsappUrl =
+        "https://
