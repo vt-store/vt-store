@@ -46,32 +46,6 @@ const checkoutButton =
 
 
 // ========================================
-// DADOS DO CLIENTE
-// ========================================
-
-const customerName =
-  document.getElementById("customerName");
-
-const customerPhone =
-  document.getElementById("customerPhone");
-
-const customerEmail =
-  document.getElementById("customerEmail");
-
-const customerCep =
-  document.getElementById("customerCep");
-
-const customerAddress =
-  document.getElementById("customerAddress");
-
-const customerNumber =
-  document.getElementById("customerNumber");
-
-const customerComplement =
-  document.getElementById("customerComplement");
-
-
-// ========================================
 // CONFIGURAÇÃO
 // ========================================
 
@@ -715,160 +689,6 @@ if (checkoutButton) {
       }
 
 
-      // ==============================
-      // PEGAR DADOS
-      // ==============================
-
-      const name =
-        customerName
-          ? customerName.value.trim()
-          : "";
-
-      const phone =
-        customerPhone
-          ? customerPhone.value.trim()
-          : "";
-
-      const email =
-        customerEmail
-          ? customerEmail.value.trim()
-          : "";
-
-      const cep =
-        customerCep
-          ? customerCep.value.trim()
-          : "";
-
-      const address =
-        customerAddress
-          ? customerAddress.value.trim()
-          : "";
-
-      const number =
-        customerNumber
-          ? customerNumber.value.trim()
-          : "";
-
-      const complement =
-        customerComplement
-          ? customerComplement.value.trim()
-          : "";
-
-
-      // ==============================
-      // VALIDAR NOME
-      // ==============================
-
-      if (!name) {
-
-        alert(
-          "Digite seu nome completo."
-        );
-
-        if (customerName) {
-          customerName.focus();
-        }
-
-        return;
-
-      }
-
-
-      // ==============================
-      // VALIDAR TELEFONE
-      // ==============================
-
-      if (!phone) {
-
-        alert(
-          "Digite seu WhatsApp ou telefone."
-        );
-
-        if (customerPhone) {
-          customerPhone.focus();
-        }
-
-        return;
-
-      }
-
-
-      // ==============================
-      // VALIDAR E-MAIL
-      // ==============================
-
-      if (!email) {
-
-        alert(
-          "Digite seu e-mail."
-        );
-
-        if (customerEmail) {
-          customerEmail.focus();
-        }
-
-        return;
-
-      }
-
-
-      // ==============================
-      // VALIDAR CEP
-      // ==============================
-
-      if (!cep) {
-
-        alert(
-          "Digite seu CEP."
-        );
-
-        if (customerCep) {
-          customerCep.focus();
-        }
-
-        return;
-
-      }
-
-
-      // ==============================
-      // VALIDAR ENDEREÇO
-      // ==============================
-
-      if (!address) {
-
-        alert(
-          "Digite seu endereço."
-        );
-
-        if (customerAddress) {
-          customerAddress.focus();
-        }
-
-        return;
-
-      }
-
-
-      // ==============================
-      // VALIDAR NÚMERO
-      // ==============================
-
-      if (!number) {
-
-        alert(
-          "Digite o número da residência."
-        );
-
-        if (customerNumber) {
-          customerNumber.focus();
-        }
-
-        return;
-
-      }
-
-
       try {
 
         checkoutButton.disabled =
@@ -908,40 +728,6 @@ if (checkoutButton) {
 
               body:
                 JSON.stringify({
-
-                  // ========================
-                  // CLIENTE
-                  // ========================
-
-                  customer: {
-
-                    name:
-                      name,
-
-                    phone:
-                      phone,
-
-                    email:
-                      email,
-
-                    cep:
-                      cep,
-
-                    address:
-                      address,
-
-                    number:
-                      number,
-
-                    complement:
-                      complement
-
-                  },
-
-
-                  // ========================
-                  // PRODUTOS
-                  // ========================
 
                   items:
 
@@ -1047,7 +833,7 @@ if (checkoutButton) {
         window.location.href =
           checkoutUrl;
 
-      } catch (error) {
+    } catch (error) {
 
         console.error(
           "Erro no checkout:",
