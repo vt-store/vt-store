@@ -1,3 +1,4 @@
+```javascript
 window.VT_CONFIG = {
   SUPABASE_URL: "https://knmwxyxgcgytzhggzhhd.supabase.co",
 
@@ -7,3 +8,4 @@ window.VT_CONFIG = {
 
   TIKTOK: "https://www.tiktok.com/@vt_store015"
 };
+```
