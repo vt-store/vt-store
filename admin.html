@@ -25,6 +25,75 @@
       font: inherit;
     }
 
+    button {
+      cursor: pointer;
+      border: 0;
+      border-radius: 9px;
+      padding: 10px 15px;
+      font-weight: 700;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      background: #0d1014;
+      color: #fff;
+      border: 1px solid #303640;
+      border-radius: 9px;
+      padding: 11px 12px;
+      outline: none;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: #fff;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 90px;
+    }
+
+    .btn-primary {
+      background: #fff;
+      color: #000;
+    }
+
+    .btn-secondary {
+      background: #292e36;
+      color: #fff;
+    }
+
+    .btn-success {
+      background: #198754;
+      color: #fff;
+    }
+
+    .btn-danger {
+      background: #dc3545;
+      color: #fff;
+    }
+
+    .btn-whatsapp {
+      background: #25d366;
+      color: #fff;
+    }
+
+    .field {
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 7px;
+      color: #d9dde3;
+      font-size: 14px;
+    }
+
+    /* LOGIN */
+
     .login {
       min-height: 100vh;
       display: flex;
@@ -54,77 +123,13 @@
       margin-bottom: 28px;
     }
 
-    label {
-      display: block;
-      margin-bottom: 7px;
-      color: #d9dde3;
-      font-size: 14px;
-    }
-
-    input,
-    select,
-    textarea {
-      width: 100%;
-      background: #0d1014;
-      color: #fff;
-      border: 1px solid #303640;
-      border-radius: 9px;
-      padding: 11px 12px;
-      outline: none;
-    }
-
-    input:focus,
-    select:focus,
-    textarea:focus {
-      border-color: #fff;
-    }
-
-    textarea {
-      resize: vertical;
-      min-height: 90px;
-    }
-
-    .field {
-      margin-bottom: 15px;
-    }
-
-    button {
-      border: 0;
-      cursor: pointer;
-      border-radius: 9px;
-      padding: 10px 15px;
-      font-weight: 700;
-    }
-
-    .btn-primary {
-      background: #fff;
-      color: #000;
-    }
-
-    .btn-primary:hover {
-      opacity: .9;
-    }
-
-    .btn-danger {
-      background: #dc3545;
-      color: #fff;
-    }
-
-    .btn-success {
-      background: #198754;
-      color: #fff;
-    }
-
-    .btn-secondary {
-      background: #292e36;
-      color: #fff;
-    }
-
     .error {
-      color: #ff6b6b;
+      color: #ff7777;
       margin-top: 12px;
       font-size: 14px;
     }
+
+    /* PAINEL */
 
     #panel {
       display: none;
@@ -164,6 +169,8 @@
       padding: 25px 20px 60px;
     }
 
+    /* ESTATÍSTICAS */
+
     .stats {
       display: grid;
       grid-template-columns: repeat(6, 1fr);
@@ -189,6 +196,8 @@
       font-weight: 900;
     }
 
+    /* SEÇÕES */
+
     .section {
       background: #15181d;
       border: 1px solid #292e36;
@@ -211,6 +220,36 @@
       font-size: 18px;
     }
 
+    /* NOVO PRODUTO */
+
+    .new-product {
+      padding: 20px;
+    }
+
+    .new-product-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+
+    .new-product-grid .full {
+      grid-column: 1 / -1;
+    }
+
+    .new-product-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 5px;
+    }
+
+    .new-product-message {
+      margin-top: 12px;
+      font-size: 14px;
+    }
+
+    /* PEDIDOS */
+
     .table-wrapper {
       overflow-x: auto;
     }
@@ -218,7 +257,7 @@
     table {
       width: 100%;
       border-collapse: collapse;
-      min-width: 900px;
+      min-width: 950px;
     }
 
     th,
@@ -247,6 +286,8 @@
       min-width: 145px;
     }
 
+    /* PRODUTOS */
+
     .products-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -272,12 +313,6 @@
       border-radius: 10px;
       background: #181c22;
       margin-bottom: 12px;
-    }
-
-    .product-price {
-      font-size: 20px;
-      font-weight: 900;
-      margin: 8px 0;
     }
 
     .stock-row {
@@ -338,6 +373,8 @@
       color: #fff;
       font-size: 12px;
     }
+
+    /* MODAL */
 
     .modal {
       position: fixed;
@@ -425,21 +462,10 @@
       margin-top: 18px;
     }
 
-    .whatsapp {
-      background: #25d366;
-      color: #fff;
-    }
-
     .empty {
       text-align: center;
       padding: 35px;
       color: #8f97a3;
-    }
-
-    .loading {
-      text-align: center;
-      padding: 30px;
-      color: #aaa;
     }
 
     @media (max-width: 1100px) {
@@ -461,6 +487,14 @@
         grid-template-columns: 1fr;
       }
 
+      .new-product-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .new-product-grid .full {
+        grid-column: auto;
+      }
+
       .order-info {
         grid-template-columns: 1fr;
       }
@@ -476,18 +510,26 @@
 
   <!-- LOGIN -->
   <div id="loginScreen" class="login">
+
     <div class="login-box">
+
       <h1>VT Store</h1>
+
       <p>Painel administrativo</p>
 
       <div class="field">
-        <label for="adminKey">Chave administrativa</label>
+
+        <label for="adminKey">
+          Chave administrativa
+        </label>
+
         <input
           type="password"
           id="adminKey"
           placeholder="Digite sua chave"
           autocomplete="off"
         >
+
       </div>
 
       <button
@@ -498,8 +540,13 @@
         Entrar
       </button>
 
-      <div id="loginError" class="error"></div>
+      <div
+        id="loginError"
+        class="error"
+      ></div>
+
     </div>
+
   </div>
 
 
@@ -507,7 +554,9 @@
   <div id="panel">
 
     <header>
+
       <div class="header-inner">
+
         <div class="logo">
           VT <span>STORE</span> — ADMIN
         </div>
@@ -518,53 +567,272 @@
         >
           Sair
         </button>
+
       </div>
+
     </header>
 
 
     <main>
 
       <!-- ESTATÍSTICAS -->
+
       <div class="stats">
 
         <div class="stat">
-          <div class="stat-title">Total de pedidos</div>
-          <div id="statTotal" class="stat-value">0</div>
+          <div class="stat-title">
+            Total de pedidos
+          </div>
+
+          <div
+            id="statTotal"
+            class="stat-value"
+          >
+            0
+          </div>
         </div>
 
-        <div class="stat">
-          <div class="stat-title">Pendentes</div>
-          <div id="statPending" class="stat-value">0</div>
-        </div>
 
         <div class="stat">
-          <div class="stat-title">Pagos</div>
-          <div id="statPaid" class="stat-value">0</div>
+          <div class="stat-title">
+            Pendentes
+          </div>
+
+          <div
+            id="statPending"
+            class="stat-value"
+          >
+            0
+          </div>
         </div>
 
-        <div class="stat">
-          <div class="stat-title">Enviados</div>
-          <div id="statShipped" class="stat-value">0</div>
-        </div>
 
         <div class="stat">
-          <div class="stat-title">Entregues</div>
-          <div id="statDelivered" class="stat-value">0</div>
+          <div class="stat-title">
+            Pagos
+          </div>
+
+          <div
+            id="statPaid"
+            class="stat-value"
+          >
+            0
+          </div>
         </div>
 
+
         <div class="stat">
-          <div class="stat-title">Total vendido</div>
-          <div id="statRevenue" class="stat-value">R$ 0,00</div>
+          <div class="stat-title">
+            Enviados
+          </div>
+
+          <div
+            id="statShipped"
+            class="stat-value"
+          >
+            0
+          </div>
+        </div>
+
+
+        <div class="stat">
+          <div class="stat-title">
+            Entregues
+          </div>
+
+          <div
+            id="statDelivered"
+            class="stat-value"
+          >
+            0
+          </div>
+        </div>
+
+
+        <div class="stat">
+          <div class="stat-title">
+            Total vendido
+          </div>
+
+          <div
+            id="statRevenue"
+            class="stat-value"
+          >
+            R$ 0,00
+          </div>
         </div>
 
       </div>
 
 
-      <!-- PEDIDOS -->
+      <!-- CADASTRAR PRODUTO -->
+
       <section class="section">
 
         <div class="section-header">
-          <h2>Pedidos</h2>
+
+          <h2>
+            ➕ Cadastrar novo produto
+          </h2>
+
+        </div>
+
+
+        <div class="new-product">
+
+          <div class="new-product-grid">
+
+            <div class="field">
+
+              <label>
+                Nome do produto *
+              </label>
+
+              <input
+                id="newProductName"
+                type="text"
+                placeholder="Ex: Xbox One S 1TB"
+              >
+
+            </div>
+
+
+            <div class="field">
+
+              <label>
+                Categoria *
+              </label>
+
+              <input
+                id="newProductCategory"
+                type="text"
+                placeholder="Ex: Xbox"
+              >
+
+            </div>
+
+
+            <div class="field">
+
+              <label>
+                Preço *
+              </label>
+
+              <input
+                id="newProductPrice"
+                type="number"
+                step="0.01"
+                min="0"
+                placeholder="Ex: 1000"
+              >
+
+            </div>
+
+
+            <div class="field">
+
+              <label>
+                Estoque *
+              </label>
+
+              <input
+                id="newProductStock"
+                type="number"
+                min="0"
+                step="1"
+                value="1"
+              >
+
+            </div>
+
+
+            <div class="field full">
+
+              <label>
+                Descrição
+              </label>
+
+              <textarea
+                id="newProductDescription"
+                placeholder="Digite a descrição do produto..."
+              ></textarea>
+
+            </div>
+
+
+            <div>
+
+              <label class="checkbox">
+
+                <input
+                  type="checkbox"
+                  id="newProductActive"
+                  checked
+                >
+
+                Produto ativo
+
+              </label>
+
+            </div>
+
+
+            <div>
+
+              <label class="checkbox">
+
+                <input
+                  type="checkbox"
+                  id="newProductPromotion"
+                >
+
+                Produto em promoção
+
+              </label>
+
+            </div>
+
+          </div>
+
+
+          <div class="new-product-actions">
+
+            <button
+              class="btn-success"
+              onclick="createProduct()"
+            >
+              Criar produto
+            </button>
+
+            <button
+              class="btn-secondary"
+              onclick="clearNewProductForm()"
+            >
+              Limpar
+            </button>
+
+          </div>
+
+
+          <div
+            id="newProductMessage"
+            class="new-product-message"
+          ></div>
+
+        </div>
+
+      </section>
+
+
+      <!-- PEDIDOS -->
+
+      <section class="section">
+
+        <div class="section-header">
+
+          <h2>
+            🛒 Pedidos
+          </h2>
 
           <button
             class="btn-secondary"
@@ -572,14 +840,18 @@
           >
             Atualizar
           </button>
+
         </div>
+
 
         <div class="table-wrapper">
 
           <table>
 
             <thead>
+
               <tr>
+
                 <th>Pedido</th>
                 <th>Cliente</th>
                 <th>Endereço</th>
@@ -588,11 +860,13 @@
                 <th>Status</th>
                 <th>Data</th>
                 <th></th>
+
               </tr>
+
             </thead>
 
-            <tbody id="ordersTable">
-            </tbody>
+
+            <tbody id="ordersTable"></tbody>
 
           </table>
 
@@ -602,14 +876,22 @@
 
 
       <!-- PRODUTOS -->
+
       <section class="section">
 
         <div class="section-header">
-          <h2>Produtos</h2>
+
+          <h2>
+            📦 Produtos cadastrados
+          </h2>
+
         </div>
 
-        <div id="productsGrid" class="products-grid">
-        </div>
+
+        <div
+          id="productsGrid"
+          class="products-grid"
+        ></div>
 
       </section>
 
@@ -619,12 +901,19 @@
 
 
   <!-- MODAL PEDIDO -->
-  <div id="orderModal" class="modal">
+
+  <div
+    id="orderModal"
+    class="modal"
+  >
 
     <div class="modal-content">
 
       <div class="modal-header">
-        <h2>Detalhes do pedido</h2>
+
+        <h2>
+          Detalhes do pedido
+        </h2>
 
         <button
           class="close"
@@ -632,7 +921,9 @@
         >
           ×
         </button>
+
       </div>
+
 
       <div id="orderDetails"></div>
 
@@ -644,10 +935,6 @@
 <script>
 "use strict";
 
-
-/* =========================================================
-   CONFIGURAÇÃO
-========================================================= */
 
 const ADMIN_FUNCTION_URL =
   "https://knmwxyxgcgytzhggzhhd.supabase.co/functions/v1/admin-orders";
@@ -680,6 +967,7 @@ function login() {
   adminKey =
     String(input.value || "").trim();
 
+
   if (!adminKey) {
 
     error.textContent =
@@ -688,8 +976,10 @@ function login() {
     return;
   }
 
+
   error.textContent =
     "Verificando...";
+
 
   loadData();
 
@@ -709,14 +999,18 @@ function logout() {
   productVideos = [];
   orders = [];
 
+
   document.getElementById("panel").style.display =
     "none";
+
 
   document.getElementById("loginScreen").style.display =
     "flex";
 
+
   document.getElementById("adminKey").value =
     "";
+
 
   document.getElementById("loginError").textContent =
     "";
@@ -745,6 +1039,7 @@ async function apiRequest(options = {}) {
 
 
   let data = null;
+
 
   try {
 
@@ -788,6 +1083,7 @@ async function loadData() {
   const loginError =
     document.getElementById("loginError");
 
+
   try {
 
     const data =
@@ -823,6 +1119,7 @@ async function loadData() {
     document.getElementById("loginScreen").style.display =
       "none";
 
+
     document.getElementById("panel").style.display =
       "block";
 
@@ -836,17 +1133,261 @@ async function loadData() {
 
     console.error(error);
 
+
     document.getElementById("panel").style.display =
       "none";
 
+
     document.getElementById("loginScreen").style.display =
       "flex";
+
 
     loginError.textContent =
       error.message ||
       "Chave inválida ou erro ao conectar.";
 
   }
+
+}
+
+
+/* =========================================================
+   CRIAR PRODUTO
+========================================================= */
+
+async function createProduct() {
+
+  const message =
+    document.getElementById(
+      "newProductMessage"
+    );
+
+
+  const name =
+    document.getElementById(
+      "newProductName"
+    ).value.trim();
+
+
+  const category =
+    document.getElementById(
+      "newProductCategory"
+    ).value.trim();
+
+
+  const price =
+    Number(
+      document.getElementById(
+        "newProductPrice"
+      ).value || 0
+    );
+
+
+  const stock =
+    Number(
+      document.getElementById(
+        "newProductStock"
+      ).value || 0
+    );
+
+
+  const description =
+    document.getElementById(
+      "newProductDescription"
+    ).value;
+
+
+  const active =
+    document.getElementById(
+      "newProductActive"
+    ).checked;
+
+
+  const promotion =
+    document.getElementById(
+      "newProductPromotion"
+    ).checked;
+
+
+  if (!name) {
+
+    message.style.color =
+      "#ff7777";
+
+    message.textContent =
+      "Digite o nome do produto.";
+
+    return;
+  }
+
+
+  if (!category) {
+
+    message.style.color =
+      "#ff7777";
+
+    message.textContent =
+      "Digite a categoria.";
+
+    return;
+  }
+
+
+  if (
+    !Number.isFinite(price) ||
+    price < 0
+  ) {
+
+    message.style.color =
+      "#ff7777";
+
+    message.textContent =
+      "Digite um preço válido.";
+
+    return;
+  }
+
+
+  if (
+    !Number.isInteger(stock) ||
+    stock < 0
+  ) {
+
+    message.style.color =
+      "#ff7777";
+
+    message.textContent =
+      "Digite um estoque válido.";
+
+    return;
+  }
+
+
+  try {
+
+    message.style.color =
+      "#aaa";
+
+    message.textContent =
+      "Criando produto...";
+
+
+    const data =
+      await apiRequest({
+
+        method: "POST",
+
+        headers: {
+          "Content-Type":
+            "application/json"
+        },
+
+        body:
+          JSON.stringify({
+
+            action:
+              "create_product",
+
+            name:
+              name,
+
+            category:
+              category,
+
+            description:
+              description,
+
+            price:
+              price,
+
+            stock:
+              stock,
+
+            active:
+              active,
+
+            promotion:
+              promotion
+
+          })
+
+      });
+
+
+    message.style.color =
+      "#4ade80";
+
+    message.textContent =
+      "Produto criado com sucesso!";
+
+
+    clearNewProductForm();
+
+
+    await loadData();
+
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+
+
+  } catch (error) {
+
+    console.error(error);
+
+    message.style.color =
+      "#ff7777";
+
+    message.textContent =
+      error.message ||
+      "Erro ao criar produto.";
+
+  }
+
+}
+
+
+/* =========================================================
+   LIMPAR NOVO PRODUTO
+========================================================= */
+
+function clearNewProductForm() {
+
+  document.getElementById(
+    "newProductName"
+  ).value = "";
+
+
+  document.getElementById(
+    "newProductCategory"
+  ).value = "";
+
+
+  document.getElementById(
+    "newProductPrice"
+  ).value = "";
+
+
+  document.getElementById(
+    "newProductStock"
+  ).value = "1";
+
+
+  document.getElementById(
+    "newProductDescription"
+  ).value = "";
+
+
+  document.getElementById(
+    "newProductActive"
+  ).checked = true;
+
+
+  document.getElementById(
+    "newProductPromotion"
+  ).checked = false;
 
 }
 
@@ -860,20 +1401,24 @@ function renderStats() {
   const total =
     orders.length;
 
+
   const pending =
     orders.filter(
       o => o.status === "pending"
     ).length;
+
 
   const paid =
     orders.filter(
       o => o.status === "paid"
     ).length;
 
+
   const shipped =
     orders.filter(
       o => o.status === "shipped"
     ).length;
+
 
   const delivered =
     orders.filter(
@@ -897,22 +1442,39 @@ function renderStats() {
       );
 
 
-  document.getElementById("statTotal").textContent =
+  document.getElementById(
+    "statTotal"
+  ).textContent =
     total;
 
-  document.getElementById("statPending").textContent =
+
+  document.getElementById(
+    "statPending"
+  ).textContent =
     pending;
 
-  document.getElementById("statPaid").textContent =
+
+  document.getElementById(
+    "statPaid"
+  ).textContent =
     paid;
 
-  document.getElementById("statShipped").textContent =
+
+  document.getElementById(
+    "statShipped"
+  ).textContent =
     shipped;
 
-  document.getElementById("statDelivered").textContent =
+
+  document.getElementById(
+    "statDelivered"
+  ).textContent =
     delivered;
 
-  document.getElementById("statRevenue").textContent =
+
+  document.getElementById(
+    "statRevenue"
+  ).textContent =
     formatMoney(revenue);
 
 }
@@ -925,7 +1487,9 @@ function renderStats() {
 function renderOrders() {
 
   const tbody =
-    document.getElementById("ordersTable");
+    document.getElementById(
+      "ordersTable"
+    );
 
 
   if (!orders.length) {
@@ -1033,6 +1597,7 @@ function renderOrders() {
             </td>
 
             <td>
+
               <select
                 class="status"
                 onchange="changeOrderStatus(
@@ -1072,6 +1637,7 @@ function renderOrders() {
                 )}
 
               </select>
+
             </td>
 
             <td>
@@ -1082,7 +1648,9 @@ function renderOrders() {
 
               <button
                 class="btn-secondary"
-                onclick="openOrder('${escapeJs(order.order_nsu)}')"
+                onclick="openOrder(
+                  '${escapeJs(order.order_nsu)}'
+                )"
               >
                 Ver
               </button>
@@ -1207,7 +1775,9 @@ function statusLabel(status) {
 
   };
 
-  return labels[status] || status;
+
+  return labels[status] ||
+    status;
 
 }
 
@@ -1329,7 +1899,10 @@ function openOrder(orderNsu) {
         </strong>
       </div>
 
-      <div class="info-box" style="grid-column:1/-1;">
+      <div
+        class="info-box"
+        style="grid-column:1/-1;"
+      >
         <small>Endereço</small>
         <strong>
           ${escapeHtml(
@@ -1394,6 +1967,7 @@ function openOrder(orderNsu) {
                     item.quantity || 1
                   );
 
+
                 const price =
                   Number(
                     item.price ||
@@ -1401,10 +1975,12 @@ function openOrder(orderNsu) {
                     0
                   );
 
+
                 return `
                   <div class="order-item">
 
                     <div>
+
                       <strong>
                         ${escapeHtml(
                           item.name ||
@@ -1455,7 +2031,7 @@ function openOrder(orderNsu) {
         phone
           ? `
             <button
-              class="whatsapp"
+              class="btn-whatsapp"
               onclick="window.open(
                 'https://wa.me/${phone}?text=${encodeURIComponent(whatsappMessage)}',
                 '_blank'
@@ -1477,7 +2053,9 @@ function openOrder(orderNsu) {
 
       <button
         class="btn-secondary"
-        onclick="copyOrder('${escapeJs(order.order_nsu)}')"
+        onclick="copyOrder(
+          '${escapeJs(order.order_nsu)}'
+        )"
       >
         Copiar pedido
       </button>
@@ -1487,38 +2065,26 @@ function openOrder(orderNsu) {
   `;
 
 
-  document.getElementById("orderDetails").innerHTML =
+  document.getElementById(
+    "orderDetails"
+  ).innerHTML =
     html;
 
 
-  document.getElementById("orderModal").classList.add(
-    "show"
-  );
+  document.getElementById(
+    "orderModal"
+  ).classList.add("show");
 
 }
 
 
 function closeOrderModal() {
 
-  document.getElementById("orderModal").classList.remove(
-    "show"
-  );
+  document.getElementById(
+    "orderModal"
+  ).classList.remove("show");
 
 }
-
-
-document.addEventListener(
-  "keydown",
-  function(event) {
-
-    if (event.key === "Escape") {
-
-      closeOrderModal();
-
-    }
-
-  }
-);
 
 
 /* =========================================================
@@ -1528,7 +2094,9 @@ document.addEventListener(
 function renderProducts() {
 
   const container =
-    document.getElementById("productsGrid");
+    document.getElementById(
+      "productsGrid"
+    );
 
 
   if (!products.length) {
@@ -1553,7 +2121,9 @@ function renderProducts() {
 }
 
 
-function renderProductCard(product) {
+function renderProductCard(
+  product
+) {
 
   const images =
     productImages.filter(
@@ -1612,7 +2182,9 @@ function renderProductCard(product) {
 
         <input
           id="name-${product.id}"
-          value="${escapeAttribute(product.name || "")}"
+          value="${escapeAttribute(
+            product.name || ""
+          )}"
         >
 
       </div>
@@ -1624,7 +2196,9 @@ function renderProductCard(product) {
 
         <input
           id="category-${product.id}"
-          value="${escapeAttribute(product.category || "")}"
+          value="${escapeAttribute(
+            product.category || ""
+          )}"
         >
 
       </div>
@@ -1636,7 +2210,9 @@ function renderProductCard(product) {
 
         <textarea
           id="description-${product.id}"
-        >${escapeHtml(product.description || "")}</textarea>
+        >${escapeHtml(
+          product.description || ""
+        )}</textarea>
 
       </div>
 
@@ -1648,8 +2224,11 @@ function renderProductCard(product) {
         <input
           type="number"
           step="0.01"
+          min="0"
           id="price-${product.id}"
-          value="${Number(product.price || 0)}"
+          value="${Number(
+            product.price || 0
+          )}"
         >
 
       </div>
@@ -1663,21 +2242,31 @@ function renderProductCard(product) {
 
           <button
             class="btn-secondary"
-            onclick="changeStock('${escapeJs(product.id)}', -1)"
+            onclick="changeStock(
+              '${escapeJs(product.id)}',
+              -1
+            )"
           >
             −
           </button>
 
+
           <input
             type="number"
-            id="stock-${product.id}"
-            value="${Number(product.stock || 0)}"
             min="0"
+            id="stock-${product.id}"
+            value="${Number(
+              product.stock || 0
+            )}"
           >
+
 
           <button
             class="btn-secondary"
-            onclick="changeStock('${escapeJs(product.id)}', 1)"
+            onclick="changeStock(
+              '${escapeJs(product.id)}',
+              1
+            )"
           >
             +
           </button>
@@ -1717,7 +2306,9 @@ function renderProductCard(product) {
 
         <button
           class="btn-primary"
-          onclick="saveProduct('${escapeJs(product.id)}')"
+          onclick="saveProduct(
+            '${escapeJs(product.id)}'
+          )"
         >
           Salvar produto
         </button>
@@ -1725,11 +2316,13 @@ function renderProductCard(product) {
       </div>
 
 
-      <hr style="
-        border:0;
-        border-top:1px solid #292e36;
-        margin:18px 0;
-      ">
+      <hr
+        style="
+          border:0;
+          border-top:1px solid #292e36;
+          margin:18px 0;
+        "
+      >
 
 
       <div>
@@ -1761,7 +2354,9 @@ function renderProductCard(product) {
                       <div class="media-item">
 
                         <img
-                          src="${escapeAttribute(image.image_url)}"
+                          src="${escapeAttribute(
+                            image.image_url
+                          )}"
                           alt="Imagem"
                         >
 
@@ -1814,7 +2409,9 @@ function renderProductCard(product) {
                       <div class="media-item">
 
                         <video
-                          src="${escapeAttribute(video.video_url)}"
+                          src="${escapeAttribute(
+                            video.video_url
+                          )}"
                           controls
                         ></video>
 
@@ -1865,7 +2462,9 @@ function changeStock(
 
 
   let value =
-    Number(input.value || 0);
+    Number(
+      input.value || 0
+    );
 
 
   value += amount;
@@ -1886,7 +2485,9 @@ function changeStock(
    SALVAR PRODUTO
 ========================================================= */
 
-async function saveProduct(productId) {
+async function saveProduct(
+  productId
+) {
 
   try {
 
@@ -2013,7 +2614,7 @@ async function saveProduct(productId) {
 
 
 /* =========================================================
-   UPLOAD FOTO
+   FOTO
 ========================================================= */
 
 async function uploadImage(
@@ -2095,7 +2696,7 @@ async function uploadImage(
 
 
 /* =========================================================
-   UPLOAD VÍDEO
+   VÍDEO
 ========================================================= */
 
 async function uploadVideo(
@@ -2335,6 +2936,7 @@ function buildWhatsAppMessage(
   let message =
     "Olá! Aqui é da VT Store.";
 
+
   message +=
     "\n\nSobre o seu pedido: " +
     (order.order_nsu || "");
@@ -2402,7 +3004,8 @@ async function copyOrder(
     [
       "VT STORE",
       "",
-      "PEDIDO: " + order.order_nsu,
+      "PEDIDO: " +
+        order.order_nsu,
       "",
       "Cliente: " +
         (order.customer_name || ""),
@@ -2423,7 +3026,11 @@ async function copyOrder(
       ...items.map(
         item =>
           "- " +
-          (item.name || item.product_name || "Produto") +
+          (
+            item.name ||
+            item.product_name ||
+            "Produto"
+          ) +
           " x" +
           (item.quantity || 1)
       ),
@@ -2442,9 +3049,11 @@ async function copyOrder(
       text
     );
 
+
     alert(
       "Dados do pedido copiados!"
     );
+
 
   } catch (error) {
 
@@ -2458,7 +3067,7 @@ async function copyOrder(
 
 
 /* =========================================================
-   FUNÇÕES AUXILIARES
+   AUXILIARES
 ========================================================= */
 
 function parseItems(
@@ -2545,10 +3154,6 @@ function formatDate(
 }
 
 
-/* =========================================================
-   SEGURANÇA HTML
-========================================================= */
-
 function escapeHtml(
   value
 ) {
@@ -2619,7 +3224,7 @@ function escapeJs(
 
 
 /* =========================================================
-   FECHAR MODAL CLICANDO FORA
+   MODAL / TECLADO
 ========================================================= */
 
 document
@@ -2640,9 +3245,21 @@ document
   );
 
 
-/* =========================================================
-   ENTER NO LOGIN
-========================================================= */
+document.addEventListener(
+  "keydown",
+  function(event) {
+
+    if (
+      event.key === "Escape"
+    ) {
+
+      closeOrderModal();
+
+    }
+
+  }
+);
+
 
 document
   .getElementById("adminKey")
