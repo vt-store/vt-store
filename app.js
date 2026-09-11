@@ -21,6 +21,26 @@ const cartItems = document.getElementById("cartItems");
 const emptyCart = document.getElementById("emptyCart");
 const cartTotal = document.getElementById("cartTotal");
 const checkoutButton = document.getElementById("checkoutButton");
+const customerName =
+  document.getElementById("customerName");
+
+const customerPhone =
+  document.getElementById("customerPhone");
+
+const customerEmail =
+  document.getElementById("customerEmail");
+
+const customerCep =
+  document.getElementById("customerCep");
+
+const customerAddress =
+  document.getElementById("customerAddress");
+
+const customerNumber =
+  document.getElementById("customerNumber");
+
+const customerComplement =
+  document.getElementById("customerComplement");
 
 
 // ========================================
