@@ -49,7 +49,8 @@ header h1 {
 }
 
 input,
-textarea {
+textarea,
+select {
   width: 100%;
   background: #0d0d12;
   color: white;
@@ -281,7 +282,7 @@ button {
 table {
   width: 100%;
   border-collapse: collapse;
-  min-width: 900px;
+  min-width: 1000px;
 }
 
 th,
@@ -292,14 +293,43 @@ td {
   vertical-align: top;
 }
 
-.status-paid {
-  color: #4be083;
+.status-select {
+  width: 155px;
+  padding: 8px;
+  font-size: 13px;
   font-weight: bold;
+  cursor: pointer;
 }
 
-.status-pending {
+.status-select.pending {
   color: #ffcc66;
-  font-weight: bold;
+  border-color: #8a6d25;
+}
+
+.status-select.paid {
+  color: #4be083;
+  border-color: #267a4b;
+}
+
+.status-select.shipped {
+  color: #66b3ff;
+  border-color: #32658f;
+}
+
+.status-select.delivered {
+  color: #7dff8b;
+  border-color: #348c3d;
+}
+
+.status-select.cancelled {
+  color: #ff7777;
+  border-color: #8a3333;
+}
+
+.order-status-info {
+  margin-top: 5px;
+  font-size: 10px;
+  color: #777;
 }
 
 @media(max-width:700px) {
@@ -660,10 +690,6 @@ function renderOrders() {
         "tr"
       );
 
-    const status =
-      order.status === "paid"
-        ? `<span class="status-paid">PAGO</span>`
-        : `<span class="status-pending">PENDENTE</span>`;
 
     const address = [
       order.customer_address,
@@ -679,6 +705,115 @@ function renderOrders() {
     ]
       .filter(Boolean)
       .join(", ");
+
+
+    const currentStatus =
+      order.status || "pending";
+
+
+    const statusLabels = {
+
+      pending:
+        "🟡 PENDENTE",
+
+      paid:
+        "🟢 PAGO",
+
+      shipped:
+        "📦 ENVIADO",
+
+      delivered:
+        "✅ ENTREGUE",
+
+      cancelled:
+        "🔴 CANCELADO"
+
+    };
+
+
+    const statusHtml = `
+
+      <select
+        class="status-select ${escapeAttribute(
+          currentStatus
+        )}"
+        onchange="updateOrderStatus(
+          '${escapeAttribute(
+            order.order_nsu || ""
+          )}',
+          this.value
+        )"
+      >
+
+        <option
+          value="pending"
+          ${
+            currentStatus === "pending"
+              ? "selected"
+              : ""
+          }
+        >
+          ${statusLabels.pending}
+        </option>
+
+        <option
+          value="paid"
+          ${
+            currentStatus === "paid"
+              ? "selected"
+              : ""
+          }
+        >
+          ${statusLabels.paid}
+        </option>
+
+        <option
+          value="shipped"
+          ${
+            currentStatus === "shipped"
+              ? "selected"
+              : ""
+          }
+        >
+          ${statusLabels.shipped}
+        </option>
+
+        <option
+          value="delivered"
+          ${
+            currentStatus === "delivered"
+              ? "selected"
+              : ""
+          }
+        >
+          ${statusLabels.delivered}
+        </option>
+
+        <option
+          value="cancelled"
+          ${
+            currentStatus === "cancelled"
+              ? "selected"
+              : ""
+          }
+        >
+          ${statusLabels.cancelled}
+        </option>
+
+      </select>
+
+      ${
+        currentStatus === "paid"
+          ? `
+            <div class="order-status-info">
+              Pagamento confirmado
+            </div>
+          `
+          : ""
+      }
+
+    `;
+
 
     tr.innerHTML = `
 
@@ -723,7 +858,7 @@ function renderOrders() {
       </td>
 
       <td>
-        ${status}
+        ${statusHtml}
       </td>
 
       <td>
@@ -737,6 +872,122 @@ function renderOrders() {
     body.appendChild(tr);
 
   });
+
+}
+
+
+/* ATUALIZAR STATUS DO PEDIDO */
+
+async function updateOrderStatus(
+  orderNsu,
+  status
+) {
+
+  if (!orderNsu) {
+
+    alert(
+      "❌ Número do pedido não encontrado."
+    );
+
+    await loadData();
+
+    return;
+  }
+
+
+  const labels = {
+
+    pending:
+      "PENDENTE",
+
+    paid:
+      "PAGO",
+
+    shipped:
+      "ENVIADO",
+
+    delivered:
+      "ENTREGUE",
+
+    cancelled:
+      "CANCELADO"
+
+  };
+
+
+  const confirmChange =
+    confirm(
+      "Alterar o pedido " +
+      orderNsu +
+      " para " +
+      (
+        labels[status] ||
+        status
+      ) +
+      "?"
+    );
+
+
+  if (!confirmChange) {
+
+    await loadData();
+
+    return;
+  }
+
+
+  try {
+
+    await apiRequest({
+
+      method: "POST",
+
+      headers: {
+        "Content-Type":
+          "application/json"
+      },
+
+      body:
+        JSON.stringify({
+
+          action:
+            "update_order_status",
+
+          order_nsu:
+            orderNsu,
+
+          status:
+            status
+
+        })
+
+    });
+
+
+    alert(
+      "✅ Status atualizado para " +
+      (
+        labels[status] ||
+        status
+      ) +
+      "!"
+    );
+
+
+    await loadData();
+
+
+  } catch(error) {
+
+    alert(
+      "❌ " +
+      error.message
+    );
+
+
+    await loadData();
+
+  }
 
 }
 
@@ -1563,6 +1814,7 @@ function escapeHtml(value) {
 function escapeAttribute(value) {
   return escapeHtml(value);
 }
+
 
 document
   .getElementById(
