@@ -124,7 +124,7 @@
     table {
       width: 100%;
       border-collapse: collapse;
-      min-width: 900px;
+      min-width: 1150px;
     }
 
     th,
@@ -171,6 +171,26 @@
     .items {
       color: #ccc;
       line-height: 1.6;
+    }
+
+    .customer-info {
+      line-height: 1.6;
+      min-width: 220px;
+    }
+
+    .customer-info small {
+      color: #bbb;
+    }
+
+    .address {
+      margin-top: 8px;
+      padding-top: 8px;
+      border-top: 1px solid #252540;
+      color: #ddd;
+    }
+
+    .address strong {
+      color: #fff;
     }
 
     .refresh {
@@ -339,6 +359,10 @@
 
               <th>
                 Cliente
+              </th>
+
+              <th>
+                Endereço
               </th>
 
               <th>
@@ -566,7 +590,7 @@ function renderOrders(orders) {
     table.innerHTML = `
       <tr>
         <td
-          colspan="6"
+          colspan="7"
           class="empty"
         >
           Nenhum pedido encontrado.
@@ -633,6 +657,25 @@ function renderOrders(orders) {
           : "-";
 
 
+      const fullAddress = [
+
+        order.customer_address,
+
+        order.customer_number
+          ? `Nº ${order.customer_number}`
+          : "",
+
+        order.customer_complement,
+
+        order.customer_cep
+          ? `CEP: ${order.customer_cep}`
+          : ""
+
+      ]
+        .filter(Boolean)
+        .join(", ");
+
+
       const row =
         document.createElement(
           "tr"
@@ -654,30 +697,58 @@ function renderOrders(orders) {
 
         <td>
 
-          <strong>
-            ${escapeHtml(
-              order.customer_name ||
-              "Não informado"
-            )}
-          </strong>
+          <div class="customer-info">
 
-          <br>
+            <strong>
+              ${escapeHtml(
+                order.customer_name ||
+                "Não informado"
+              )}
+            </strong>
 
-          <small>
-            ${escapeHtml(
-              order.customer_email ||
-              ""
-            )}
-          </small>
+            <br>
 
-          <br>
+            <small>
+              📧 ${escapeHtml(
+                order.customer_email ||
+                "Não informado"
+              )}
+            </small>
 
-          <small>
-            ${escapeHtml(
-              order.customer_phone ||
-              ""
-            )}
-          </small>
+            <br>
+
+            <small>
+              📱 ${escapeHtml(
+                order.customer_phone ||
+                "Não informado"
+              )}
+            </small>
+
+          </div>
+
+        </td>
+
+
+        <td>
+
+          <div class="customer-info">
+
+            ${
+              fullAddress
+                ? `
+                  <div class="address">
+                    🏠 <strong>Entrega</strong><br>
+                    ${escapeHtml(fullAddress)}
+                  </div>
+                `
+                : `
+                  <small>
+                    Endereço não informado
+                  </small>
+                `
+            }
+
+          </div>
 
         </td>
 
@@ -703,9 +774,9 @@ function renderOrders(orders) {
         <td>
 
           <span
-            class="status ${status}"
+            class="status ${escapeHtml(status)}"
           >
-            ${statusText}
+            ${escapeHtml(statusText)}
           </span>
 
         </td>
