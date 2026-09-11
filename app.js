@@ -61,6 +61,8 @@ let products = [];
 
 let productImages = {};
 
+let productVideos = {};
+
 let selectedCategory = "Todos";
 
 let cart = [];
@@ -674,10 +676,6 @@ if (checkoutButton) {
     "click",
     async () => {
 
-      // ==============================
-      // VERIFICAR CARRINHO
-      // ==============================
-
       if (cart.length === 0) {
 
         alert(
@@ -697,10 +695,6 @@ if (checkoutButton) {
         checkoutButton.textContent =
           "Gerando pagamento...";
 
-
-        // ==============================
-        // ENVIAR PEDIDO
-        // ==============================
 
         const response =
           await fetch(
@@ -759,10 +753,6 @@ if (checkoutButton) {
           );
 
 
-        // ==============================
-        // LER RESPOSTA
-        // ==============================
-
         const result =
           await response.json();
 
@@ -772,10 +762,6 @@ if (checkoutButton) {
           result
         );
 
-
-        // ==============================
-        // VERIFICAR ERRO
-        // ==============================
 
         if (!response.ok) {
 
@@ -793,10 +779,6 @@ if (checkoutButton) {
 
         }
 
-
-        // ==============================
-        // PEGAR LINK
-        // ==============================
 
         const checkoutUrl =
           result.checkout?.url ||
@@ -826,14 +808,10 @@ if (checkoutButton) {
         );
 
 
-        // ==============================
-        // IR PARA INFINITEPAY
-        // ==============================
-
         window.location.href =
           checkoutUrl;
 
-    } catch (error) {
+      } catch (error) {
 
         console.error(
           "Erro no checkout:",
@@ -936,7 +914,7 @@ async function loadProducts() {
     data || [];
 
 
-  await loadAllProductImages();
+  await loadAllProductMedia();
 
 
   loading.style.display =
@@ -949,12 +927,14 @@ async function loadProducts() {
 
 
 // ========================================
-// CARREGAR FOTOS
+// CARREGAR FOTOS E VÍDEOS
 // ========================================
 
-async function loadAllProductImages() {
+async function loadAllProductMedia() {
 
   productImages = {};
+
+  productVideos = {};
 
 
   if (!products.length) {
@@ -969,9 +949,13 @@ async function loadAllProductImages() {
     );
 
 
+  // ======================================
+  // FOTOS
+  // ======================================
+
   const {
-    data,
-    error
+    data: imagesData,
+    error: imagesError
   } =
     await supabaseClient
 
@@ -992,19 +976,17 @@ async function loadAllProductImages() {
       );
 
 
-  if (error) {
+  if (imagesError) {
 
     console.error(
       "Erro ao carregar fotos:",
-      error
+      imagesError
     );
-
-    return;
 
   }
 
 
-  (data || []).forEach(
+  (imagesData || []).forEach(
     image => {
 
       if (
@@ -1024,6 +1006,69 @@ async function loadAllProductImages() {
         image.product_id
       ].push(
         image.image_url
+      );
+
+    }
+  );
+
+
+  // ======================================
+  // VÍDEOS
+  // ======================================
+
+  const {
+    data: videosData,
+    error: videosError
+  } =
+    await supabaseClient
+
+      .from("product_videos")
+
+      .select("*")
+
+      .in(
+        "product_id",
+        productIds
+      )
+
+      .order(
+        "created_at",
+        {
+          ascending: true
+        }
+      );
+
+
+  if (videosError) {
+
+    console.error(
+      "Erro ao carregar vídeos:",
+      videosError
+    );
+
+  }
+
+
+  (videosData || []).forEach(
+    video => {
+
+      if (
+        !productVideos[
+          video.product_id
+        ]
+      ) {
+
+        productVideos[
+          video.product_id
+        ] = [];
+
+      }
+
+
+      productVideos[
+        video.product_id
+      ].push(
+        video.video_url
       );
 
     }
@@ -1170,6 +1215,17 @@ function createProductCard(
   }
 
 
+  const videos =
+    productVideos[
+      product.id
+    ] || [];
+
+
+  const mediaCount =
+    images.length +
+    videos.length;
+
+
   let imageHTML = `
 
     <div class="no-image">
@@ -1203,10 +1259,49 @@ function createProductCard(
         >
 
         ${
-          images.length > 1
+          mediaCount > 1
             ? `
               <span class="photo-count">
                 📷 ${images.length}
+                ${
+                  videos.length > 0
+                    ? ` · 🎥 ${videos.length}`
+                    : ""
+                }
+              </span>
+            `
+            : ""
+        }
+
+      </div>
+
+    `;
+
+  } else if (videos.length > 0) {
+
+    imageHTML = `
+
+      <div
+        class="product-gallery-trigger product-video-cover"
+        data-product-id="${escapeHTML(product.id)}"
+      >
+
+        <video
+          src="${escapeHTML(videos[0])}"
+          muted
+          playsinline
+          preload="metadata"
+        ></video>
+
+        <span class="video-cover-icon">
+          ▶
+        </span>
+
+        ${
+          mediaCount > 1
+            ? `
+              <span class="photo-count">
+                🎥 ${videos.length}
               </span>
             `
             : ""
@@ -1367,7 +1462,7 @@ function createProductCard(
 
   if (
     galleryTrigger &&
-    images.length > 0
+    mediaCount > 0
   ) {
 
     galleryTrigger.addEventListener(
@@ -1376,7 +1471,8 @@ function createProductCard(
 
         openGallery(
           product,
-          images
+          images,
+          videos
         );
 
       }
@@ -1413,15 +1509,48 @@ function createProductCard(
 
 
 // ========================================
-// GALERIA
+// GALERIA FOTO + VÍDEO
 // ========================================
 
 function openGallery(
   product,
-  images
+  images,
+  videos
 ) {
 
   closeGallery();
+
+
+  const media = [];
+
+
+  images.forEach(
+    image => {
+
+      media.push({
+        type: "image",
+        url: image
+      });
+
+    }
+  );
+
+
+  videos.forEach(
+    video => {
+
+      media.push({
+        type: "video",
+        url: video
+      });
+
+    }
+  );
+
+
+  if (!media.length) {
+    return;
+  }
 
 
   let currentIndex = 0;
@@ -1459,7 +1588,7 @@ function openGallery(
       <div class="gallery-main">
 
         ${
-          images.length > 1
+          media.length > 1
             ? `
               <button
                 class="gallery-arrow gallery-prev"
@@ -1472,15 +1601,13 @@ function openGallery(
         }
 
 
-        <img
-          class="gallery-main-image"
-          src="${escapeHTML(images[0])}"
-          alt="${escapeHTML(product.name)}"
-        >
+        <div
+          class="gallery-media-container"
+        ></div>
 
 
         ${
-          images.length > 1
+          media.length > 1
             ? `
               <button
                 class="gallery-arrow gallery-next"
@@ -1496,40 +1623,76 @@ function openGallery(
 
 
       <div class="gallery-counter">
-        1 / ${images.length}
+        1 / ${media.length}
       </div>
 
 
       ${
-        images.length > 1
+        media.length > 1
           ? `
             <div class="gallery-thumbnails">
 
-              ${images
+              ${media
                 .map(
                   (
-                    image,
+                    item,
                     index
-                  ) => `
+                  ) => {
 
-                    <button
-                      type="button"
-                      class="gallery-thumbnail ${
-                        index === 0
-                          ? "active"
-                          : ""
-                      }"
-                      data-index="${index}"
-                    >
+                    if (
+                      item.type ===
+                      "video"
+                    ) {
 
-                      <img
-                        src="${escapeHTML(image)}"
-                        alt="Foto ${index + 1}"
+                      return `
+
+                        <button
+                          type="button"
+                          class="gallery-thumbnail ${
+                            index === 0
+                              ? "active"
+                              : ""
+                          }"
+                          data-index="${index}"
+                        >
+
+                          <div class="video-thumbnail">
+
+                            <span>
+                              ▶
+                            </span>
+
+                          </div>
+
+                        </button>
+
+                      `;
+
+                    }
+
+
+                    return `
+
+                      <button
+                        type="button"
+                        class="gallery-thumbnail ${
+                          index === 0
+                            ? "active"
+                            : ""
+                        }"
+                        data-index="${index}"
                       >
 
-                    </button>
+                        <img
+                          src="${escapeHTML(item.url)}"
+                          alt="Foto ${index + 1}"
+                        >
 
-                  `
+                      </button>
+
+                    `;
+
+                  }
                 )
                 .join("")}
 
@@ -1548,9 +1711,9 @@ function openGallery(
   );
 
 
-  const mainImage =
+  const mediaContainer =
     overlay.querySelector(
-      ".gallery-main-image"
+      ".gallery-media-container"
     );
 
 
@@ -1566,18 +1729,18 @@ function openGallery(
     );
 
 
-  function showImage(index) {
+  function showMedia(index) {
 
     if (index < 0) {
 
       index =
-        images.length - 1;
+        media.length - 1;
 
     }
 
 
     if (
-      index >= images.length
+      index >= media.length
     ) {
 
       index = 0;
@@ -1589,16 +1752,82 @@ function openGallery(
       index;
 
 
-    mainImage.src =
-      images[currentIndex];
+    const item =
+      media[currentIndex];
 
 
-    mainImage.alt =
-      `${product.name} - Foto ${currentIndex + 1}`;
+    mediaContainer.innerHTML =
+      "";
+
+
+    if (
+      item.type ===
+      "video"
+    ) {
+
+      const video =
+        document.createElement(
+          "video"
+        );
+
+
+      video.className =
+        "gallery-main-video";
+
+
+      video.src =
+        item.url;
+
+
+      video.controls =
+        true;
+
+
+      video.autoplay =
+        true;
+
+
+      video.playsInline =
+        true;
+
+
+      video.preload =
+        "metadata";
+
+
+      mediaContainer.appendChild(
+        video
+      );
+
+    } else {
+
+      const image =
+        document.createElement(
+          "img"
+        );
+
+
+      image.className =
+        "gallery-main-image";
+
+
+      image.src =
+        item.url;
+
+
+      image.alt =
+        `${product.name} - Foto ${currentIndex + 1}`;
+
+
+      mediaContainer.appendChild(
+        image
+      );
+
+    }
 
 
     counter.textContent =
-      `${currentIndex + 1} / ${images.length}`;
+      `${currentIndex + 1} / ${media.length}`;
 
 
     thumbnails.forEach(
@@ -1644,7 +1873,7 @@ function openGallery(
 
         event.stopPropagation();
 
-        showImage(
+        showMedia(
           currentIndex - 1
         );
 
@@ -1668,7 +1897,7 @@ function openGallery(
 
         event.stopPropagation();
 
-        showImage(
+        showMedia(
           currentIndex + 1
         );
 
@@ -1687,7 +1916,7 @@ function openGallery(
 
           event.stopPropagation();
 
-          showImage(
+          showMedia(
             Number(
               thumbnail.dataset.index
             )
@@ -1745,7 +1974,7 @@ function openGallery(
       event.key === "ArrowLeft"
     ) {
 
-      showImage(
+      showMedia(
         currentIndex - 1
       );
 
@@ -1756,7 +1985,7 @@ function openGallery(
       event.key === "ArrowRight"
     ) {
 
-      showImage(
+      showMedia(
         currentIndex + 1
       );
 
@@ -1773,6 +2002,9 @@ function openGallery(
 
   overlay._keyboardNavigation =
     keyboardNavigation;
+
+
+  showMedia(0);
 
 }
 
@@ -1984,6 +2216,116 @@ supabaseClient
   )
 
   .subscribe();
+
+
+// ========================================
+// REALTIME - VÍDEOS
+// ========================================
+
+supabaseClient
+
+  .channel(
+    "product-videos-realtime"
+  )
+
+  .on(
+    "postgres_changes",
+    {
+      event: "*",
+      schema: "public",
+      table: "product_videos"
+    },
+    () => {
+
+      loadProducts();
+
+    }
+  )
+
+  .subscribe();
+
+
+// ========================================
+// ESTILO EXTRA DA GALERIA DE VÍDEOS
+// ========================================
+
+const videoGalleryStyle =
+  document.createElement("style");
+
+videoGalleryStyle.textContent = `
+
+  .gallery-media-container {
+    width: 100%;
+    max-width: 900px;
+    max-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 12px;
+  }
+
+  .gallery-main-image,
+  .gallery-main-video {
+    max-width: 100%;
+    max-height: 70vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 12px;
+  }
+
+  .gallery-main-video {
+    background: #000;
+  }
+
+  .video-thumbnail {
+    width: 100%;
+    height: 100%;
+    min-height: 60px;
+    background: #111;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .video-thumbnail span {
+    font-size: 25px;
+    color: white;
+  }
+
+  .product-video-cover {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .product-video-cover video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .video-cover-icon {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.7);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+  }
+
+`;
+
+document.head.appendChild(
+  videoGalleryStyle
+);
 
 
 // ========================================
