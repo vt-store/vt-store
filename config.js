@@ -1,6 +1,6 @@
 ```javascript
 window.VT_CONFIG = {
-  SUPABASE_URL: "sb_publishable_s_OQXA8-YBgIBjOuRWkZMQ_B5QHKLef",
+  SUPABASE_URL: "sb_publishable_R8ESDaJFi_70YNtnki7_9w_1O0WxLT5",
 
   SUPABASE_ANON_KEY: "sb_publishable_R8ESDaJFi_70YNtnki7_9w_1O0WxLT5",
 
