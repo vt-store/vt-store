@@ -1,386 +1,330 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>VT Store - Painel Administrativo</title>
+<title>VT Store - Admin</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+<style>
 
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: #0b0b0f;
-      color: #fff;
-    }
+* {
+  box-sizing: border-box;
+}
 
-    header {
-      background: #111116;
-      border-bottom: 1px solid #27272d;
-      padding: 18px 25px;
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
+body {
+  margin: 0;
+  background: #0b0b0f;
+  color: white;
+  font-family: Arial, sans-serif;
+}
 
-    header h1 {
-      margin: 0;
-      font-size: 24px;
-    }
+header {
+  background: #111116;
+  border-bottom: 1px solid #292930;
+  padding: 20px;
+}
 
-    header span {
-      color: #999;
-      font-size: 13px;
-    }
+header h1 {
+  margin: 0;
+}
 
-    .container {
-      width: 95%;
-      max-width: 1400px;
-      margin: 25px auto;
-    }
+.container {
+  width: 95%;
+  max-width: 1400px;
+  margin: 25px auto;
+}
 
-    .login {
-      max-width: 450px;
-      margin: 100px auto;
-      background: #15151b;
-      padding: 30px;
-      border-radius: 15px;
-      border: 1px solid #292930;
-    }
+.hidden {
+  display: none !important;
+}
 
-    .login h2 {
-      margin-top: 0;
-    }
+.login {
+  max-width: 420px;
+  margin: 100px auto;
+  padding: 30px;
+  background: #15151b;
+  border: 1px solid #292930;
+  border-radius: 15px;
+}
 
-    input,
-    textarea,
-    select {
-      width: 100%;
-      background: #0d0d12;
-      color: #fff;
-      border: 1px solid #303039;
-      padding: 11px;
-      border-radius: 8px;
-      outline: none;
-    }
+input,
+textarea {
+  width: 100%;
+  background: #0d0d12;
+  color: white;
+  border: 1px solid #303039;
+  border-radius: 8px;
+  padding: 11px;
+  outline: none;
+}
 
-    textarea {
-      min-height: 100px;
-      resize: vertical;
-    }
+textarea {
+  min-height: 100px;
+  resize: vertical;
+}
 
-    input:focus,
-    textarea:focus,
-    select:focus {
-      border-color: #5555ff;
-    }
+label {
+  display: block;
+  margin: 12px 0 6px;
+  color: #aaa;
+  font-size: 13px;
+}
 
-    label {
-      display: block;
-      margin: 12px 0 6px;
-      font-size: 13px;
-      color: #aaa;
-    }
+button {
+  border: 0;
+  border-radius: 8px;
+  padding: 11px 15px;
+  cursor: pointer;
+  font-weight: bold;
+}
 
-    button {
-      border: 0;
-      border-radius: 8px;
-      padding: 11px 15px;
-      cursor: pointer;
-      font-weight: bold;
-      transition: 0.2s;
-    }
+.btn-primary {
+  background: #5b5cff;
+  color: white;
+}
 
-    button:hover {
-      transform: translateY(-1px);
-      opacity: 0.9;
-    }
+.btn-green {
+  background: #18a558;
+  color: white;
+}
 
-    .btn-primary {
-      background: #5b5cff;
-      color: #fff;
-    }
+.btn-red {
+  background: #d93636;
+  color: white;
+}
 
-    .btn-green {
-      background: #18a558;
-      color: #fff;
-    }
+.btn-gray {
+  background: #292930;
+  color: white;
+}
 
-    .btn-red {
-      background: #d93636;
-      color: #fff;
-    }
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin-bottom: 25px;
+}
 
-    .btn-gray {
-      background: #292930;
-      color: #fff;
-    }
+.stat {
+  background: #15151b;
+  border: 1px solid #292930;
+  border-radius: 14px;
+  padding: 20px;
+}
 
-    .hidden {
-      display: none !important;
-    }
+.stat small {
+  color: #999;
+}
 
-    .error {
-      background: #3a1515;
-      border: 1px solid #733030;
-      padding: 12px;
-      border-radius: 8px;
-      color: #ff9a9a;
-      margin-top: 12px;
-    }
+.stat strong {
+  display: block;
+  font-size: 26px;
+  margin-top: 8px;
+}
 
-    .success {
-      background: #12331f;
-      border: 1px solid #246b3d;
-      padding: 12px;
-      border-radius: 8px;
-      color: #8ff0af;
-      margin-top: 12px;
-    }
+.section {
+  background: #111116;
+  border: 1px solid #292930;
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 25px;
+}
 
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 15px;
-      margin-bottom: 25px;
-    }
+.section-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
 
-    .stat {
-      background: #15151b;
-      border: 1px solid #292930;
-      border-radius: 14px;
-      padding: 20px;
-    }
+.section-title h2 {
+  margin: 0;
+}
 
-    .stat small {
-      color: #999;
-    }
+.products-grid {
+  display: grid;
+  grid-template-columns:
+    repeat(auto-fill, minmax(340px, 1fr));
+  gap: 18px;
+}
 
-    .stat strong {
-      display: block;
-      margin-top: 8px;
-      font-size: 26px;
-    }
+.product-card {
+  background: #15151b;
+  border: 1px solid #292930;
+  border-radius: 15px;
+  overflow: hidden;
+}
 
-    .section {
-      background: #111116;
-      border: 1px solid #292930;
-      border-radius: 15px;
-      padding: 20px;
-      margin-bottom: 25px;
-    }
+.product-header {
+  padding: 16px;
+  border-bottom: 1px solid #292930;
+}
 
-    .section-title {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 15px;
-      margin-bottom: 20px;
-    }
+.product-header h3 {
+  margin: 0;
+  font-size: 19px;
+}
 
-    .section-title h2 {
-      margin: 0;
-    }
+.product-id {
+  margin-top: 6px;
+  color: #666;
+  font-size: 10px;
+}
 
-    .orders {
-      overflow-x: auto;
-    }
+.media-title {
+  padding: 12px 15px 0;
+  color: #aaa;
+  font-size: 13px;
+  font-weight: bold;
+}
 
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      min-width: 900px;
-    }
+.photos,
+.videos {
+  display: grid;
+  grid-template-columns:
+    repeat(3, 1fr);
+  gap: 8px;
+  padding: 12px;
+}
 
-    th,
-    td {
-      padding: 13px 10px;
-      border-bottom: 1px solid #292930;
-      text-align: left;
-      vertical-align: top;
-    }
+.media-item {
+  position: relative;
+  background: #0d0d12;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #292930;
+}
 
-    th {
-      color: #aaa;
-      font-size: 13px;
-    }
+.media-item img,
+.media-item video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
 
-    td {
-      font-size: 14px;
-    }
+.media-item video {
+  background: black;
+}
 
-    .status-paid {
-      color: #4be083;
-      font-weight: bold;
-    }
+.delete-media {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  background: #d93636;
+  color: white;
+  padding: 5px 8px;
+  font-size: 11px;
+}
 
-    .status-pending {
-      color: #ffcc66;
-      font-weight: bold;
-    }
+.no-media {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 20px;
+  border: 1px dashed #333;
+  border-radius: 8px;
+  color: #777;
+}
 
-    .products-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
-      gap: 18px;
-    }
+.product-body {
+  padding: 16px;
+}
 
-    .product-card {
-      background: #15151b;
-      border: 1px solid #292930;
-      border-radius: 15px;
-      overflow: hidden;
-    }
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
 
-    .product-header {
-      padding: 16px;
-      border-bottom: 1px solid #292930;
-    }
+.stock-control {
+  display: flex;
+  gap: 5px;
+}
 
-    .product-header h3 {
-      margin: 0 0 5px;
-      font-size: 18px;
-    }
+.stock-control button {
+  width: 45px;
+}
 
-    .product-id {
-      font-size: 11px;
-      color: #777;
-      word-break: break-all;
-    }
+.actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 15px;
+}
 
-    .photos {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 8px;
-      padding: 12px;
-    }
+.upload-box {
+  margin-top: 15px;
+  padding: 12px;
+  border: 1px dashed #333;
+  border-radius: 10px;
+}
 
-    .photo {
-      position: relative;
-      aspect-ratio: 1 / 1;
-      background: #0d0d12;
-      border-radius: 8px;
-      overflow: hidden;
-      border: 1px solid #292930;
-    }
+.upload-box input[type="file"] {
+  border: 0;
+  padding: 5px 0;
+}
 
-    .photo img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
+.active-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
 
-    .photo button {
-      position: absolute;
-      right: 5px;
-      top: 5px;
-      padding: 5px 7px;
-      font-size: 11px;
-      background: #d93636;
-      color: white;
-    }
+.active-box input {
+  width: auto;
+}
 
-    .no-photo {
-      grid-column: 1 / -1;
-      padding: 25px 10px;
-      text-align: center;
-      color: #777;
-      border: 1px dashed #333;
-      border-radius: 8px;
-    }
+.orders {
+  overflow-x: auto;
+}
 
-    .product-body {
-      padding: 16px;
-    }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 900px;
+}
 
-    .row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-    }
+th,
+td {
+  padding: 12px;
+  border-bottom: 1px solid #292930;
+  text-align: left;
+  vertical-align: top;
+}
 
-    .stock-control {
-      display: flex;
-      gap: 5px;
-      align-items: center;
-    }
+.status-paid {
+  color: #4be083;
+  font-weight: bold;
+}
 
-    .stock-control input {
-      text-align: center;
-    }
+.status-pending {
+  color: #ffcc66;
+  font-weight: bold;
+}
 
-    .stock-control button {
-      min-width: 42px;
-      padding: 10px;
-    }
+@media(max-width:700px) {
 
-    .actions {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin-top: 15px;
-    }
+  .stats {
+    grid-template-columns: 1fr;
+  }
 
-    .upload-box {
-      margin-top: 15px;
-      padding: 12px;
-      border: 1px dashed #3b3b44;
-      border-radius: 10px;
-    }
+  .row {
+    grid-template-columns: 1fr;
+  }
 
-    .upload-box input[type="file"] {
-      border: 0;
-      padding: 5px 0;
-      background: transparent;
-    }
+  .products-grid {
+    grid-template-columns: 1fr;
+  }
 
-    .active-box {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-top: 14px;
-    }
+}
 
-    .active-box input {
-      width: auto;
-    }
-
-    .loading {
-      padding: 30px;
-      text-align: center;
-      color: #aaa;
-    }
-
-    @media (max-width: 700px) {
-      .stats {
-        grid-template-columns: 1fr;
-      }
-
-      .row {
-        grid-template-columns: 1fr;
-      }
-
-      .products-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .container {
-        width: 94%;
-      }
-    }
-  </style>
+</style>
 </head>
 
 <body>
 
 <header>
   <h1>VT Store — Painel Administrativo</h1>
-  <span>Gerencie pedidos, produtos, estoque e fotos</span>
 </header>
 
 <div id="loginScreen" class="login">
@@ -397,17 +341,23 @@
 
   <button
     class="btn-primary"
-    style="width:100%; margin-top:15px;"
+    style="width:100%;margin-top:15px"
     onclick="login()"
   >
     Entrar
   </button>
 
-  <div id="loginError" class="error hidden"></div>
+  <div
+    id="loginError"
+    style="color:#ff7777;margin-top:15px"
+  ></div>
 
 </div>
 
-<div id="panel" class="container hidden">
+<div
+  id="panel"
+  class="container hidden"
+>
 
   <div class="stats">
 
@@ -423,10 +373,13 @@
 
     <div class="stat">
       <small>Total vendido</small>
-      <strong id="totalSales">R$ 0,00</strong>
+      <strong id="totalSales">
+        R$ 0,00
+      </strong>
     </div>
 
   </div>
+
 
   <!-- PEDIDOS -->
 
@@ -450,6 +403,7 @@
       <table>
 
         <thead>
+
           <tr>
             <th>Pedido</th>
             <th>Cliente</th>
@@ -459,16 +413,17 @@
             <th>Status</th>
             <th>Data</th>
           </tr>
+
         </thead>
 
-        <tbody id="ordersBody">
-        </tbody>
+        <tbody id="ordersBody"></tbody>
 
       </table>
 
     </div>
 
   </section>
+
 
   <!-- PRODUTOS -->
 
@@ -482,7 +437,7 @@
         class="btn-gray"
         onclick="loadData()"
       >
-        Atualizar produtos
+        Atualizar
       </button>
 
     </div>
@@ -496,6 +451,7 @@
 
 </div>
 
+
 <script>
 
 const ADMIN_FUNCTION_URL =
@@ -505,53 +461,37 @@ let adminKey = "";
 
 let products = [];
 let productImages = [];
+let productVideos = [];
 let orders = [];
 
 
-/* ============================================================
-   LOGIN
-   ============================================================ */
+/* LOGIN */
 
 function login() {
 
-  const key =
-    document.getElementById("adminKey").value.trim();
+  adminKey =
+    document
+      .getElementById("adminKey")
+      .value
+      .trim();
 
-  if (!key) {
-    showLoginError("Digite sua chave administrativa.");
+  if (!adminKey) {
+
+    document
+      .getElementById("loginError")
+      .textContent =
+        "Digite sua chave.";
+
     return;
   }
 
-  adminKey = key;
-
   loadData();
-
 }
 
 
-/* ============================================================
-   ERRO LOGIN
-   ============================================================ */
+/* API */
 
-function showLoginError(message) {
-
-  const el =
-    document.getElementById("loginError");
-
-  el.textContent = message;
-
-  el.classList.remove("hidden");
-
-}
-
-
-/* ============================================================
-   REQUISIÇÃO
-   ============================================================ */
-
-async function apiRequest(
-  options = {}
-) {
+async function apiRequest(options = {}) {
 
   const response =
     await fetch(
@@ -561,7 +501,8 @@ async function apiRequest(
 
         headers: {
           ...(options.headers || {}),
-          "x-admin-key": adminKey
+          "x-admin-key":
+            adminKey
         }
       }
     );
@@ -569,23 +510,20 @@ async function apiRequest(
   const data =
     await response.json();
 
-  if (!response.ok || data.success === false) {
+  if (!response.ok ||
+      data.success === false) {
 
     throw new Error(
       data.error ||
-      "Erro na comunicação com o servidor."
+      "Erro na requisição."
     );
-
   }
 
   return data;
-
 }
 
 
-/* ============================================================
-   CARREGAR TUDO
-   ============================================================ */
+/* CARREGAR */
 
 async function loadData() {
 
@@ -605,158 +543,139 @@ async function loadData() {
     productImages =
       data.product_images || [];
 
-    document
-      .getElementById("loginScreen")
-      .classList.add("hidden");
+    productVideos =
+      data.product_videos || [];
 
     document
-      .getElementById("panel")
-      .classList.remove("hidden");
+      .getElementById(
+        "loginScreen"
+      )
+      .classList.add(
+        "hidden"
+      );
+
+    document
+      .getElementById(
+        "panel"
+      )
+      .classList.remove(
+        "hidden"
+      );
 
     renderStats();
-
     renderOrders();
-
     renderProducts();
 
   } catch (error) {
 
-    console.error(error);
-
-    if (
-      document
-        .getElementById("panel")
-        .classList.contains("hidden")
-    ) {
-
-      showLoginError(
-        error.message
-      );
-
-    } else {
-
-      alert(
-        "Erro: " + error.message
-      );
-
-    }
+    document
+      .getElementById(
+        "loginError"
+      )
+      .textContent =
+        error.message;
 
   }
-
 }
 
 
-/* ============================================================
-   ESTATÍSTICAS
-   ============================================================ */
+/* ESTATÍSTICAS */
 
 function renderStats() {
 
   const paid =
     orders.filter(
-      order => order.status === "paid"
+      order =>
+        order.status === "paid"
     );
 
   const sales =
     paid.reduce(
       (sum, order) =>
-        sum + Number(order.total || 0),
+        sum +
+        Number(
+          order.total || 0
+        ),
       0
     );
 
   document
-    .getElementById("totalOrders")
+    .getElementById(
+      "totalOrders"
+    )
     .textContent =
       orders.length;
 
   document
-    .getElementById("paidOrders")
+    .getElementById(
+      "paidOrders"
+    )
     .textContent =
       paid.length;
 
   document
-    .getElementById("totalSales")
+    .getElementById(
+      "totalSales"
+    )
     .textContent =
       money(sales);
-
 }
 
 
-/* ============================================================
-   PEDIDOS
-   ============================================================ */
+/* PEDIDOS */
 
 function renderOrders() {
 
-  const tbody =
+  const body =
     document.getElementById(
       "ordersBody"
     );
 
-  tbody.innerHTML = "";
-
-  if (!orders.length) {
-
-    tbody.innerHTML = `
-      <tr>
-        <td colspan="7">
-          Nenhum pedido encontrado.
-        </td>
-      </tr>
-    `;
-
-    return;
-  }
+  body.innerHTML = "";
 
   orders.forEach(order => {
 
-    const tr =
-      document.createElement("tr");
-
     const items =
-      Array.isArray(order.items)
+      Array.isArray(
+        order.items
+      )
         ? order.items
         : [];
 
-    const productsText =
+    const itemsText =
       items.map(item => {
 
-        const name =
-          item.name ||
-          item.product_name ||
-          "Produto";
-
-        const quantity =
-          item.quantity || 1;
-
-        return `${name} x${quantity}`;
+        return (
+          (item.name ||
+           item.product_name ||
+           "Produto") +
+          " x" +
+          (item.quantity || 1)
+        );
 
       }).join("<br>");
 
-    const statusClass =
-      order.status === "paid"
-        ? "status-paid"
-        : "status-pending";
+    const tr =
+      document.createElement(
+        "tr"
+      );
 
-    const statusText =
+    const status =
       order.status === "paid"
-        ? "PAGO"
-        : "PENDENTE";
+        ? `<span class="status-paid">PAGO</span>`
+        : `<span class="status-pending">PENDENTE</span>`;
 
     const address = [
-
       order.customer_address,
-
       order.customer_number
-        ? "Nº " + order.customer_number
+        ? "Nº " +
+          order.customer_number
         : "",
-
       order.customer_complement,
-
       order.customer_cep
-        ? "CEP " + order.customer_cep
+        ? "CEP " +
+          order.customer_cep
         : ""
-
     ]
       .filter(Boolean)
       .join(", ");
@@ -764,15 +683,17 @@ function renderOrders() {
     tr.innerHTML = `
 
       <td>
-        <strong>${escapeHtml(
+        ${escapeHtml(
           order.order_nsu || "-"
-        )}</strong>
+        )}
       </td>
 
       <td>
-        <strong>${escapeHtml(
-          order.customer_name || "-"
-        )}</strong>
+        <strong>
+          ${escapeHtml(
+            order.customer_name || "-"
+          )}
+        </strong>
 
         <br>
 
@@ -794,19 +715,15 @@ function renderOrders() {
       </td>
 
       <td>
-        ${productsText || "-"}
+        ${itemsText || "-"}
       </td>
 
       <td>
-        <strong>
-          ${money(order.total)}
-        </strong>
+        ${money(order.total)}
       </td>
 
       <td>
-        <span class="${statusClass}">
-          ${statusText}
-        </span>
+        ${status}
       </td>
 
       <td>
@@ -817,16 +734,14 @@ function renderOrders() {
 
     `;
 
-    tbody.appendChild(tr);
+    body.appendChild(tr);
 
   });
 
 }
 
 
-/* ============================================================
-   PRODUTOS
-   ============================================================ */
+/* PRODUTOS */
 
 function renderProducts() {
 
@@ -837,21 +752,12 @@ function renderProducts() {
 
   grid.innerHTML = "";
 
-  if (!products.length) {
-
-    grid.innerHTML = `
-      <div class="loading">
-        Nenhum produto encontrado.
-      </div>
-    `;
-
-    return;
-  }
-
   products.forEach(product => {
 
     grid.appendChild(
-      createProductCard(product)
+      createProductCard(
+        product
+      )
     );
 
   });
@@ -859,14 +765,16 @@ function renderProducts() {
 }
 
 
-/* ============================================================
-   CARD DO PRODUTO
-   ============================================================ */
+/* CARD */
 
-function createProductCard(product) {
+function createProductCard(
+  product
+) {
 
   const card =
-    document.createElement("div");
+    document.createElement(
+      "div"
+    );
 
   card.className =
     "product-card";
@@ -874,42 +782,103 @@ function createProductCard(product) {
   const images =
     productImages.filter(
       image =>
-        String(image.product_id) ===
-        String(product.id)
+        String(
+          image.product_id
+        ) ===
+        String(
+          product.id
+        )
     );
+
+  const videos =
+    productVideos.filter(
+      video =>
+        String(
+          video.product_id
+        ) ===
+        String(
+          product.id
+        )
+    );
+
 
   const photosHtml =
     images.length
+
       ? images.map(image => `
 
-          <div class="photo">
+        <div class="media-item">
 
-            <img
-              src="${escapeAttribute(
+          <img
+            src="${escapeAttribute(
+              image.image_url
+            )}"
+          >
+
+          <button
+            class="delete-media"
+            onclick="deleteImage(
+              '${escapeAttribute(
+                product.id
+              )}',
+              '${escapeAttribute(
                 image.image_url
-              )}"
-              alt="${escapeAttribute(
-                product.name || "Produto"
-              )}"
-            >
+              )}'
+            )"
+          >
+            X
+          </button>
 
-            <button
-              onclick="deleteImage(
-                '${escapeAttribute(product.id)}',
-                '${escapeAttribute(image.image_url)}'
-              )"
-            >
-              X
-            </button>
+        </div>
 
-          </div>
+      `).join("")
 
-        `).join("")
       : `
-        <div class="no-photo">
-          📷 Nenhuma foto cadastrada
+        <div class="no-media">
+          Nenhuma foto cadastrada
         </div>
       `;
+
+
+  const videosHtml =
+    videos.length
+
+      ? videos.map(video => `
+
+        <div class="media-item">
+
+          <video
+            src="${escapeAttribute(
+              video.video_url
+            )}"
+            controls
+            preload="metadata"
+          ></video>
+
+          <button
+            class="delete-media"
+            onclick="deleteVideo(
+              '${escapeAttribute(
+                product.id
+              )}',
+              '${escapeAttribute(
+                video.video_url
+              )}'
+            )"
+          >
+            X
+          </button>
+
+        </div>
+
+      `).join("")
+
+      : `
+        <div class="no-media">
+          Nenhum vídeo cadastrado
+        </div>
+      `;
+
 
   card.innerHTML = `
 
@@ -923,50 +892,54 @@ function createProductCard(product) {
       </h3>
 
       <div class="product-id">
-        ID: ${escapeHtml(
+        ID:
+        ${escapeHtml(
           product.id
         )}
       </div>
 
     </div>
 
-    <div class="photos">
 
-      ${photosHtml}
-
+    <div class="media-title">
+      📸 FOTOS
     </div>
+
+    <div class="photos">
+      ${photosHtml}
+    </div>
+
+
+    <div class="media-title">
+      🎥 VÍDEOS
+    </div>
+
+    <div class="videos">
+      ${videosHtml}
+    </div>
+
 
     <div class="product-body">
 
-      <div class="row">
+      <label>Nome</label>
 
-        <div>
+      <input
+        id="name-${product.id}"
+        value="${escapeAttribute(
+          product.name || ""
+        )}"
+      >
 
-          <label>Nome</label>
 
-          <input
-            id="name-${product.id}"
-            value="${escapeAttribute(
-              product.name || ""
-            )}"
-          >
+      <label>Categoria</label>
 
-        </div>
+      <input
+        id="category-${product.id}"
+        value="${escapeAttribute(
+          product.category || ""
+        )}"
+      >
 
-        <div>
-
-          <label>Categoria</label>
-
-          <input
-            id="category-${product.id}"
-            value="${escapeAttribute(
-              product.category || ""
-            )}"
-          >
-
-        </div>
-
-      </div>
 
       <label>Descrição</label>
 
@@ -975,6 +948,7 @@ function createProductCard(product) {
       >${escapeHtml(
         product.description || ""
       )}</textarea>
+
 
       <div class="row">
 
@@ -993,6 +967,7 @@ function createProductCard(product) {
           >
 
         </div>
+
 
         <div>
 
@@ -1035,39 +1010,44 @@ function createProductCard(product) {
 
       </div>
 
+
       <div class="active-box">
 
         <input
           type="checkbox"
           id="active-${product.id}"
-          ${product.active ? "checked" : ""}
+          ${
+            product.active
+              ? "checked"
+              : ""
+          }
         >
 
-        <label
-          for="active-${product.id}"
-          style="margin:0"
-        >
-          Produto ativo no site
-        </label>
+        <span>
+          Produto ativo
+        </span>
 
       </div>
+
 
       <div class="active-box">
 
         <input
           type="checkbox"
           id="promotion-${product.id}"
-          ${product.promotion ? "checked" : ""}
+          ${
+            product.promotion
+              ? "checked"
+              : ""
+          }
         >
 
-        <label
-          for="promotion-${product.id}"
-          style="margin:0"
-        >
+        <span>
           Produto em promoção
-        </label>
+        </span>
 
       </div>
+
 
       <div class="actions">
 
@@ -1077,10 +1057,13 @@ function createProductCard(product) {
             '${product.id}'
           )"
         >
-          💾 Salvar alterações
+          💾 Salvar produto
         </button>
 
       </div>
+
+
+      <!-- FOTO -->
 
       <div class="upload-box">
 
@@ -1091,12 +1074,12 @@ function createProductCard(product) {
         <input
           type="file"
           accept="image/*"
-          id="file-${product.id}"
+          id="image-${product.id}"
         >
 
         <button
           class="btn-green"
-          style="margin-top:10px;width:100%;"
+          style="width:100%;margin-top:10px"
           onclick="uploadImage(
             '${product.id}'
           )"
@@ -1106,18 +1089,42 @@ function createProductCard(product) {
 
       </div>
 
+
+      <!-- VIDEO -->
+
+      <div class="upload-box">
+
+        <label>
+          🎥 Adicionar vídeo
+        </label>
+
+        <input
+          type="file"
+          accept="video/*"
+          id="video-${product.id}"
+        >
+
+        <button
+          class="btn-green"
+          style="width:100%;margin-top:10px"
+          onclick="uploadVideo(
+            '${product.id}'
+          )"
+        >
+          Enviar vídeo
+        </button>
+
+      </div>
+
     </div>
 
   `;
 
   return card;
-
 }
 
 
-/* ============================================================
-   ALTERAR ESTOQUE
-   ============================================================ */
+/* ESTOQUE */
 
 function changeStock(
   productId,
@@ -1130,7 +1137,9 @@ function changeStock(
     );
 
   let value =
-    Number(input.value || 0);
+    Number(
+      input.value || 0
+    );
 
   value += amount;
 
@@ -1139,13 +1148,10 @@ function changeStock(
   }
 
   input.value = value;
-
 }
 
 
-/* ============================================================
-   SALVAR PRODUTO
-   ============================================================ */
+/* SALVAR */
 
 async function saveProduct(
   productId
@@ -1153,56 +1159,17 @@ async function saveProduct(
 
   try {
 
-    const name =
-      document.getElementById(
-        `name-${productId}`
-      ).value;
+    await apiRequest({
 
-    const category =
-      document.getElementById(
-        `category-${productId}`
-      ).value;
+      method: "POST",
 
-    const description =
-      document.getElementById(
-        `description-${productId}`
-      ).value;
+      headers: {
+        "Content-Type":
+          "application/json"
+      },
 
-    const price =
-      Number(
-        document.getElementById(
-          `price-${productId}`
-        ).value
-      );
-
-    const stock =
-      Number(
-        document.getElementById(
-          `stock-${productId}`
-        ).value
-      );
-
-    const active =
-      document.getElementById(
-        `active-${productId}`
-      ).checked;
-
-    const promotion =
-      document.getElementById(
-        `promotion-${productId}`
-      ).checked;
-
-    const data =
-      await apiRequest({
-
-        method: "POST",
-
-        headers: {
-          "Content-Type":
-            "application/json"
-        },
-
-        body: JSON.stringify({
+      body:
+        JSON.stringify({
 
           action:
             "update_product",
@@ -1210,39 +1177,67 @@ async function saveProduct(
           product_id:
             productId,
 
-          name,
-          category,
-          description,
-          price,
-          stock,
-          active,
-          promotion
+          name:
+            document.getElementById(
+              `name-${productId}`
+            ).value,
+
+          category:
+            document.getElementById(
+              `category-${productId}`
+            ).value,
+
+          description:
+            document.getElementById(
+              `description-${productId}`
+            ).value,
+
+          price:
+            Number(
+              document.getElementById(
+                `price-${productId}`
+              ).value
+            ),
+
+          stock:
+            Number(
+              document.getElementById(
+                `stock-${productId}`
+              ).value
+            ),
+
+          active:
+            document.getElementById(
+              `active-${productId}`
+            ).checked,
+
+          promotion:
+            document.getElementById(
+              `promotion-${productId}`
+            ).checked
 
         })
 
-      });
+    });
 
     alert(
-      "✅ Produto atualizado com sucesso!"
+      "✅ Produto atualizado!"
     );
 
     await loadData();
 
-  } catch (error) {
+  } catch(error) {
 
     alert(
-      "❌ Erro: " +
+      "❌ " +
       error.message
     );
 
   }
-
 }
 
 
-/* ============================================================
-   UPLOAD FOTO
-   ============================================================ */
+/* UPLOAD FOTO */
 
 async function uploadImage(
   productId
@@ -1250,40 +1245,37 @@ async function uploadImage(
 
   const input =
     document.getElementById(
-      `file-${productId}`
+      `image-${productId}`
     );
 
   if (!input.files.length) {
 
     alert(
-      "Selecione uma foto primeiro."
+      "Selecione uma foto."
     );
 
     return;
   }
 
-  const file =
-    input.files[0];
+  const formData =
+    new FormData();
+
+  formData.append(
+    "action",
+    "upload_image"
+  );
+
+  formData.append(
+    "product_id",
+    productId
+  );
+
+  formData.append(
+    "file",
+    input.files[0]
+  );
 
   try {
-
-    const formData =
-      new FormData();
-
-    formData.append(
-      "action",
-      "upload_image"
-    );
-
-    formData.append(
-      "product_id",
-      productId
-    );
-
-    formData.append(
-      "file",
-      file
-    );
 
     await apiRequest({
 
@@ -1294,38 +1286,127 @@ async function uploadImage(
     });
 
     alert(
-      "✅ Foto adicionada com sucesso!"
+      "✅ Foto enviada!"
     );
 
     await loadData();
 
-  } catch (error) {
+  } catch(error) {
 
     alert(
-      "❌ Erro ao enviar foto: " +
+      "❌ " +
       error.message
     );
 
   }
-
 }
 
 
-/* ============================================================
-   EXCLUIR FOTO
-   ============================================================ */
+/* UPLOAD VIDEO */
+
+async function uploadVideo(
+  productId
+) {
+
+  const input =
+    document.getElementById(
+      `video-${productId}`
+    );
+
+  if (!input.files.length) {
+
+    alert(
+      "Selecione um vídeo."
+    );
+
+    return;
+  }
+
+  const file =
+    input.files[0];
+
+  if (
+    !file.type.startsWith(
+      "video/"
+    )
+  ) {
+
+    alert(
+      "Selecione um arquivo de vídeo."
+    );
+
+    return;
+  }
+
+  if (
+    file.size >
+    50 * 1024 * 1024
+  ) {
+
+    alert(
+      "O vídeo pode ter no máximo 50 MB."
+    );
+
+    return;
+  }
+
+  const formData =
+    new FormData();
+
+  formData.append(
+    "action",
+    "upload_video"
+  );
+
+  formData.append(
+    "product_id",
+    productId
+  );
+
+  formData.append(
+    "file",
+    file
+  );
+
+  try {
+
+    await apiRequest({
+
+      method: "POST",
+
+      body: formData
+
+    });
+
+    alert(
+      "✅ Vídeo enviado!"
+    );
+
+    await loadData();
+
+  } catch(error) {
+
+    alert(
+      "❌ " +
+      error.message
+    );
+
+  }
+}
+
+
+/* EXCLUIR FOTO */
 
 async function deleteImage(
   productId,
   imageUrl
 ) {
 
-  const confirmed =
-    confirm(
-      "Tem certeza que deseja excluir esta foto?"
-    );
-
-  if (!confirmed) {
+  if (
+    !confirm(
+      "Excluir esta foto?"
+    )
+  ) {
     return;
   }
 
@@ -1340,42 +1421,91 @@ async function deleteImage(
           "application/json"
       },
 
-      body: JSON.stringify({
+      body:
+        JSON.stringify({
 
-        action:
-          "delete_image",
+          action:
+            "delete_image",
 
-        product_id:
-          productId,
+          product_id:
+            productId,
 
-        image_url:
-          imageUrl
+          image_url:
+            imageUrl
 
-      })
+        })
 
     });
 
-    alert(
-      "✅ Foto excluída."
-    );
-
     await loadData();
 
-  } catch (error) {
+  } catch(error) {
 
     alert(
-      "❌ Erro: " +
+      "❌ " +
       error.message
     );
 
   }
-
 }
 
 
-/* ============================================================
-   FORMATAÇÃO
-   ============================================================ */
+/* EXCLUIR VIDEO */
+
+async function deleteVideo(
+  productId,
+  videoUrl
+) {
+
+  if (
+    !confirm(
+      "Excluir este vídeo?"
+    )
+  ) {
+    return;
+  }
+
+  try {
+
+    await apiRequest({
+
+      method: "POST",
+
+      headers: {
+        "Content-Type":
+          "application/json"
+      },
+
+      body:
+        JSON.stringify({
+
+          action:
+            "delete_video",
+
+          product_id:
+            productId,
+
+          video_url:
+            videoUrl
+
+        })
+
+    });
+
+    await loadData();
+
+  } catch(error) {
+
+    alert(
+      "❌ " +
+      error.message
+    );
+
+  }
+}
+
+
+/* UTILIDADES */
 
 function money(value) {
 
@@ -1388,9 +1518,7 @@ function money(value) {
       currency: "BRL"
     }
   );
-
 }
-
 
 function formatDate(date) {
 
@@ -1403,46 +1531,51 @@ function formatDate(date) {
   ).toLocaleString(
     "pt-BR"
   );
-
 }
-
-
-/* ============================================================
-   SEGURANÇA HTML
-   ============================================================ */
 
 function escapeHtml(value) {
 
   return String(
     value ?? ""
   )
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
-    .replaceAll("'", "&#039;");
-
+    .replaceAll(
+      "&",
+      "&amp;"
+    )
+    .replaceAll(
+      "<",
+      "&lt;"
+    )
+    .replaceAll(
+      ">",
+      "&gt;"
+    )
+    .replaceAll(
+      '"',
+      "&quot;"
+    )
+    .replaceAll(
+      "'",
+      "&#039;"
+    );
 }
-
 
 function escapeAttribute(value) {
-
   return escapeHtml(value);
-
 }
 
-
-/* ============================================================
-   ENTER NO LOGIN
-   ============================================================ */
-
 document
-  .getElementById("adminKey")
+  .getElementById(
+    "adminKey"
+  )
   .addEventListener(
     "keydown",
     function(event) {
 
-      if (event.key === "Enter") {
+      if (
+        event.key ===
+        "Enter"
+      ) {
         login();
       }
 
