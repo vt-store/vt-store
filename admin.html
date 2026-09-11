@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -100,9 +101,14 @@ button {
   color: white;
 }
 
+
+/* =========================================================
+   ESTATÍSTICAS
+   ========================================================= */
+
 .stats {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 15px;
   margin-bottom: 25px;
 }
@@ -111,11 +117,14 @@ button {
   background: #15151b;
   border: 1px solid #292930;
   border-radius: 14px;
-  padding: 20px;
+  padding: 18px;
+  min-height: 105px;
 }
 
 .stat small {
   color: #999;
+  display: block;
+  font-size: 13px;
 }
 
 .stat strong {
@@ -123,6 +132,40 @@ button {
   font-size: 26px;
   margin-top: 8px;
 }
+
+.stat-icon {
+  font-size: 25px;
+  margin-bottom: 8px;
+}
+
+.stat.pending {
+  border-color: #6f5a24;
+}
+
+.stat.paid {
+  border-color: #236c42;
+}
+
+.stat.shipped {
+  border-color: #285b80;
+}
+
+.stat.delivered {
+  border-color: #32703a;
+}
+
+.stat.cancelled {
+  border-color: #733232;
+}
+
+.stat.sales {
+  border-color: #5b5cff;
+}
+
+
+/* =========================================================
+   SEÇÕES
+   ========================================================= */
 
 .section {
   background: #111116;
@@ -142,6 +185,11 @@ button {
 .section-title h2 {
   margin: 0;
 }
+
+
+/* =========================================================
+   PRODUTOS
+   ========================================================= */
 
 .products-grid {
   display: grid;
@@ -275,6 +323,11 @@ button {
   width: auto;
 }
 
+
+/* =========================================================
+   PEDIDOS
+   ========================================================= */
+
 .orders {
   overflow-x: auto;
 }
@@ -332,10 +385,15 @@ td {
   color: #777;
 }
 
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
 @media(max-width:700px) {
 
   .stats {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
   }
 
   .row {
@@ -343,6 +401,14 @@ td {
   }
 
   .products-grid {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+@media(max-width:450px) {
+
+  .stats {
     grid-template-columns: 1fr;
   }
 
@@ -356,6 +422,7 @@ td {
 <header>
   <h1>VT Store — Painel Administrativo</h1>
 </header>
+
 
 <div id="loginScreen" class="login">
 
@@ -384,28 +451,121 @@ td {
 
 </div>
 
+
 <div
   id="panel"
   class="container hidden"
 >
 
+
+  <!-- =====================================================
+       ESTATÍSTICAS
+       ===================================================== -->
+
   <div class="stats">
 
     <div class="stat">
+
+      <div class="stat-icon">
+        📦
+      </div>
+
       <small>Total de pedidos</small>
-      <strong id="totalOrders">0</strong>
+
+      <strong id="totalOrders">
+        0
+      </strong>
+
     </div>
 
-    <div class="stat">
-      <small>Pedidos pagos</small>
-      <strong id="paidOrders">0</strong>
+
+    <div class="stat pending">
+
+      <div class="stat-icon">
+        🟡
+      </div>
+
+      <small>Pendentes</small>
+
+      <strong id="pendingOrders">
+        0
+      </strong>
+
     </div>
 
-    <div class="stat">
+
+    <div class="stat paid">
+
+      <div class="stat-icon">
+        🟢
+      </div>
+
+      <small>Pagos</small>
+
+      <strong id="paidOrders">
+        0
+      </strong>
+
+    </div>
+
+
+    <div class="stat shipped">
+
+      <div class="stat-icon">
+        📦
+      </div>
+
+      <small>Enviados</small>
+
+      <strong id="shippedOrders">
+        0
+      </strong>
+
+    </div>
+
+
+    <div class="stat delivered">
+
+      <div class="stat-icon">
+        ✅
+      </div>
+
+      <small>Entregues</small>
+
+      <strong id="deliveredOrders">
+        0
+      </strong>
+
+    </div>
+
+
+    <div class="stat cancelled">
+
+      <div class="stat-icon">
+        🔴
+      </div>
+
+      <small>Cancelados</small>
+
+      <strong id="cancelledOrders">
+        0
+      </strong>
+
+    </div>
+
+
+    <div class="stat sales">
+
+      <div class="stat-icon">
+        💰
+      </div>
+
       <small>Total vendido</small>
+
       <strong id="totalSales">
         R$ 0,00
       </strong>
+
     </div>
 
   </div>
@@ -495,7 +655,9 @@ let productVideos = [];
 let orders = [];
 
 
-/* LOGIN */
+/* =========================================================
+   LOGIN
+   ========================================================= */
 
 function login() {
 
@@ -519,7 +681,9 @@ function login() {
 }
 
 
-/* API */
+/* =========================================================
+   API
+   ========================================================= */
 
 async function apiRequest(options = {}) {
 
@@ -540,8 +704,10 @@ async function apiRequest(options = {}) {
   const data =
     await response.json();
 
-  if (!response.ok ||
-      data.success === false) {
+  if (
+    !response.ok ||
+    data.success === false
+  ) {
 
     throw new Error(
       data.error ||
@@ -553,7 +719,9 @@ async function apiRequest(options = {}) {
 }
 
 
-/* CARREGAR */
+/* =========================================================
+   CARREGAR
+   ========================================================= */
 
 async function loadData() {
 
@@ -609,25 +777,76 @@ async function loadData() {
 }
 
 
-/* ESTATÍSTICAS */
+/* =========================================================
+   ESTATÍSTICAS
+   ========================================================= */
 
 function renderStats() {
+
+  const pending =
+    orders.filter(
+      order =>
+        order.status === "pending"
+    ).length;
+
 
   const paid =
     orders.filter(
       order =>
         order.status === "paid"
-    );
+    ).length;
+
+
+  const shipped =
+    orders.filter(
+      order =>
+        order.status === "shipped"
+    ).length;
+
+
+  const delivered =
+    orders.filter(
+      order =>
+        order.status === "delivered"
+    ).length;
+
+
+  const cancelled =
+    orders.filter(
+      order =>
+        order.status === "cancelled"
+    ).length;
+
+
+  /*
+   * Pedido pago continua sendo uma venda mesmo
+   * quando passa para enviado ou entregue.
+   */
+
+  const revenueStatuses = [
+    "paid",
+    "shipped",
+    "delivered"
+  ];
+
 
   const sales =
-    paid.reduce(
-      (sum, order) =>
-        sum +
-        Number(
-          order.total || 0
-        ),
-      0
-    );
+    orders
+      .filter(
+        order =>
+          revenueStatuses.includes(
+            order.status
+          )
+      )
+      .reduce(
+        (sum, order) =>
+          sum +
+          Number(
+            order.total || 0
+          ),
+        0
+      );
+
 
   document
     .getElementById(
@@ -636,12 +855,46 @@ function renderStats() {
     .textContent =
       orders.length;
 
+
+  document
+    .getElementById(
+      "pendingOrders"
+    )
+    .textContent =
+      pending;
+
+
   document
     .getElementById(
       "paidOrders"
     )
     .textContent =
-      paid.length;
+      paid;
+
+
+  document
+    .getElementById(
+      "shippedOrders"
+    )
+    .textContent =
+      shipped;
+
+
+  document
+    .getElementById(
+      "deliveredOrders"
+    )
+    .textContent =
+      delivered;
+
+
+  document
+    .getElementById(
+      "cancelledOrders"
+    )
+    .textContent =
+      cancelled;
+
 
   document
     .getElementById(
@@ -652,7 +905,9 @@ function renderStats() {
 }
 
 
-/* PEDIDOS */
+/* =========================================================
+   PEDIDOS
+   ========================================================= */
 
 function renderOrders() {
 
@@ -672,6 +927,7 @@ function renderOrders() {
         ? order.items
         : [];
 
+
     const itemsText =
       items.map(item => {
 
@@ -685,6 +941,7 @@ function renderOrders() {
 
       }).join("<br>");
 
+
     const tr =
       document.createElement(
         "tr"
@@ -692,16 +949,21 @@ function renderOrders() {
 
 
     const address = [
+
       order.customer_address,
+
       order.customer_number
         ? "Nº " +
           order.customer_number
         : "",
+
       order.customer_complement,
+
       order.customer_cep
         ? "CEP " +
           order.customer_cep
         : ""
+
     ]
       .filter(Boolean)
       .join(", ");
@@ -756,6 +1018,7 @@ function renderOrders() {
           ${statusLabels.pending}
         </option>
 
+
         <option
           value="paid"
           ${
@@ -766,6 +1029,7 @@ function renderOrders() {
         >
           ${statusLabels.paid}
         </option>
+
 
         <option
           value="shipped"
@@ -778,6 +1042,7 @@ function renderOrders() {
           ${statusLabels.shipped}
         </option>
 
+
         <option
           value="delivered"
           ${
@@ -788,6 +1053,7 @@ function renderOrders() {
         >
           ${statusLabels.delivered}
         </option>
+
 
         <option
           value="cancelled"
@@ -801,6 +1067,7 @@ function renderOrders() {
         </option>
 
       </select>
+
 
       ${
         currentStatus === "paid"
@@ -823,7 +1090,9 @@ function renderOrders() {
         )}
       </td>
 
+
       <td>
+
         <strong>
           ${escapeHtml(
             order.customer_name || "-"
@@ -841,7 +1110,9 @@ function renderOrders() {
         ${escapeHtml(
           order.customer_phone || ""
         )}
+
       </td>
+
 
       <td>
         ${escapeHtml(
@@ -849,17 +1120,21 @@ function renderOrders() {
         )}
       </td>
 
+
       <td>
         ${itemsText || "-"}
       </td>
+
 
       <td>
         ${money(order.total)}
       </td>
 
+
       <td>
         ${statusHtml}
       </td>
+
 
       <td>
         ${formatDate(
@@ -869,6 +1144,7 @@ function renderOrders() {
 
     `;
 
+
     body.appendChild(tr);
 
   });
@@ -876,7 +1152,9 @@ function renderOrders() {
 }
 
 
-/* ATUALIZAR STATUS DO PEDIDO */
+/* =========================================================
+   ATUALIZAR STATUS
+   ========================================================= */
 
 async function updateOrderStatus(
   orderNsu,
@@ -992,7 +1270,9 @@ async function updateOrderStatus(
 }
 
 
-/* PRODUTOS */
+/* =========================================================
+   PRODUTOS
+   ========================================================= */
 
 function renderProducts() {
 
@@ -1016,7 +1296,9 @@ function renderProducts() {
 }
 
 
-/* CARD */
+/* =========================================================
+   CARD
+   ========================================================= */
 
 function createProductCard(
   product
@@ -1030,6 +1312,7 @@ function createProductCard(
   card.className =
     "product-card";
 
+
   const images =
     productImages.filter(
       image =>
@@ -1040,6 +1323,7 @@ function createProductCard(
           product.id
         )
     );
+
 
   const videos =
     productVideos.filter(
@@ -1085,9 +1369,11 @@ function createProductCard(
       `).join("")
 
       : `
+
         <div class="no-media">
           Nenhuma foto cadastrada
         </div>
+
       `;
 
 
@@ -1125,9 +1411,11 @@ function createProductCard(
       `).join("")
 
       : `
+
         <div class="no-media">
           Nenhum vídeo cadastrado
         </div>
+
       `;
 
 
@@ -1143,10 +1431,12 @@ function createProductCard(
       </h3>
 
       <div class="product-id">
+
         ID:
         ${escapeHtml(
           product.id
         )}
+
       </div>
 
     </div>
@@ -1156,6 +1446,7 @@ function createProductCard(
       📸 FOTOS
     </div>
 
+
     <div class="photos">
       ${photosHtml}
     </div>
@@ -1164,6 +1455,7 @@ function createProductCard(
     <div class="media-title">
       🎥 VÍDEOS
     </div>
+
 
     <div class="videos">
       ${videosHtml}
@@ -1236,6 +1528,7 @@ function createProductCard(
               −
             </button>
 
+
             <input
               type="number"
               min="0"
@@ -1244,6 +1537,7 @@ function createProductCard(
                 product.stock || 0
               )}"
             >
+
 
             <button
               class="btn-green"
@@ -1328,6 +1622,7 @@ function createProductCard(
           id="image-${product.id}"
         >
 
+
         <button
           class="btn-green"
           style="width:100%;margin-top:10px"
@@ -1355,6 +1650,7 @@ function createProductCard(
           id="video-${product.id}"
         >
 
+
         <button
           class="btn-green"
           style="width:100%;margin-top:10px"
@@ -1371,11 +1667,14 @@ function createProductCard(
 
   `;
 
+
   return card;
 }
 
 
-/* ESTOQUE */
+/* =========================================================
+   ESTOQUE
+   ========================================================= */
 
 function changeStock(
   productId,
@@ -1387,22 +1686,28 @@ function changeStock(
       `stock-${productId}`
     );
 
+
   let value =
     Number(
       input.value || 0
     );
 
+
   value += amount;
+
 
   if (value < 0) {
     value = 0;
   }
 
+
   input.value = value;
 }
 
 
-/* SALVAR */
+/* =========================================================
+   SALVAR PRODUTO
+   ========================================================= */
 
 async function saveProduct(
   productId
@@ -1471,11 +1776,14 @@ async function saveProduct(
 
     });
 
+
     alert(
       "✅ Produto atualizado!"
     );
 
+
     await loadData();
+
 
   } catch(error) {
 
@@ -1488,7 +1796,9 @@ async function saveProduct(
 }
 
 
-/* UPLOAD FOTO */
+/* =========================================================
+   UPLOAD FOTO
+   ========================================================= */
 
 async function uploadImage(
   productId
@@ -1499,6 +1809,7 @@ async function uploadImage(
       `image-${productId}`
     );
 
+
   if (!input.files.length) {
 
     alert(
@@ -1508,23 +1819,28 @@ async function uploadImage(
     return;
   }
 
+
   const formData =
     new FormData();
+
 
   formData.append(
     "action",
     "upload_image"
   );
 
+
   formData.append(
     "product_id",
     productId
   );
 
+
   formData.append(
     "file",
     input.files[0]
   );
+
 
   try {
 
@@ -1536,11 +1852,14 @@ async function uploadImage(
 
     });
 
+
     alert(
       "✅ Foto enviada!"
     );
 
+
     await loadData();
+
 
   } catch(error) {
 
@@ -1553,7 +1872,9 @@ async function uploadImage(
 }
 
 
-/* UPLOAD VIDEO */
+/* =========================================================
+   UPLOAD VIDEO
+   ========================================================= */
 
 async function uploadVideo(
   productId
@@ -1564,6 +1885,7 @@ async function uploadVideo(
       `video-${productId}`
     );
 
+
   if (!input.files.length) {
 
     alert(
@@ -1573,8 +1895,10 @@ async function uploadVideo(
     return;
   }
 
+
   const file =
     input.files[0];
+
 
   if (
     !file.type.startsWith(
@@ -1589,6 +1913,7 @@ async function uploadVideo(
     return;
   }
 
+
   if (
     file.size >
     50 * 1024 * 1024
@@ -1601,23 +1926,28 @@ async function uploadVideo(
     return;
   }
 
+
   const formData =
     new FormData();
+
 
   formData.append(
     "action",
     "upload_video"
   );
 
+
   formData.append(
     "product_id",
     productId
   );
 
+
   formData.append(
     "file",
     file
   );
+
 
   try {
 
@@ -1629,11 +1959,14 @@ async function uploadVideo(
 
     });
 
+
     alert(
       "✅ Vídeo enviado!"
     );
 
+
     await loadData();
+
 
   } catch(error) {
 
@@ -1646,7 +1979,9 @@ async function uploadVideo(
 }
 
 
-/* EXCLUIR FOTO */
+/* =========================================================
+   EXCLUIR FOTO
+   ========================================================= */
 
 async function deleteImage(
   productId,
@@ -1660,6 +1995,7 @@ async function deleteImage(
   ) {
     return;
   }
+
 
   try {
 
@@ -1688,7 +2024,9 @@ async function deleteImage(
 
     });
 
+
     await loadData();
+
 
   } catch(error) {
 
@@ -1701,7 +2039,9 @@ async function deleteImage(
 }
 
 
-/* EXCLUIR VIDEO */
+/* =========================================================
+   EXCLUIR VIDEO
+   ========================================================= */
 
 async function deleteVideo(
   productId,
@@ -1715,6 +2055,7 @@ async function deleteVideo(
   ) {
     return;
   }
+
 
   try {
 
@@ -1743,7 +2084,9 @@ async function deleteVideo(
 
     });
 
+
     await loadData();
+
 
   } catch(error) {
 
@@ -1756,7 +2099,9 @@ async function deleteVideo(
 }
 
 
-/* UTILIDADES */
+/* =========================================================
+   UTILIDADES
+   ========================================================= */
 
 function money(value) {
 
@@ -1771,11 +2116,13 @@ function money(value) {
   );
 }
 
+
 function formatDate(date) {
 
   if (!date) {
     return "-";
   }
+
 
   return new Date(
     date
@@ -1783,6 +2130,7 @@ function formatDate(date) {
     "pt-BR"
   );
 }
+
 
 function escapeHtml(value) {
 
@@ -1811,10 +2159,13 @@ function escapeHtml(value) {
     );
 }
 
+
 function escapeAttribute(value) {
   return escapeHtml(value);
 }
 
+
+/* ENTER NO LOGIN */
 
 document
   .getElementById(
@@ -1838,3 +2189,4 @@ document
 
 </body>
 </html>
+```
