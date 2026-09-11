@@ -209,47 +209,50 @@
   </div>
 
   <script>
-    (function () {
+document.addEventListener("DOMContentLoaded", function () {
 
-      const params = new URLSearchParams(window.location.search);
+  const params = new URLSearchParams(window.location.search);
 
-      /*
-       * A InfinitePay pode devolver informações na URL.
-       * Tentamos encontrar o número do pedido em diferentes nomes.
-       */
-      const orderNsu =
-        params.get("order_nsu") ||
-        params.get("orderNsu") ||
-        params.get("nsu") ||
-        params.get("order") ||
-        localStorage.getItem("vt_last_order_nsu") ||
-        "";
+  const orderNsu =
+    params.get("order_nsu") ||
+    params.get("orderNsu") ||
+    params.get("nsu") ||
+    params.get("order") ||
+    "";
 
-      const orderBox = document.getElementById("orderBox");
-      const orderNumber = document.getElementById("orderNumber");
+  const orderBox = document.getElementById("orderBox");
+  const orderNumber = document.getElementById("orderNumber");
+  const whatsappButton = document.getElementById("whatsappButton");
 
-      if (orderNsu) {
-        orderNumber.textContent = orderNsu;
-        orderBox.style.display = "block";
+  if (orderNsu && orderNumber && orderBox) {
 
-        localStorage.setItem("vt_last_order_nsu", orderNsu);
-      }
+    orderNumber.textContent = orderNsu;
+    orderBox.style.display = "block";
 
-      /*
-       * WhatsApp da VT Store
-       */
-      const whatsappNumber = "5515991713864";
+  }
 
-      let message =
-        "Olá! Acabei de realizar uma compra na VT Store.";
+  const whatsappNumber = "5515991713864";
 
-      if (orderNsu) {
-        message +=
-          "\n\nNúmero do pedido: " + orderNsu;
-      }
+  let mensagem =
+    "Olá! Acabei de realizar uma compra na VT Store.";
 
-      message +=
-        "\n\nGostaria de confirmar minha compra.";
+  if (orderNsu) {
+    mensagem +=
+      "\n\nNúmero do pedido: " + orderNsu;
+  }
 
-      const whatsappUrl =
-        "https://
+  mensagem +=
+    "\n\nGostaria de confirmar minha compra.";
+
+  const whatsappLink =
+    "https://wa.me/" +
+    whatsappNumber +
+    "?text=" +
+    encodeURIComponent(mensagem);
+
+  if (whatsappButton) {
+    whatsappButton.href = whatsappLink;
+  }
+
+});
+</script>
