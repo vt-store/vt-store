@@ -10,9 +10,7 @@
     content="width=device-width, initial-scale=1.0"
   >
 
-  <title>
-    VT Store | Games, Consoles e iPhones
-  </title>
+  <title>VT Store | Games, Consoles e iPhones</title>
 
   <meta
     name="description"
@@ -24,550 +22,383 @@
     href="styles.css"
   >
 
-  <script
-    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
-  ></script>
-
   <script src="config.js"></script>
 
 </head>
 
-
 <body>
 
+<!-- ==================================================
+HEADER
+================================================== -->
 
-  <!-- ==================================================
-       HEADER
-  ================================================== -->
+<header class="header">
 
-  <header class="header">
+  <div class="container header-content">
 
-    <div class="container header-content">
+    <a
+      href="#inicio"
+      class="logo"
+    >
+      VT<span>STORE</span>
+    </a>
 
-      <a
-        href="#"
-        class="logo"
-      >
-        VT<span>STORE</span>
+    <nav class="nav">
+
+      <a href="#inicio">
+        Início
       </a>
 
+      <a href="#produtos">
+        Produtos
+      </a>
 
-      <nav class="nav">
+      <a href="#ofertas">
+        Ofertas
+      </a>
 
-        <a href="#inicio">
-          Início
-        </a>
+      <a href="#contato">
+        Contato
+      </a>
 
-        <a href="#produtos">
-          Produtos
-        </a>
+    </nav>
 
-        <a href="#ofertas">
-          Ofertas
-        </a>
+    <div class="header-actions">
 
-        <a href="#contato">
-          Contato
-        </a>
+      <a
+        href="https://wa.me/5515991713864"
+        target="_blank"
+        class="whatsapp-button"
+      >
+        WhatsApp
+      </a>
 
-      </nav>
+      <button
+        type="button"
+        class="cart-button"
+        id="cartButton"
+      >
+        🛒
+        <span id="cartCount">
+          0
+        </span>
+      </button>
+
+    </div>
+
+  </div>
+
+</header>
 
 
-      <div class="header-actions">
+<!-- ==================================================
+HERO
+================================================== -->
+
+<section
+  id="inicio"
+  class="hero"
+>
+
+  <div class="container hero-content">
+
+    <div class="hero-text">
+
+      <span class="hero-badge">
+        🎮 VT STORE
+      </span>
+
+      <h1>
+        A sua próxima compra
+        <span>está na VT Store.</span>
+      </h1>
+
+      <p>
+        Consoles, games e iPhones com ótimos preços,
+        atendimento rápido e pagamento seguro.
+      </p>
+
+      <div class="hero-buttons">
 
         <a
-          class="header-whatsapp"
-          href="https://wa.me/5515991713864"
-          target="_blank"
-          rel="noopener noreferrer"
+          href="#produtos"
+          class="btn btn-primary"
         >
-          WhatsApp
+          Ver produtos
         </a>
 
-
-        <button
-          id="cartButton"
-          class="cart-button"
-          type="button"
+        <a
+          href="https://wa.me/5515991713864?text=Vim%20pelo%20site%20da%20VT%20Store"
+          target="_blank"
+          class="btn btn-secondary"
         >
-
-          🛒 Carrinho
-
-          <span id="cartCount">
-            0
-          </span>
-
-        </button>
+          Falar no WhatsApp
+        </a>
 
       </div>
 
     </div>
 
-  </header>
+  </div>
+
+</section>
 
 
+<!-- ==================================================
+CATEGORIAS
+================================================== -->
 
-  <!-- ==================================================
-       CONTEÚDO
-  ================================================== -->
+<section class="categories-section">
 
-  <main>
+  <div class="container">
 
+    <div class="section-title">
 
-    <!-- ==================================================
-         HERO
-    ================================================== -->
+      <span>
+        CATEGORIAS
+      </span>
 
-    <section
-      class="hero"
-      id="inicio"
-    >
+      <h2>
+        Encontre o que procura
+      </h2>
 
-      <div class="container hero-content">
+    </div>
 
-        <div class="hero-text">
+    <div class="categories">
 
-          <span class="hero-tag">
-            VT STORE
-          </span>
+      <button
+        type="button"
+        class="category-button active"
+        data-category="todos"
+      >
+        🎮
+        <strong>Todos</strong>
+      </button>
 
+      <button
+        type="button"
+        class="category-button"
+        data-category="xbox"
+      >
+        🟢
+        <strong>Xbox</strong>
+      </button>
 
-          <h1>
+      <button
+        type="button"
+        class="category-button"
+        data-category="playstation"
+      >
+        🔵
+        <strong>PlayStation</strong>
+      </button>
 
-            Tecnologia e games
+      <button
+        type="button"
+        class="category-button"
+        data-category="iphone"
+      >
+        📱
+        <strong>iPhone</strong>
+      </button>
 
-            <strong>
-              do seu jeito.
-            </strong>
+    </div>
 
-          </h1>
+  </div>
 
-
-          <p>
-            Consoles, jogos e iPhones selecionados,
-            com preços especiais e atendimento direto pelo WhatsApp.
-          </p>
-
-
-          <div class="hero-buttons">
-
-            <a
-              href="#produtos"
-              class="btn btn-primary"
-            >
-              Ver produtos
-            </a>
-
-
-            <a
-              href="https://wa.me/5515991713864"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="btn btn-secondary"
-            >
-              Falar no WhatsApp
-            </a>
-
-          </div>
-
-        </div>
+</section>
 
 
-        <div class="hero-card">
+<!-- ==================================================
+PRODUTOS
+================================================== -->
 
-          <div class="hero-card-content">
+<section
+  id="produtos"
+  class="products-section"
+>
 
-            <span>
-              OFERTAS
-            </span>
+  <div class="container">
 
+    <div class="products-header">
 
-            <h2>
+      <div class="section-title">
 
-              Encontre seu próximo
+        <span>
+          NOSSA LOJA
+        </span>
 
-              <strong>
-                console.
-              </strong>
-
-            </h2>
-
-
-            <p>
-              Produtos disponíveis em estoque.
-            </p>
-
-          </div>
-
-        </div>
+        <h2>
+          Produtos
+        </h2>
 
       </div>
 
-    </section>
+      <div class="search-box">
 
-
-
-    <!-- ==================================================
-         CATEGORIAS
-    ================================================== -->
-
-    <section class="categories">
-
-      <div class="container">
-
-        <div class="section-heading">
-
-          <span>
-            CATEGORIAS
-          </span>
-
-          <h2>
-            Encontre o que você procura
-          </h2>
-
-        </div>
-
-
-        <div class="category-grid">
-
-          <button
-            class="category-card"
-            data-category="Todos"
-            type="button"
-          >
-
-            <span class="category-icon">
-              🎮
-            </span>
-
-            <strong>
-              Todos
-            </strong>
-
-            <small>
-              Ver produtos
-            </small>
-
-          </button>
-
-
-          <button
-            class="category-card"
-            data-category="Xbox"
-            type="button"
-          >
-
-            <span class="category-icon">
-              🎮
-            </span>
-
-            <strong>
-              Xbox
-            </strong>
-
-            <small>
-              Consoles e acessórios
-            </small>
-
-          </button>
-
-
-          <button
-            class="category-card"
-            data-category="PlayStation"
-            type="button"
-          >
-
-            <span class="category-icon">
-              🎮
-            </span>
-
-            <strong>
-              PlayStation
-            </strong>
-
-            <small>
-              PS4, PS5 e mais
-            </small>
-
-          </button>
-
-
-          <button
-            class="category-card"
-            data-category="iPhone"
-            type="button"
-          >
-
-            <span class="category-icon">
-              📱
-            </span>
-
-            <strong>
-              iPhone
-            </strong>
-
-            <small>
-              Apple
-            </small>
-
-          </button>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- ==================================================
-         PRODUTOS
-    ================================================== -->
-
-    <section
-      class="products-section"
-      id="produtos"
-    >
-
-      <div class="container">
-
-        <div class="section-top">
-
-          <div class="section-heading">
-
-            <span>
-              NOSSA LOJA
-            </span>
-
-            <h2>
-              Produtos disponíveis
-            </h2>
-
-          </div>
-
-
-          <div class="search-box">
-
-            <input
-              type="search"
-              id="searchInput"
-              placeholder="Buscar produto..."
-              autocomplete="off"
-            >
-
-          </div>
-
-        </div>
-
-
-        <div
-          id="loading"
-          class="loading"
-        >
-          Carregando produtos...
-        </div>
-
-
-        <div
-          id="productsGrid"
-          class="products-grid"
-        ></div>
-
-
-        <div
-          id="emptyProducts"
-          class="empty-products"
-          style="display:none;"
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="Buscar produto..."
+          autocomplete="off"
         >
 
-          <h3>
-            Nenhum produto encontrado
-          </h3>
-
-          <p>
-            Tente outra categoria ou termo de pesquisa.
-          </p>
-
-        </div>
+        🔎
 
       </div>
 
-    </section>
+    </div>
 
 
-
-    <!-- ==================================================
-         OFERTAS
-    ================================================== -->
-
-    <section
-      class="offers"
-      id="ofertas"
+    <div
+      id="productsGrid"
+      class="products-grid"
     >
 
-      <div class="container">
-
-        <div class="offer-box">
-
-          <div>
-
-            <span class="offer-label">
-              OFERTAS ESPECIAIS
-            </span>
-
-
-            <h2>
-              Achou o produto que queria?
-            </h2>
-
-
-            <p>
-              Chame a VT Store pelo WhatsApp e consulte
-              disponibilidade e condições de pagamento.
-            </p>
-
-          </div>
-
-
-          <a
-            href="https://wa.me/5515991713864"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="btn btn-light"
-          >
-            Comprar pelo WhatsApp
-          </a>
-
-        </div>
-
+      <div class="loading-products">
+        Carregando produtos...
       </div>
 
-    </section>
+    </div>
+
+  </div>
+
+</section>
 
 
+<!-- ==================================================
+OFERTAS
+================================================== -->
 
-    <!-- ==================================================
-         CONTATO
-    ================================================== -->
+<section
+  id="ofertas"
+  class="offers-section"
+>
 
-    <section
-      class="contact"
-      id="contato"
-    >
+  <div class="container">
 
-      <div class="container contact-content">
-
-        <div>
-
-          <span>
-            FALE CONOSCO
-          </span>
-
-
-          <h2>
-            Precisa de ajuda?
-          </h2>
-
-
-          <p>
-            Entre em contato com a VT Store.
-            Estamos prontos para atender você.
-          </p>
-
-        </div>
-
-
-        <div class="contact-buttons">
-
-          <a
-            href="https://wa.me/5515991713864"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="contact-button"
-          >
-
-            <strong>
-              WhatsApp
-            </strong>
-
-            <small>
-              Fale com a gente
-            </small>
-
-          </a>
-
-
-          <a
-            href="https://www.tiktok.com/@vt_store015"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="contact-button"
-          >
-
-            <strong>
-              TikTok
-            </strong>
-
-            <small>
-              @vt_store015
-            </small>
-
-          </a>
-
-        </div>
-
-      </div>
-
-    </section>
-
-  </main>
-
-
-
-  <!-- ==================================================
-       FOOTER
-  ================================================== -->
-
-  <footer class="footer">
-
-    <div class="container footer-content">
+    <div class="offer-box">
 
       <div>
 
-        <a
-          href="#"
-          class="logo"
-        >
-          VT<span>STORE</span>
-        </a>
+        <span>
+          🔥 OFERTAS VT STORE
+        </span>
 
+        <h2>
+          Os melhores preços para você.
+        </h2>
 
         <p>
-          Games, consoles e tecnologia.
+          Aproveite nossas ofertas e consulte
+          disponibilidade pelo WhatsApp.
         </p>
 
       </div>
 
+      <a
+        href="https://wa.me/5515991713864?text=Quero%20saber%20sobre%20as%20ofertas%20da%20VT%20Store"
+        target="_blank"
+        class="btn btn-primary"
+      >
+        Ver ofertas
+      </a>
 
-      <div class="footer-links">
+    </div>
 
-        <a href="#inicio">
-          Início
-        </a>
+  </div>
 
-        <a href="#produtos">
-          Produtos
-        </a>
+</section>
 
-        <a href="#contato">
-          Contato
-        </a>
+
+<!-- ==================================================
+CONTATO
+================================================== -->
+
+<section
+  id="contato"
+  class="contact-section"
+>
+
+  <div class="container">
+
+    <div class="section-title">
+
+      <span>
+        FALE CONOSCO
+      </span>
+
+      <h2>
+        Entre em contato
+      </h2>
+
+      <p>
+        Ficou com alguma dúvida?
+        Fale diretamente com a VT Store.
+      </p>
+
+    </div>
+
+    <div class="contact-buttons">
+
+      <a
+        href="https://wa.me/5515991713864?text=Vim%20pelo%20site%20da%20VT%20Store"
+        target="_blank"
+        class="btn btn-primary"
+      >
+        WhatsApp
+      </a>
+
+      <a
+        href="https://www.tiktok.com/@vt_store015"
+        target="_blank"
+        class="btn btn-secondary"
+      >
+        TikTok
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ==================================================
+FOOTER
+================================================== -->
+
+<footer class="footer">
+
+  <div class="container">
+
+    <div class="footer-content">
+
+      <div>
+
+        <div class="logo">
+          VT<span>STORE</span>
+        </div>
+
+        <p>
+          Games, consoles e iPhones.
+        </p>
+
+      </div>
+
+      <div>
+
+        <strong>
+          VT Store
+        </strong>
+
+        <p>
+          Itapetininga - SP
+        </p>
 
       </div>
 
     </div>
-
 
     <div class="footer-bottom">
 
@@ -576,2889 +407,2766 @@
 
     </div>
 
-  </footer>
+  </div>
+
+</footer>
 
 
+<!-- ==================================================
+CARRINHO
+================================================== -->
 
-  <!-- ==================================================
-       CARRINHO
-  ================================================== -->
+<div
+  id="cartOverlay"
+  class="modal-overlay"
+>
 
-  <div
-    id="cartOverlay"
-    class="cart-overlay"
-  >
+  <div class="modal cart-modal">
 
-    <aside
-      class="cart-panel"
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="cartTitle"
+    <button
+      type="button"
+      class="modal-close"
+      id="closeCart"
     >
+      ×
+    </button>
 
-      <div class="cart-header">
+    <h2>
+      Seu carrinho
+    </h2>
 
-        <div>
+    <div
+      id="cartItems"
+      class="cart-items"
+    ></div>
 
-          <span>
-            CARRINHO
-          </span>
+    <div class="cart-total">
 
-          <h2 id="cartTitle">
-            Seu carrinho
-          </h2>
+      <span>
+        Total
+      </span>
 
-        </div>
+      <strong id="cartTotal">
+        R$ 0,00
+      </strong>
+
+    </div>
+
+    <button
+      type="button"
+      id="checkoutButton"
+      class="btn btn-primary btn-full"
+    >
+      Continuar compra
+    </button>
+
+  </div>
+
+</div>
 
 
-        <button
-          id="closeCart"
-          type="button"
-          aria-label="Fechar carrinho"
+<!-- ==================================================
+MODAL DE DADOS
+================================================== -->
+
+<div
+  id="customerOverlay"
+  class="modal-overlay"
+>
+
+  <div class="modal customer-modal">
+
+    <button
+      type="button"
+      class="modal-close"
+      id="closeCustomer"
+    >
+      ×
+    </button>
+
+    <h2>
+      Dados da compra
+    </h2>
+
+    <p class="modal-description">
+      Preencha seus dados para escolher entre
+      entrega ou retirada na loja e continuar
+      para o pagamento seguro da InfinitePay.
+    </p>
+
+
+    <!-- ==============================================
+    DADOS BÁSICOS
+    ============================================== -->
+
+    <div class="form-grid">
+
+      <div class="form-group">
+
+        <label for="customerName">
+          Nome completo
+        </label>
+
+        <input
+          id="customerName"
+          type="text"
+          placeholder="Seu nome"
+          autocomplete="name"
+          required
         >
-          ×
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label for="customerPhone">
+          WhatsApp
+        </label>
+
+        <input
+          id="customerPhone"
+          type="tel"
+          placeholder="(15) 99999-9999"
+          autocomplete="tel"
+          required
+        >
+
+      </div>
+
+
+      <div class="form-group form-full">
+
+        <label for="customerEmail">
+          E-mail
+        </label>
+
+        <input
+          id="customerEmail"
+          type="email"
+          placeholder="seuemail@email.com"
+          autocomplete="email"
+          required
+        >
+
+      </div>
+
+    </div>
+
+
+    <!-- ==============================================
+    RECEBIMENTO
+    ============================================== -->
+
+    <div class="shipping-section">
+
+      <h3>
+        🚚 Escolha como receber
+      </h3>
+
+      <p>
+        Escolha entre retirar na loja ou
+        receber seu pedido.
+      </p>
+
+
+      <div
+        id="shippingOptions"
+        class="shipping-options"
+      >
+
+        <!-- RETIRADA -->
+        <button
+          type="button"
+          class="shipping-option selected"
+          data-shipping-id="vt-retirada"
+        >
+
+          <div class="shipping-icon">
+            🏪
+          </div>
+
+          <div class="shipping-info">
+
+            <strong>
+              Retirada na loja
+            </strong>
+
+            <span>
+              VT Store • Itapetininga/SP
+            </span>
+
+            <small>
+              Combine a retirada pelo WhatsApp
+            </small>
+
+          </div>
+
+          <div class="shipping-price">
+            GRÁTIS
+          </div>
+
+        </button>
+
+
+        <!-- ENTREGA -->
+        <button
+          type="button"
+          class="shipping-option"
+          data-shipping-id="vt-entrega"
+        >
+
+          <div class="shipping-icon">
+            🚚
+          </div>
+
+          <div class="shipping-info">
+
+            <strong>
+              Receber em casa
+            </strong>
+
+            <span>
+              Informe seu CEP para calcular
+            </span>
+
+            <small>
+              Frete Econômico ou Expresso
+            </small>
+
+          </div>
+
+          <div class="shipping-price">
+            →
+          </div>
+
         </button>
 
       </div>
 
 
       <div
-        id="cartItems"
-        class="cart-items"
-      ></div>
+        id="shippingLoading"
+        class="shipping-loading"
+        style="display:none;"
+      >
+        Calculando opções de entrega...
+      </div>
 
 
       <div
-        id="emptyCart"
-        class="cart-empty"
+        id="shippingError"
+        class="shipping-error"
+        style="display:none;"
+      ></div>
+
+
+      <!-- ============================================
+      OPÇÕES DE FRETE
+      ============================================ -->
+
+      <div
+        id="deliveryShippingOptions"
+        style="display:none;"
       >
 
-        <div>
-          🛒
-        </div>
+        <div
+          id="calculatedShippingOptions"
+          class="shipping-options"
+        ></div>
+
+      </div>
+
+    </div>
+
+
+    <!-- ==============================================
+    ENDEREÇO
+    ============================================== -->
+
+    <div
+      id="deliveryFields"
+      style="display:none;"
+    >
+
+      <div class="address-title">
 
         <h3>
-          Seu carrinho está vazio
+          📍 Endereço de entrega
         </h3>
 
         <p>
-          Adicione algum produto para continuar.
+          Informe os dados para receber seu pedido.
         </p>
 
       </div>
 
 
-      <div class="cart-footer">
+      <div class="form-grid">
 
-        <div class="cart-total">
+        <div class="form-group">
 
-          <span>
-            Total
-          </span>
-
-          <strong id="cartTotal">
-            R$ 0,00
-          </strong>
-
-        </div>
-
-
-        <button
-          id="checkoutButton"
-          class="cart-checkout"
-          type="button"
-          disabled
-        >
-          Finalizar compra
-        </button>
-
-      </div>
-
-    </aside>
-
-  </div>
-
-
-
-  <!-- ==================================================
-       MODAL CLIENTE
-  ================================================== -->
-
-  <div
-    id="customerModal"
-    style="
-      display:none;
-      position:fixed;
-      inset:0;
-      z-index:99999;
-      background:rgba(0,0,0,.75);
-      padding:20px;
-      overflow-y:auto;
-    "
-  >
-
-    <div
-      style="
-        width:100%;
-        max-width:560px;
-        margin:40px auto;
-        background:#fff;
-        border-radius:18px;
-        padding:25px;
-        box-sizing:border-box;
-        color:#111;
-        box-shadow:0 20px 60px rgba(0,0,0,.35);
-      "
-    >
-
-      <div
-        style="
-          display:flex;
-          justify-content:space-between;
-          align-items:center;
-          gap:15px;
-          margin-bottom:20px;
-        "
-      >
-
-        <div>
-
-          <small
-            style="
-              display:block;
-              font-weight:700;
-              opacity:.65;
-              margin-bottom:5px;
-            "
-          >
-            VT STORE
-          </small>
-
-
-          <h2
-            style="
-              margin:0;
-              font-size:24px;
-            "
-          >
-            Dados da compra
-          </h2>
-
-        </div>
-
-
-        <button
-          id="closeCustomerModal"
-          type="button"
-          style="
-            border:0;
-            background:#eee;
-            width:38px;
-            height:38px;
-            border-radius:50%;
-            font-size:24px;
-            cursor:pointer;
-          "
-          aria-label="Fechar"
-        >
-          ×
-        </button>
-
-      </div>
-
-
-      <p
-        style="
-          margin-top:0;
-          margin-bottom:22px;
-          color:#666;
-          line-height:1.5;
-        "
-      >
-        Preencha seus dados para escolher entre entrega ou retirada na loja e continuar para o pagamento seguro da InfinitePay.
-      </p>
-
-
-
-      <!-- ==================================================
-           FORM
-      ================================================== -->
-
-      <form id="customerForm">
-
-
-        <!-- NOME -->
-
-        <div style="margin-bottom:15px;">
-
-          <label
-            for="customerName"
-            style="
-              display:block;
-              font-weight:700;
-              margin-bottom:7px;
-            "
-          >
-            Nome completo *
+          <label for="customerCep">
+            CEP
           </label>
 
-
           <input
-            id="customerName"
+            id="customerCep"
             type="text"
-            autocomplete="name"
-            placeholder="Seu nome completo"
-            required
-            style="
-              width:100%;
-              box-sizing:border-box;
-              padding:13px;
-              border:1px solid #ccc;
-              border-radius:10px;
-              font-size:16px;
-            "
+            placeholder="00000-000"
+            maxlength="9"
+            autocomplete="postal-code"
           >
 
         </div>
 
 
+        <div class="form-group">
 
-        <!-- TELEFONE -->
-
-        <div style="margin-bottom:15px;">
-
-          <label
-            for="customerPhone"
-            style="
-              display:block;
-              font-weight:700;
-              margin-bottom:7px;
-            "
-          >
-            WhatsApp *
+          <label for="customerState">
+            Estado
           </label>
 
-
           <input
-            id="customerPhone"
-            type="tel"
-            autocomplete="tel"
-            placeholder="(15) 99999-9999"
-            required
-            style="
-              width:100%;
-              box-sizing:border-box;
-              padding:13px;
-              border:1px solid #ccc;
-              border-radius:10px;
-              font-size:16px;
-            "
-          >
-
-        </div>
-
-
-
-        <!-- EMAIL -->
-
-        <div style="margin-bottom:15px;">
-
-          <label
-            for="customerEmail"
-            style="
-              display:block;
-              font-weight:700;
-              margin-bottom:7px;
-            "
-          >
-            E-mail *
-          </label>
-
-
-          <input
-            id="customerEmail"
-            type="email"
-            autocomplete="email"
-            placeholder="seuemail@email.com"
-            required
-            style="
-              width:100%;
-              box-sizing:border-box;
-              padding:13px;
-              border:1px solid #ccc;
-              border-radius:10px;
-              font-size:16px;
-            "
-          >
-
-        </div>
-
-
-
-        <!-- CEP / NUMERO -->
-
-        <div
-          style="
-            display:grid;
-            grid-template-columns:1fr 1fr;
-            gap:12px;
-            margin-bottom:15px;
-          "
-        >
-
-          <div>
-
-            <label
-              for="customerCep"
-              style="
-                display:block;
-                font-weight:700;
-                margin-bottom:7px;
-              "
-            >
-              CEP *
-            </label>
-
-
-            <input
-              id="customerCep"
-              type="text"
-              inputmode="numeric"
-              autocomplete="postal-code"
-              placeholder="00000-000"
-              maxlength="9"
-              required
-              style="
-                width:100%;
-                box-sizing:border-box;
-                padding:13px;
-                border:1px solid #ccc;
-                border-radius:10px;
-                font-size:16px;
-              "
-            >
-
-          </div>
-
-
-          <div>
-
-            <label
-              for="customerNumber"
-              style="
-                display:block;
-                font-weight:700;
-                margin-bottom:7px;
-              "
-            >
-              Número *
-            </label>
-
-
-            <input
-              id="customerNumber"
-              type="text"
-              autocomplete="address-line2"
-              placeholder="123"
-              required
-              style="
-                width:100%;
-                box-sizing:border-box;
-                padding:13px;
-                border:1px solid #ccc;
-                border-radius:10px;
-                font-size:16px;
-              "
-            >
-
-          </div>
-
-        </div>
-
-
-
-        <!-- ENDEREÇO -->
-
-        <div style="margin-bottom:15px;">
-
-          <label
-            for="customerAddress"
-            style="
-              display:block;
-              font-weight:700;
-              margin-bottom:7px;
-            "
-          >
-            Endereço *
-          </label>
-
-
-          <input
-            id="customerAddress"
+            id="customerState"
             type="text"
-            autocomplete="street-address"
-            placeholder="Rua, Avenida..."
-            required
-            style="
-              width:100%;
-              box-sizing:border-box;
-              padding:13px;
-              border:1px solid #ccc;
-              border-radius:10px;
-              font-size:16px;
-            "
+            placeholder="SP"
+            maxlength="2"
+            autocomplete="address-level1"
           >
 
         </div>
 
 
+        <div class="form-group">
 
-        <!-- BAIRRO -->
-
-        <div style="margin-bottom:15px;">
-
-          <label
-            for="customerNeighborhood"
-            style="
-              display:block;
-              font-weight:700;
-              margin-bottom:7px;
-            "
-          >
-            Bairro *
+          <label for="customerCity">
+            Cidade
           </label>
 
+          <input
+            id="customerCity"
+            type="text"
+            placeholder="Sua cidade"
+            autocomplete="address-level2"
+          >
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label for="customerNeighborhood">
+            Bairro
+          </label>
 
           <input
             id="customerNeighborhood"
             type="text"
-            autocomplete="address-level3"
             placeholder="Seu bairro"
-            required
-            style="
-              width:100%;
-              box-sizing:border-box;
-              padding:13px;
-              border:1px solid #ccc;
-              border-radius:10px;
-              font-size:16px;
-            "
+            autocomplete="address-line2"
           >
 
         </div>
 
 
+        <div class="form-group form-full">
 
-        <!-- CIDADE / ESTADO -->
-
-        <div
-          style="
-            display:grid;
-            grid-template-columns:1fr 1fr;
-            gap:12px;
-            margin-bottom:15px;
-          "
-        >
-
-          <div>
-
-            <label
-              for="customerCity"
-              style="
-                display:block;
-                font-weight:700;
-                margin-bottom:7px;
-              "
-            >
-              Cidade *
-            </label>
-
-
-            <input
-              id="customerCity"
-              type="text"
-              autocomplete="address-level2"
-              placeholder="Cidade"
-              required
-              style="
-                width:100%;
-                box-sizing:border-box;
-                padding:13px;
-                border:1px solid #ccc;
-                border-radius:10px;
-                font-size:16px;
-              "
-            >
-
-          </div>
-
-
-          <div>
-
-            <label
-              for="customerState"
-              style="
-                display:block;
-                font-weight:700;
-                margin-bottom:7px;
-              "
-            >
-              Estado *
-            </label>
-
-
-            <input
-              id="customerState"
-              type="text"
-              autocomplete="address-level1"
-              placeholder="SP"
-              maxlength="2"
-              required
-              style="
-                width:100%;
-                box-sizing:border-box;
-                padding:13px;
-                border:1px solid #ccc;
-                border-radius:10px;
-                font-size:16px;
-                text-transform:uppercase;
-              "
-            >
-
-          </div>
-
-        </div>
-
-
-
-        <!-- COMPLEMENTO -->
-
-        <div style="margin-bottom:22px;">
-
-          <label
-            for="customerComplement"
-            style="
-              display:block;
-              font-weight:700;
-              margin-bottom:7px;
-            "
-          >
-
-            Complemento
-
-            <span
-              style="
-                font-weight:400;
-                color:#777;
-              "
-            >
-              (opcional)
-            </span>
-
+          <label for="customerAddress">
+            Endereço
           </label>
 
+          <input
+            id="customerAddress"
+            type="text"
+            placeholder="Rua, avenida..."
+            autocomplete="street-address"
+          >
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label for="customerNumber">
+            Número
+          </label>
+
+          <input
+            id="customerNumber"
+            type="text"
+            placeholder="Número"
+          >
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label for="customerComplement">
+            Complemento
+          </label>
 
           <input
             id="customerComplement"
             type="text"
-            autocomplete="address-line2"
-            placeholder="Apartamento, casa, bloco..."
-            style="
-              width:100%;
-              box-sizing:border-box;
-              padding:13px;
-              border:1px solid #ccc;
-              border-radius:10px;
-              font-size:16px;
-            "
+            placeholder="Apartamento, bloco..."
           >
 
         </div>
 
-
-
-        <!-- ==================================================
-             FRETE / RETIRADA
-        ================================================== -->
-
-        <div
-          id="shippingBox"
-          style="
-            display:none;
-            margin-bottom:22px;
-            padding:16px;
-            border:1px solid #ddd;
-            border-radius:14px;
-            background:#f8f8f8;
-          "
-        >
-
-          <div
-            style="
-              font-weight:800;
-              font-size:17px;
-              margin-bottom:5px;
-            "
-          >
-            🚚 Escolha como receber
-          </div>
-
-
-          <div
-            style="
-              color:#666;
-              font-size:13px;
-              margin-bottom:14px;
-            "
-          >
-            Escolha entre retirar na loja ou receber seu pedido.
-          </div>
-
-
-          <div id="shippingOptions"></div>
-
-
-          <div
-            id="shippingLoading"
-            style="
-              display:none;
-              padding:12px;
-              background:#fff;
-              border-radius:10px;
-              color:#555;
-              font-size:14px;
-            "
-          >
-            Calculando opções de frete...
-          </div>
-
-
-          <div
-            id="shippingError"
-            style="
-              display:none;
-              margin-top:10px;
-              padding:12px;
-              border-radius:10px;
-              background:#ffe7e7;
-              color:#b00020;
-              font-size:14px;
-            "
-          ></div>
-
-        </div>
-
-
-
-        <!-- ERRO -->
-
-        <div
-          id="customerFormError"
-          style="
-            display:none;
-            background:#ffe7e7;
-            color:#b00020;
-            padding:12px;
-            border-radius:10px;
-            margin-bottom:15px;
-            font-size:14px;
-          "
-        ></div>
-
-
-
-        <!-- BOTÃO -->
-
-        <button
-          id="customerContinueButton"
-          type="submit"
-          disabled
-          style="
-            width:100%;
-            border:0;
-            border-radius:12px;
-            padding:15px;
-            font-size:17px;
-            font-weight:800;
-            cursor:pointer;
-            background:#111;
-            color:#fff;
-            opacity:.6;
-          "
-        >
-          Digite seu CEP para calcular o frete
-        </button>
-
-
-      </form>
+      </div>
 
     </div>
 
+
+    <!-- ==============================================
+    RETIRADA INFO
+    ============================================== -->
+
+    <div
+      id="pickupInfo"
+      class="pickup-info"
+    >
+
+      <div class="pickup-icon">
+        🏪
+      </div>
+
+      <div>
+
+        <strong>
+          Retirada na VT Store
+        </strong>
+
+        <p>
+          Seu pedido ficará disponível para
+          retirada em Itapetininga/SP.
+          Entraremos em contato pelo WhatsApp
+          para combinar a retirada.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <!-- ==============================================
+    ERRO
+    ============================================== -->
+
+    <div
+      id="customerFormError"
+      class="form-error"
+      style="display:none;"
+    ></div>
+
+
+    <!-- ==============================================
+    FINALIZAR
+    ============================================== -->
+
+    <button
+      type="button"
+      id="finalCheckoutButton"
+      class="btn btn-primary btn-full"
+    >
+      Ir para pagamento
+    </button>
+
+
+    <p class="secure-payment">
+
+      🔒 Pagamento seguro processado pela
+      <strong>InfinitePay</strong>
+
+    </p>
+
   </div>
 
+</div>
 
 
-  <!-- ==================================================
-       APP PRINCIPAL
-  ================================================== -->
+<!-- ==================================================
+MODAL PRODUTO
+================================================== -->
 
-  <script src="app.js"></script>
+<div
+  id="productModal"
+  class="modal-overlay"
+>
 
+  <div class="modal product-modal">
 
+    <button
+      type="button"
+      class="modal-close"
+      id="closeProductModal"
+    >
+      ×
+    </button>
 
-  <!-- ==================================================
-       CHECKOUT + FRETE VT STORE
-  ================================================== -->
+    <div
+      id="productModalContent"
+    ></div>
 
-  <script>
+  </div>
 
-    document.addEventListener(
-      "DOMContentLoaded",
-      function () {
-
-        const checkoutButton =
-          document.getElementById(
-            "checkoutButton"
-          );
-
-        const cartOverlay =
-          document.getElementById(
-            "cartOverlay"
-          );
-
-        const customerModal =
-          document.getElementById(
-            "customerModal"
-          );
-
-        const closeCustomerModal =
-          document.getElementById(
-            "closeCustomerModal"
-          );
-
-        const customerForm =
-          document.getElementById(
-            "customerForm"
-          );
-
-        const customerFormError =
-          document.getElementById(
-            "customerFormError"
-          );
-
-        const customerContinueButton =
-          document.getElementById(
-            "customerContinueButton"
-          );
-
-        const shippingBox =
-          document.getElementById(
-            "shippingBox"
-          );
-
-        const shippingOptions =
-          document.getElementById(
-            "shippingOptions"
-          );
-
-        const shippingLoading =
-          document.getElementById(
-            "shippingLoading"
-          );
-
-        const shippingError =
-          document.getElementById(
-            "shippingError"
-          );
-
-        const cepInput =
-          document.getElementById(
-            "customerCep"
-          );
-
-        const phoneInput =
-          document.getElementById(
-            "customerPhone"
-          );
-
-        const stateInput =
-          document.getElementById(
-            "customerState"
-          );
-
-        const cityInput =
-          document.getElementById(
-            "customerCity"
-          );
+</div>
 
 
-        if (
-          !checkoutButton ||
-          !customerModal ||
-          !customerForm
-        ) {
+<!-- ==================================================
+JAVASCRIPT
+================================================== -->
 
-          console.error(
-            "Elementos necessários do checkout não encontrados."
-          );
+<script>
 
-          return;
+"use strict";
 
+
+/*
+==================================================
+CONFIGURAÇÃO
+==================================================
+*/
+
+const SUPABASE_URL =
+  window.VT_CONFIG?.SUPABASE_URL ||
+  "https://knmwxyxgcgytzhggzhhd.supabase.co";
+
+const SUPABASE_ANON_KEY =
+  window.VT_CONFIG?.SUPABASE_ANON_KEY ||
+  "";
+
+
+/*
+==================================================
+ELEMENTOS
+==================================================
+*/
+
+const productsGrid =
+  document.getElementById(
+    "productsGrid"
+  );
+
+const searchInput =
+  document.getElementById(
+    "searchInput"
+  );
+
+const categoryButtons =
+  document.querySelectorAll(
+    ".category-button"
+  );
+
+const cartButton =
+  document.getElementById(
+    "cartButton"
+  );
+
+const cartCount =
+  document.getElementById(
+    "cartCount"
+  );
+
+const cartOverlay =
+  document.getElementById(
+    "cartOverlay"
+  );
+
+const closeCart =
+  document.getElementById(
+    "closeCart"
+  );
+
+const cartItems =
+  document.getElementById(
+    "cartItems"
+  );
+
+const cartTotal =
+  document.getElementById(
+    "cartTotal"
+  );
+
+const checkoutButton =
+  document.getElementById(
+    "checkoutButton"
+  );
+
+const customerOverlay =
+  document.getElementById(
+    "customerOverlay"
+  );
+
+const closeCustomer =
+  document.getElementById(
+    "closeCustomer"
+  );
+
+const finalCheckoutButton =
+  document.getElementById(
+    "finalCheckoutButton"
+  );
+
+const customerFormError =
+  document.getElementById(
+    "customerFormError"
+  );
+
+const customerName =
+  document.getElementById(
+    "customerName"
+  );
+
+const customerPhone =
+  document.getElementById(
+    "customerPhone"
+  );
+
+const customerEmail =
+  document.getElementById(
+    "customerEmail"
+  );
+
+const customerCep =
+  document.getElementById(
+    "customerCep"
+  );
+
+const customerNumber =
+  document.getElementById(
+    "customerNumber"
+  );
+
+const customerAddress =
+  document.getElementById(
+    "customerAddress"
+  );
+
+const customerNeighborhood =
+  document.getElementById(
+    "customerNeighborhood"
+  );
+
+const customerCity =
+  document.getElementById(
+    "customerCity"
+  );
+
+const customerState =
+  document.getElementById(
+    "customerState"
+  );
+
+const customerComplement =
+  document.getElementById(
+    "customerComplement"
+  );
+
+const shippingOptions =
+  document.getElementById(
+    "shippingOptions"
+  );
+
+const calculatedShippingOptions =
+  document.getElementById(
+    "calculatedShippingOptions"
+  );
+
+const deliveryShippingOptions =
+  document.getElementById(
+    "deliveryShippingOptions"
+  );
+
+const deliveryFields =
+  document.getElementById(
+    "deliveryFields"
+  );
+
+const pickupInfo =
+  document.getElementById(
+    "pickupInfo"
+  );
+
+const shippingLoading =
+  document.getElementById(
+    "shippingLoading"
+  );
+
+const shippingError =
+  document.getElementById(
+    "shippingError"
+  );
+
+const productModal =
+  document.getElementById(
+    "productModal"
+  );
+
+const productModalContent =
+  document.getElementById(
+    "productModalContent"
+  );
+
+const closeProductModal =
+  document.getElementById(
+    "closeProductModal"
+  );
+
+
+/*
+==================================================
+ESTADO
+==================================================
+*/
+
+let products = [];
+
+let cart = [];
+
+let currentCategory =
+  "todos";
+
+let selectedShipping = {
+  id: "vt-retirada",
+  name: "Retirada na loja",
+  company: "VT Store",
+  price: 0,
+  delivery_time:
+    "Retire em Itapetininga/SP"
+};
+
+
+/*
+==================================================
+LOCAL STORAGE
+==================================================
+*/
+
+try {
+
+  const savedCart =
+    localStorage.getItem(
+      "vt_store_cart"
+    );
+
+  if (savedCart) {
+
+    const parsed =
+      JSON.parse(
+        savedCart
+      );
+
+    if (
+      Array.isArray(parsed)
+    ) {
+      cart = parsed;
+    }
+
+  }
+
+} catch {
+
+  cart = [];
+
+}
+
+
+/*
+==================================================
+FORMATAÇÃO
+==================================================
+*/
+
+function formatPrice(
+  value
+) {
+
+  return Number(
+    value || 0
+  ).toLocaleString(
+    "pt-BR",
+    {
+      style: "currency",
+      currency: "BRL"
+    }
+  );
+
+}
+
+
+/*
+==================================================
+ESCAPE HTML
+==================================================
+*/
+
+function escapeHtml(
+  value
+) {
+
+  return String(
+    value ?? ""
+  )
+    .replace(
+      /&/g,
+      "&amp;"
+    )
+    .replace(
+      /</g,
+      "&lt;"
+    )
+    .replace(
+      />/g,
+      "&gt;"
+    )
+    .replace(
+      /"/g,
+      "&quot;"
+    )
+    .replace(
+      /'/g,
+      "&#039;"
+    );
+
+}
+
+
+/*
+==================================================
+SALVAR CARRINHO
+==================================================
+*/
+
+function saveCart() {
+
+  localStorage.setItem(
+    "vt_store_cart",
+    JSON.stringify(cart)
+  );
+
+}
+
+
+/*
+==================================================
+CONTADOR DO CARRINHO
+==================================================
+*/
+
+function updateCartCount() {
+
+  const total =
+    cart.reduce(
+      (
+        sum,
+        item
+      ) =>
+        sum +
+        Number(
+          item.quantity || 0
+        ),
+      0
+    );
+
+  cartCount.textContent =
+    total;
+
+}
+
+
+/*
+==================================================
+TOTAL DO CARRINHO
+==================================================
+*/
+
+function getCartTotal() {
+
+  return cart.reduce(
+    (
+      total,
+      item
+    ) =>
+      total +
+      (
+        Number(
+          item.price || 0
+        ) *
+        Number(
+          item.quantity || 0
+        )
+      ),
+    0
+  );
+
+}
+
+
+/*
+==================================================
+ADICIONAR AO CARRINHO
+==================================================
+*/
+
+function addToCart(
+  product
+) {
+
+  const existing =
+    cart.find(
+      item =>
+        String(item.id) ===
+        String(product.id)
+    );
+
+  if (existing) {
+
+    existing.quantity =
+      Number(
+        existing.quantity
+      ) + 1;
+
+  } else {
+
+    cart.push({
+
+      id:
+        product.id,
+
+      name:
+        product.name,
+
+      price:
+        Number(
+          product.price
+        ),
+
+      image:
+        product.image ||
+        product.image_url ||
+        "",
+
+      quantity:
+        1
+
+    });
+
+  }
+
+  saveCart();
+
+  updateCartCount();
+
+  renderCart();
+
+  alert(
+    "Produto adicionado ao carrinho!"
+  );
+
+}
+
+
+/*
+==================================================
+REMOVER DO CARRINHO
+==================================================
+*/
+
+function removeFromCart(
+  productId
+) {
+
+  cart =
+    cart.filter(
+      item =>
+        String(item.id) !==
+        String(productId)
+    );
+
+  saveCart();
+
+  updateCartCount();
+
+  renderCart();
+
+}
+
+
+/*
+==================================================
+ALTERAR QUANTIDADE
+==================================================
+*/
+
+function changeQuantity(
+  productId,
+  change
+) {
+
+  const item =
+    cart.find(
+      product =>
+        String(product.id) ===
+        String(productId)
+    );
+
+  if (!item) {
+    return;
+  }
+
+  item.quantity =
+    Number(
+      item.quantity
+    ) + change;
+
+  if (
+    item.quantity <= 0
+  ) {
+
+    removeFromCart(
+      productId
+    );
+
+    return;
+
+  }
+
+  saveCart();
+
+  updateCartCount();
+
+  renderCart();
+
+}
+
+
+/*
+==================================================
+RENDER CARRINHO
+==================================================
+*/
+
+function renderCart() {
+
+  if (
+    cart.length === 0
+  ) {
+
+    cartItems.innerHTML = `
+      <div class="empty-cart">
+        <div>🛒</div>
+        <p>Seu carrinho está vazio.</p>
+      </div>
+    `;
+
+    cartTotal.textContent =
+      formatPrice(0);
+
+    checkoutButton.disabled =
+      true;
+
+    return;
+
+  }
+
+  checkoutButton.disabled =
+    false;
+
+  cartItems.innerHTML =
+    cart.map(
+      item => `
+
+        <div class="cart-item">
+
+          <div class="cart-item-info">
+
+            <strong>
+              ${escapeHtml(
+                item.name
+              )}
+            </strong>
+
+            <span>
+              ${formatPrice(
+                item.price
+              )}
+            </span>
+
+          </div>
+
+          <div class="cart-item-actions">
+
+            <button
+              type="button"
+              onclick="changeQuantity(
+                '${String(item.id)}',
+                -1
+              )"
+            >
+              −
+            </button>
+
+            <span>
+              ${item.quantity}
+            </span>
+
+            <button
+              type="button"
+              onclick="changeQuantity(
+                '${String(item.id)}',
+                1
+              )"
+            >
+              +
+            </button>
+
+            <button
+              type="button"
+              onclick="removeFromCart(
+                '${String(item.id)}'
+              )"
+            >
+              🗑️
+            </button>
+
+          </div>
+
+        </div>
+
+      `
+    ).join("");
+
+  cartTotal.textContent =
+    formatPrice(
+      getCartTotal()
+    );
+
+}
+
+
+/*
+==================================================
+CARREGAR PRODUTOS
+==================================================
+*/
+
+async function loadProducts() {
+
+  productsGrid.innerHTML = `
+    <div class="loading-products">
+      Carregando produtos...
+    </div>
+  `;
+
+  try {
+
+    const response =
+      await fetch(
+        `${SUPABASE_URL}/rest/v1/products?select=*&active=eq.true&order=created_at.desc`,
+        {
+          headers: {
+
+            apikey:
+              SUPABASE_ANON_KEY,
+
+            Authorization:
+              `Bearer ${SUPABASE_ANON_KEY}`
+
+          }
         }
+      );
+
+    if (
+      !response.ok
+    ) {
+
+      throw new Error(
+        "Erro ao carregar produtos."
+      );
+
+    }
+
+    products =
+      await response.json();
+
+    renderProducts();
+
+  } catch (error) {
+
+    console.error(
+      error
+    );
+
+    productsGrid.innerHTML = `
+      <div class="products-error">
+
+        <h3>
+          Não foi possível carregar os produtos.
+        </h3>
+
+        <p>
+          Tente atualizar a página.
+        </p>
+
+      </div>
+    `;
+
+  }
+
+}
 
 
-        let selectedShipping =
-          null;
+/*
+==================================================
+CATEGORIA DO PRODUTO
+==================================================
+*/
 
-        let lastCalculatedCep =
+function getProductCategory(
+  product
+) {
+
+  const category =
+    String(
+      product.category ||
+      product.categoria ||
+      ""
+    )
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(
+        /[\u0300-\u036f]/g,
+        ""
+      );
+
+  const name =
+    String(
+      product.name || ""
+    )
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(
+        /[\u0300-\u036f]/g,
+        ""
+      );
+
+
+  if (
+    category.includes("xbox") ||
+    name.includes("xbox")
+  ) {
+
+    return "xbox";
+
+  }
+
+
+  if (
+    category.includes("play") ||
+    category.includes("ps4") ||
+    category.includes("ps5") ||
+    category.includes("ps3") ||
+    name.includes("ps4") ||
+    name.includes("ps5") ||
+    name.includes("ps3") ||
+    name.includes("playstation")
+  ) {
+
+    return "playstation";
+
+  }
+
+
+  if (
+    category.includes("iphone") ||
+    category.includes("apple") ||
+    name.includes("iphone")
+  ) {
+
+    return "iphone";
+
+  }
+
+
+  return category ||
+    "outros";
+
+}
+
+
+/*
+==================================================
+RENDER PRODUTOS
+==================================================
+*/
+
+function renderProducts() {
+
+  const search =
+    String(
+      searchInput.value || ""
+    )
+      .trim()
+      .toLowerCase();
+
+
+  const filtered =
+    products.filter(
+      product => {
+
+        const category =
+          getProductCategory(
+            product
+          );
+
+        const name =
+          String(
+            product.name || ""
+          ).toLowerCase();
+
+        const description =
+          String(
+            product.description || ""
+          ).toLowerCase();
+
+
+        const matchesCategory =
+          currentCategory ===
+          "todos" ||
+          category ===
+          currentCategory;
+
+
+        const matchesSearch =
+          !search ||
+          name.includes(
+            search
+          ) ||
+          description.includes(
+            search
+          );
+
+
+        return (
+          matchesCategory &&
+          matchesSearch
+        );
+
+      }
+    );
+
+
+  if (
+    filtered.length === 0
+  ) {
+
+    productsGrid.innerHTML = `
+      <div class="products-error">
+
+        <h3>
+          Nenhum produto encontrado.
+        </h3>
+
+        <p>
+          Tente outra busca ou categoria.
+        </p>
+
+      </div>
+    `;
+
+    return;
+
+  }
+
+
+  productsGrid.innerHTML =
+    filtered.map(
+      product => {
+
+        const image =
+          product.image ||
+          product.image_url ||
           "";
 
-        let cepRequestId =
-          0;
+        const stock =
+          Number(
+            product.stock || 0
+          );
+
+        const category =
+          getProductCategory(
+            product
+          );
 
 
-        function getCart() {
+        return `
 
-          const keys = [
+          <article
+            class="product-card"
+          >
 
-            "vt_cart",
+            <div
+              class="product-image"
+              onclick="openProductModal(
+                '${String(product.id)}'
+              )"
+            >
 
-            "cart",
+              ${
+                image
+                  ? `
+                    <img
+                      src="${escapeHtml(image)}"
+                      alt="${escapeHtml(product.name)}"
+                      loading="lazy"
+                    >
+                  `
+                  : `
+                    <div class="no-image">
+                      🎮
+                    </div>
+                  `
+              }
 
-            "vtstore_cart",
-
-            "vt-store-cart"
-
-          ];
-
-
-          for (
-            const key of keys
-          ) {
-
-            try {
-
-              const raw =
-                localStorage.getItem(
-                  key
-                );
+            </div>
 
 
-              if (!raw) {
-                continue;
+            <div class="product-card-content">
+
+              <span class="product-category">
+                ${escapeHtml(
+                  category
+                )}
+              </span>
+
+              <h3>
+                ${escapeHtml(
+                  product.name
+                )}
+              </h3>
+
+              ${
+                product.description
+                  ? `
+                    <p>
+                      ${escapeHtml(
+                        product.description
+                      )}
+                    </p>
+                  `
+                  : ""
               }
 
 
-              const data =
-                JSON.parse(
-                  raw
-                );
+              <div class="product-price">
+
+                ${formatPrice(
+                  product.price
+                )}
+
+              </div>
 
 
-              if (
-                Array.isArray(data)
-              ) {
-
-                return data;
-
+              ${
+                stock > 0
+                  ? `
+                    <span class="stock">
+                      ✓ Em estoque
+                    </span>
+                  `
+                  : `
+                    <span class="stock out">
+                      Sem estoque
+                    </span>
+                  `
               }
 
-            } catch (error) {
 
-              console.warn(
-                "Erro ao ler carrinho:",
-                key,
-                error
-              );
+              <div class="product-buttons">
 
-            }
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  ${
+                    stock <= 0
+                      ? "disabled"
+                      : ""
+                  }
+                  onclick="addToCart(
+                    ${JSON.stringify(
+                      product
+                    ).replace(
+                      /"/g,
+                      "&quot;"
+                    )}
+                  )"
+                >
+                  ${
+                    stock > 0
+                      ? "Adicionar ao carrinho"
+                      : "Indisponível"
+                  }
+                </button>
 
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  onclick="openProductModal(
+                    '${String(product.id)}'
+                  )"
+                >
+                  Ver detalhes
+                </button>
+
+              </div>
+
+            </div>
+
+          </article>
+
+        `;
+
+      }
+    ).join("");
+
+}
+
+
+/*
+==================================================
+MODAL PRODUTO
+==================================================
+*/
+
+function openProductModal(
+  productId
+) {
+
+  const product =
+    products.find(
+      item =>
+        String(item.id) ===
+        String(productId)
+    );
+
+  if (!product) {
+    return;
+  }
+
+  const image =
+    product.image ||
+    product.image_url ||
+    "";
+
+  const stock =
+    Number(
+      product.stock || 0
+    );
+
+
+  productModalContent.innerHTML = `
+
+    <div class="product-detail">
+
+      ${
+        image
+          ? `
+            <img
+              src="${escapeHtml(image)}"
+              alt="${escapeHtml(product.name)}"
+            >
+          `
+          : `
+            <div class="no-image">
+              🎮
+            </div>
+          `
+      }
+
+
+      <div>
+
+        <span class="product-category">
+          ${escapeHtml(
+            getProductCategory(
+              product
+            )
+          )}
+        </span>
+
+        <h2>
+          ${escapeHtml(
+            product.name
+          )}
+        </h2>
+
+        ${
+          product.description
+            ? `
+              <p>
+                ${escapeHtml(
+                  product.description
+                )}
+              </p>
+            `
+            : ""
+        }
+
+        <h3>
+          ${formatPrice(
+            product.price
+          )}
+        </h3>
+
+        <p>
+          ${
+            stock > 0
+              ? "✓ Produto disponível"
+              : "Produto sem estoque"
           }
+        </p>
+
+        <button
+          type="button"
+          class="btn btn-primary"
+          ${
+            stock <= 0
+              ? "disabled"
+              : ""
+          }
+          onclick="addToCart(
+            ${JSON.stringify(
+              product
+            ).replace(
+              /"/g,
+              "&quot;"
+            )}
+          ); closeProductModalFunction();"
+        >
+          Adicionar ao carrinho
+        </button>
+
+      </div>
+
+    </div>
+
+  `;
+
+  productModal.classList.add(
+    "active"
+  );
+
+}
 
 
-          return [];
+function closeProductModalFunction() {
 
-        }
+  productModal.classList.remove(
+    "active"
+  );
+
+}
 
 
-        function normalizeText(
-          value
-        ) {
+/*
+==================================================
+CATEGORIAS
+==================================================
+*/
 
-          return String(
-            value || ""
-          )
-            .normalize(
-              "NFD"
+categoryButtons.forEach(
+  button => {
+
+    button.addEventListener(
+      "click",
+      () => {
+
+        categoryButtons.forEach(
+          item =>
+            item.classList.remove(
+              "active"
             )
-            .replace(
-              /[\u0300-\u036f]/g,
-              ""
-            )
-            .trim()
-            .toUpperCase();
+        );
 
-        }
+        button.classList.add(
+          "active"
+        );
+
+        currentCategory =
+          button.dataset.category ||
+          "todos";
+
+        renderProducts();
+
+      }
+    );
+
+  }
+);
 
 
-        function formatCurrency(
-          value
-        ) {
+/*
+==================================================
+BUSCA
+==================================================
+*/
 
-          const number =
-            Number(
-              value
-            );
+searchInput.addEventListener(
+  "input",
+  renderProducts
+);
 
+
+/*
+==================================================
+CARRINHO
+==================================================
+*/
+
+cartButton.addEventListener(
+  "click",
+  () => {
+
+    renderCart();
+
+    cartOverlay.classList.add(
+      "active"
+    );
+
+  }
+);
+
+
+closeCart.addEventListener(
+  "click",
+  () => {
+
+    cartOverlay.classList.remove(
+      "active"
+    );
+
+  }
+);
+
+
+/*
+==================================================
+ABRIR CHECKOUT
+==================================================
+*/
+
+checkoutButton.addEventListener(
+  "click",
+  () => {
+
+    if (
+      cart.length === 0
+    ) {
+
+      return;
+
+    }
+
+    cartOverlay.classList.remove(
+      "active"
+    );
+
+    openCustomerModal();
+
+  }
+);
+
+
+/*
+==================================================
+ABRIR MODAL DO CLIENTE
+==================================================
+*/
+
+function openCustomerModal() {
+
+  customerFormError.style.display =
+    "none";
+
+  customerFormError.textContent =
+    "";
+
+
+  selectedShipping = {
+
+    id:
+      "vt-retirada",
+
+    name:
+      "Retirada na loja",
+
+    company:
+      "VT Store",
+
+    price:
+      0,
+
+    delivery_time:
+      "Retire em Itapetininga/SP"
+
+  };
+
+
+  setShippingMode(
+    "pickup"
+  );
+
+
+  loadSavedCustomer();
+
+
+  customerOverlay.classList.add(
+    "active"
+  );
+
+}
+
+
+/*
+==================================================
+FECHAR MODAL DO CLIENTE
+==================================================
+*/
+
+closeCustomer.addEventListener(
+  "click",
+  () => {
+
+    customerOverlay.classList.remove(
+      "active"
+    );
+
+  }
+);
+
+
+/*
+==================================================
+MODO RETIRADA / ENTREGA
+==================================================
+*/
+
+function setShippingMode(
+  mode
+) {
+
+  if (
+    mode === "pickup"
+  ) {
+
+    selectedShipping = {
+
+      id:
+        "vt-retirada",
+
+      name:
+        "Retirada na loja",
+
+      company:
+        "VT Store",
+
+      price:
+        0,
+
+      delivery_time:
+        "Retire em Itapetininga/SP"
+
+    };
+
+
+    deliveryFields.style.display =
+      "none";
+
+    deliveryShippingOptions.style.display =
+      "none";
+
+    pickupInfo.style.display =
+      "flex";
+
+
+    setDeliveryFieldsRequired(
+      false
+    );
+
+
+    shippingError.style.display =
+      "none";
+
+
+    document
+      .querySelectorAll(
+        ".shipping-option"
+      )
+      .forEach(
+        option => {
+
+          option.classList.remove(
+            "selected"
+          );
 
           if (
-            !Number.isFinite(
-              number
-            )
+            option.dataset.shippingId ===
+            "vt-retirada"
           ) {
 
-            return "R$ 0,00";
+            option.classList.add(
+              "selected"
+            );
 
           }
 
+        }
+      );
 
-          return number.toLocaleString(
-            "pt-BR",
-            {
-              style:
-                "currency",
+    return;
 
-              currency:
-                "BRL"
-            }
+  }
+
+
+  deliveryFields.style.display =
+    "block";
+
+  pickupInfo.style.display =
+    "none";
+
+
+  setDeliveryFieldsRequired(
+    true
+  );
+
+
+  document
+    .querySelectorAll(
+      ".shipping-option"
+    )
+    .forEach(
+      option => {
+
+        option.classList.remove(
+          "selected"
+        );
+
+        if (
+          option.dataset.shippingId ===
+          "vt-entrega"
+        ) {
+
+          option.classList.add(
+            "selected"
           );
 
         }
 
+      }
+    );
 
 
-        /*
-        ==================================================
-        FRETE VT STORE
-        ==================================================
-        */
+  if (
+    customerCep.value.replace(
+      /\D/g,
+      ""
+    ).length === 8
+  ) {
 
-        function calculateOwnShipping(
-          state,
-          city
-        ) {
+    calculateOwnShipping();
 
-          const uf =
-            String(
-              state || ""
-            )
-              .trim()
-              .toUpperCase();
+  } else {
+
+    calculatedShippingOptions.innerHTML = `
+      <div class="shipping-message">
+        Informe seu CEP para calcular as opções de entrega.
+      </div>
+    `;
+
+    deliveryShippingOptions.style.display =
+      "block";
+
+  }
+
+}
 
 
-          const normalizedCity =
-            normalizeText(
-              city
+/*
+==================================================
+CAMPOS OBRIGATÓRIOS
+==================================================
+*/
+
+function setDeliveryFieldsRequired(
+  required
+) {
+
+  [
+
+    customerCep,
+    customerNumber,
+    customerAddress,
+    customerNeighborhood,
+    customerCity,
+    customerState
+
+  ].forEach(
+    input => {
+
+      input.required =
+        required;
+
+    }
+  );
+
+}
+
+
+/*
+==================================================
+BOTÕES RETIRADA / ENTREGA
+==================================================
+*/
+
+document
+  .querySelectorAll(
+    ".shipping-option"
+  )
+  .forEach(
+    option => {
+
+      option.addEventListener(
+        "click",
+        () => {
+
+          const id =
+            option.dataset.shippingId;
+
+
+          if (
+            id ===
+            "vt-retirada"
+          ) {
+
+            setShippingMode(
+              "pickup"
             );
-
-
-          /*
-          ==============================================
-          RETIRADA NA LOJA
-          ==============================================
-          */
-
-          const pickup = {
-
-            id:
-              "vt-retirada",
-
-            name:
-              "Retirada na loja",
-
-            company:
-              "VT Store",
-
-            price:
-              0,
-
-            delivery_time:
-              "Retire em Itapetininga/SP"
-
-          };
-
-
-
-          /*
-          ==============================================
-          ITAPETININGA
-          ==============================================
-          */
-
-          if (
-            uf === "SP" &&
-            normalizedCity ===
-              "ITAPETININGA"
-          ) {
-
-            return [
-
-              pickup,
-
-              {
-
-                id:
-                  "vt-economico",
-
-                name:
-                  "Frete Econômico",
-
-                company:
-                  "VT Store",
-
-                price:
-                  15.00,
-
-                delivery_time:
-                  "2 a 5 dias úteis"
-
-              },
-
-              {
-
-                id:
-                  "vt-expresso",
-
-                name:
-                  "Frete Expresso",
-
-                company:
-                  "VT Store",
-
-                price:
-                  25.00,
-
-                delivery_time:
-                  "1 a 2 dias úteis"
-
-              }
-
-            ];
-
-          }
-
-
-
-          /*
-          ==============================================
-          SÃO PAULO
-          ==============================================
-          */
-
-          if (
-            uf === "SP"
-          ) {
-
-            return [
-
-              pickup,
-
-              {
-
-                id:
-                  "vt-economico",
-
-                name:
-                  "Frete Econômico",
-
-                company:
-                  "VT Store",
-
-                price:
-                  29.90,
-
-                delivery_time:
-                  "4 a 8 dias úteis"
-
-              },
-
-              {
-
-                id:
-                  "vt-expresso",
-
-                name:
-                  "Frete Expresso",
-
-                company:
-                  "VT Store",
-
-                price:
-                  39.90,
-
-                delivery_time:
-                  "2 a 5 dias úteis"
-
-              }
-
-            ];
-
-          }
-
-
-
-          /*
-          ==============================================
-          SUDESTE
-          ==============================================
-          */
-
-          if (
-            [
-              "MG",
-              "RJ",
-              "ES"
-            ].includes(
-              uf
-            )
-          ) {
-
-            return [
-
-              pickup,
-
-              {
-
-                id:
-                  "vt-economico",
-
-                name:
-                  "Frete Econômico",
-
-                company:
-                  "VT Store",
-
-                price:
-                  39.90,
-
-                delivery_time:
-                  "5 a 9 dias úteis"
-
-              },
-
-              {
-
-                id:
-                  "vt-expresso",
-
-                name:
-                  "Frete Expresso",
-
-                company:
-                  "VT Store",
-
-                price:
-                  54.90,
-
-                delivery_time:
-                  "3 a 6 dias úteis"
-
-              }
-
-            ];
-
-          }
-
-
-
-          /*
-          ==============================================
-          SUL
-          ==============================================
-          */
-
-          if (
-            [
-              "PR",
-              "SC",
-              "RS"
-            ].includes(
-              uf
-            )
-          ) {
-
-            return [
-
-              pickup,
-
-              {
-
-                id:
-                  "vt-economico",
-
-                name:
-                  "Frete Econômico",
-
-                company:
-                  "VT Store",
-
-                price:
-                  49.90,
-
-                delivery_time:
-                  "6 a 10 dias úteis"
-
-              },
-
-              {
-
-                id:
-                  "vt-expresso",
-
-                name:
-                  "Frete Expresso",
-
-                company:
-                  "VT Store",
-
-                price:
-                  64.90,
-
-                delivery_time:
-                  "3 a 7 dias úteis"
-
-              }
-
-            ];
-
-          }
-
-
-
-          /*
-          ==============================================
-          CENTRO-OESTE
-          ==============================================
-          */
-
-          if (
-            [
-              "GO",
-              "MT",
-              "MS",
-              "DF"
-            ].includes(
-              uf
-            )
-          ) {
-
-            return [
-
-              pickup,
-
-              {
-
-                id:
-                  "vt-economico",
-
-                name:
-                  "Frete Econômico",
-
-                company:
-                  "VT Store",
-
-                price:
-                  54.90,
-
-                delivery_time:
-                  "7 a 12 dias úteis"
-
-              },
-
-              {
-
-                id:
-                  "vt-expresso",
-
-                name:
-                  "Frete Expresso",
-
-                company:
-                  "VT Store",
-
-                price:
-                  69.90,
-
-                delivery_time:
-                  "4 a 8 dias úteis"
-
-              }
-
-            ];
-
-          }
-
-
-
-          /*
-          ==============================================
-          NORDESTE
-          ==============================================
-          */
-
-          if (
-            [
-              "BA",
-              "PE",
-              "CE",
-              "AL",
-              "SE",
-              "PB",
-              "RN",
-              "PI",
-              "MA"
-            ].includes(
-              uf
-            )
-          ) {
-
-            return [
-
-              pickup,
-
-              {
-
-                id:
-                  "vt-economico",
-
-                name:
-                  "Frete Econômico",
-
-                company:
-                  "VT Store",
-
-                price:
-                  64.90,
-
-                delivery_time:
-                  "8 a 15 dias úteis"
-
-              },
-
-              {
-
-                id:
-                  "vt-expresso",
-
-                name:
-                  "Frete Expresso",
-
-                company:
-                  "VT Store",
-
-                price:
-                  79.90,
-
-                delivery_time:
-                  "5 a 10 dias úteis"
-
-              }
-
-            ];
-
-          }
-
-
-
-          /*
-          ==============================================
-          NORTE
-          ==============================================
-          */
-
-          if (
-            [
-              "AM",
-              "PA",
-              "RO",
-              "AC",
-              "RR",
-              "AP",
-              "TO"
-            ].includes(
-              uf
-            )
-          ) {
-
-            return [
-
-              pickup,
-
-              {
-
-                id:
-                  "vt-economico",
-
-                name:
-                  "Frete Econômico",
-
-                company:
-                  "VT Store",
-
-                price:
-                  74.90,
-
-                delivery_time:
-                  "10 a 18 dias úteis"
-
-              },
-
-              {
-
-                id:
-                  "vt-expresso",
-
-                name:
-                  "Frete Expresso",
-
-                company:
-                  "VT Store",
-
-                price:
-                  94.90,
-
-                delivery_time:
-                  "6 a 12 dias úteis"
-
-              }
-
-            ];
-
-          }
-
-
-          return [];
-
-        }
-
-
-
-        /*
-        ==================================================
-        INVALIDAR FRETE
-        ==================================================
-        */
-
-        function invalidateShipping(
-          message
-        ) {
-
-          selectedShipping =
-            null;
-
-
-          shippingOptions.innerHTML =
-            "";
-
-
-          shippingBox.style.display =
-            "none";
-
-
-          shippingLoading.style.display =
-            "none";
-
-
-          if (
-            message
-          ) {
-
-            shippingError.textContent =
-              message;
-
-            shippingError.style.display =
-              "block";
 
           } else {
 
-            shippingError.textContent =
-              "";
-
-            shippingError.style.display =
-              "none";
-
-          }
-
-
-          customerContinueButton.disabled =
-            true;
-
-
-          customerContinueButton.style.opacity =
-            ".6";
-
-
-          customerContinueButton.textContent =
-            "Digite seu CEP para calcular o frete";
-
-        }
-
-
-
-        /*
-        ==================================================
-        ABRIR MODAL
-        ==================================================
-        */
-
-        function openCustomerModal() {
-
-          if (
-            cartOverlay
-          ) {
-
-            cartOverlay.style.display =
-              "none";
-
-          }
-
-
-          customerFormError.style.display =
-            "none";
-
-
-          customerFormError.textContent =
-            "";
-
-
-          invalidateShipping(
-            ""
-          );
-
-
-          lastCalculatedCep =
-            "";
-
-
-          customerModal.style.display =
-            "block";
-
-
-          document.body.style.overflow =
-            "hidden";
-
-
-          const cart =
-            getCart();
-
-
-          if (
-            !cart.length
-          ) {
-
-            customerFormError.textContent =
-              "Seu carrinho está vazio.";
-
-            customerFormError.style.display =
-              "block";
-
-          }
-
-        }
-
-
-
-        /*
-        ==================================================
-        FECHAR MODAL
-        ==================================================
-        */
-
-        function closeModal() {
-
-          customerModal.style.display =
-            "none";
-
-
-          document.body.style.overflow =
-            "";
-
-        }
-
-
-
-        /*
-        ==================================================
-        SUBSTITUIR LISTENER DO APP.JS
-        ==================================================
-        */
-
-        const newCheckoutButton =
-          checkoutButton.cloneNode(
-            true
-          );
-
-
-        checkoutButton.parentNode.replaceChild(
-          newCheckoutButton,
-          checkoutButton
-        );
-
-
-        newCheckoutButton.addEventListener(
-          "click",
-          openCustomerModal
-        );
-
-
-
-        /*
-        ==================================================
-        FECHAR
-        ==================================================
-        */
-
-        closeCustomerModal.addEventListener(
-          "click",
-          closeModal
-        );
-
-
-        customerModal.addEventListener(
-          "click",
-          function (event) {
-
-            if (
-              event.target ===
-              customerModal
-            ) {
-
-              closeModal();
-
-            }
-
-          }
-        );
-
-
-
-        /*
-        ==================================================
-        CEP
-        ==================================================
-        */
-
-        cepInput.addEventListener(
-          "input",
-          function () {
-
-            let value =
-              cepInput.value
-                .replace(
-                  /\D/g,
-                  ""
-                )
-                .slice(
-                  0,
-                  8
-                );
-
-
-            if (
-              value.length >
-              5
-            ) {
-
-              value =
-                value.slice(
-                  0,
-                  5
-                ) +
-                "-" +
-                value.slice(
-                  5
-                );
-
-            }
-
-
-            cepInput.value =
-              value;
-
-
-            lastCalculatedCep =
-              "";
-
-
-            invalidateShipping(
-              ""
+            setShippingMode(
+              "delivery"
             );
 
           }
+
+        }
+      );
+
+    }
+  );
+
+
+/*
+==================================================
+MÁSCARA CEP
+==================================================
+*/
+
+customerCep.addEventListener(
+  "input",
+  () => {
+
+    let value =
+      customerCep.value.replace(
+        /\D/g,
+        ""
+      ).slice(
+        0,
+        8
+      );
+
+    if (
+      value.length > 5
+    ) {
+
+      value =
+        value.slice(
+          0,
+          5
+        ) +
+        "-" +
+        value.slice(
+          5
         );
 
+    }
+
+    customerCep.value =
+      value;
 
 
-        /*
-        ==================================================
-        TELEFONE
-        ==================================================
-        */
-
-        phoneInput.addEventListener(
-          "input",
-          function () {
-
-            let value =
-              phoneInput.value
-                .replace(
-                  /\D/g,
-                  ""
-                )
-                .slice(
-                  0,
-                  11
-                );
+    const cep =
+      value.replace(
+        /\D/g,
+        ""
+      );
 
 
-            if (
-              value.length <=
-              10
-            ) {
+    if (
+      cep.length === 8
+    ) {
 
-              if (
-                value.length >
-                6
-              ) {
+      searchCep(
+        cep
+      );
 
-                value =
-                  "(" +
-                  value.slice(
-                    0,
-                    2
-                  ) +
-                  ") " +
-                  value.slice(
-                    2,
-                    6
-                  ) +
-                  "-" +
-                  value.slice(
-                    6
-                  );
+    }
 
-              } else if (
-                value.length >
-                2
-              ) {
-
-                value =
-                  "(" +
-                  value.slice(
-                    0,
-                    2
-                  ) +
-                  ") " +
-                  value.slice(
-                    2
-                  );
-
-              } else if (
-                value.length >
-                0
-              ) {
-
-                value =
-                  "(" +
-                  value;
-
-              }
-
-            } else {
-
-              value =
-                "(" +
-                value.slice(
-                  0,
-                  2
-                ) +
-                ") " +
-                value.slice(
-                  2,
-                  7
-                ) +
-                "-" +
-                value.slice(
-                  7
-                );
-
-            }
+  }
+);
 
 
-            phoneInput.value =
-              value;
+/*
+==================================================
+BUSCAR CEP
+==================================================
+*/
 
-          }
-        );
+async function searchCep(
+  cep
+) {
 
+  shippingLoading.style.display =
+    "block";
 
-
-        /*
-        ==================================================
-        ESTADO
-        ==================================================
-        */
-
-        stateInput.addEventListener(
-          "input",
-          function () {
-
-            stateInput.value =
-              stateInput.value
-                .replace(
-                  /[^a-zA-Z]/g,
-                  ""
-                )
-                .slice(
-                  0,
-                  2
-                )
-                .toUpperCase();
+  shippingError.style.display =
+    "none";
 
 
-            lastCalculatedCep =
-              "";
+  try {
+
+    const response =
+      await fetch(
+        `https://viacep.com.br/ws/${cep}/json/`
+      );
 
 
-            if (
-              cepInput.value
-                .replace(
-                  /\D/g,
-                  ""
-                )
-                .length === 8
-            ) {
+    if (
+      !response.ok
+    ) {
 
-              invalidateShipping(
-                "O endereço foi alterado. Consulte o frete novamente."
+      throw new Error(
+        "Erro ao consultar CEP."
+      );
+
+    }
+
+
+    const data =
+      await response.json();
+
+
+    if (
+      data.erro
+    ) {
+
+      throw new Error(
+        "CEP não encontrado."
+      );
+
+    }
+
+
+    customerAddress.value =
+      data.logradouro ||
+      "";
+
+    customerNeighborhood.value =
+      data.bairro ||
+      "";
+
+    customerCity.value =
+      data.localidade ||
+      "";
+
+    customerState.value =
+      data.uf ||
+      "";
+
+
+    await calculateOwnShipping();
+
+  } catch (
+    error
+  ) {
+
+    shippingError.textContent =
+      error.message ||
+      "Não foi possível consultar o CEP.";
+
+    shippingError.style.display =
+      "block";
+
+  } finally {
+
+    shippingLoading.style.display =
+      "none";
+
+  }
+
+}
+
+
+/*
+==================================================
+CALCULAR FRETE VT STORE
+==================================================
+*/
+
+function calculateOwnShipping() {
+
+  const state =
+    customerState.value
+      .trim()
+      .toUpperCase();
+
+  const city =
+    customerCity.value
+      .trim()
+      .toUpperCase()
+      .normalize(
+        "NFD"
+      )
+      .replace(
+        /[\u0300-\u036f]/g,
+        ""
+      );
+
+
+  if (
+    !state ||
+    !city
+  ) {
+
+    return;
+
+  }
+
+
+  const pickup = {
+
+    id:
+      "vt-retirada",
+
+    name:
+      "Retirada na loja",
+
+    company:
+      "VT Store",
+
+    price:
+      0,
+
+    delivery_time:
+      "Retire em Itapetininga/SP"
+
+  };
+
+
+  let economic;
+  let express;
+
+
+  if (
+    state === "SP" &&
+    city === "ITAPETININGA"
+  ) {
+
+    economic = {
+
+      id:
+        "vt-economico",
+
+      name:
+        "Frete Econômico",
+
+      company:
+        "VT Store",
+
+      price:
+        15,
+
+      delivery_time:
+        "2 a 5 dias úteis"
+
+    };
+
+
+    express = {
+
+      id:
+        "vt-expresso",
+
+      name:
+        "Frete Expresso",
+
+      company:
+        "VT Store",
+
+      price:
+        25,
+
+      delivery_time:
+        "1 a 2 dias úteis"
+
+    };
+
+  }
+
+  else if (
+    state === "SP"
+  ) {
+
+    economic = {
+
+      id:
+        "vt-economico",
+
+      name:
+        "Frete Econômico",
+
+      company:
+        "VT Store",
+
+      price:
+        29.90,
+
+      delivery_time:
+        "4 a 8 dias úteis"
+
+    };
+
+
+    express = {
+
+      id:
+        "vt-expresso",
+
+      name:
+        "Frete Expresso",
+
+      company:
+        "VT Store",
+
+      price:
+        39.90,
+
+      delivery_time:
+        "2 a 5 dias úteis"
+
+    };
+
+  }
+
+  else if (
+    [
+      "MG",
+      "RJ",
+      "ES"
+    ].includes(state)
+  ) {
+
+    economic = {
+
+      id:
+        "vt-economico",
+
+      name:
+        "Frete Econômico",
+
+      company:
+        "VT Store",
+
+      price:
+        39.90,
+
+      delivery_time:
+        "5 a 9 dias úteis"
+
+    };
+
+
+    express = {
+
+      id:
+        "vt-expresso",
+
+      name:
+        "Frete Expresso",
+
+      company:
+        "VT Store",
+
+      price:
+        54.90,
+
+      delivery_time:
+        "3 a 6 dias úteis"
+
+    };
+
+  }
+
+  else if (
+    [
+      "PR",
+      "SC",
+      "RS"
+    ].includes(state)
+  ) {
+
+    economic = {
+
+      id:
+        "vt-economico",
+
+      name:
+        "Frete Econômico",
+
+      company:
+        "VT Store",
+
+      price:
+        49.90,
+
+      delivery_time:
+        "6 a 10 dias úteis"
+
+    };
+
+
+    express = {
+
+      id:
+        "vt-expresso",
+
+      name:
+        "Frete Expresso",
+
+      company:
+        "VT Store",
+
+      price:
+        64.90,
+
+      delivery_time:
+        "3 a 7 dias úteis"
+
+    };
+
+  }
+
+  else if (
+    [
+      "GO",
+      "MT",
+      "MS",
+      "DF"
+    ].includes(state)
+  ) {
+
+    economic = {
+
+      id:
+        "vt-economico",
+
+      name:
+        "Frete Econômico",
+
+      company:
+        "VT Store",
+
+      price:
+        54.90,
+
+      delivery_time:
+        "7 a 12 dias úteis"
+
+    };
+
+
+    express = {
+
+      id:
+        "vt-expresso",
+
+      name:
+        "Frete Expresso",
+
+      company:
+        "VT Store",
+
+      price:
+        69.90,
+
+      delivery_time:
+        "4 a 8 dias úteis"
+
+    };
+
+  }
+
+  else if (
+    [
+      "BA",
+      "PE",
+      "CE",
+      "AL",
+      "SE",
+      "PB",
+      "RN",
+      "PI",
+      "MA"
+    ].includes(state)
+  ) {
+
+    economic = {
+
+      id:
+        "vt-economico",
+
+      name:
+        "Frete Econômico",
+
+      company:
+        "VT Store",
+
+      price:
+        64.90,
+
+      delivery_time:
+        "8 a 15 dias úteis"
+
+    };
+
+
+    express = {
+
+      id:
+        "vt-expresso",
+
+      name:
+        "Frete Expresso",
+
+      company:
+        "VT Store",
+
+      price:
+        79.90,
+
+      delivery_time:
+        "5 a 10 dias úteis"
+
+    };
+
+  }
+
+  else if (
+    [
+      "AM",
+      "PA",
+      "RO",
+      "AC",
+      "RR",
+      "AP",
+      "TO"
+    ].includes(state)
+  ) {
+
+    economic = {
+
+      id:
+        "vt-economico",
+
+      name:
+        "Frete Econômico",
+
+      company:
+        "VT Store",
+
+      price:
+        74.90,
+
+      delivery_time:
+        "10 a 18 dias úteis"
+
+    };
+
+
+    express = {
+
+      id:
+        "vt-expresso",
+
+      name:
+        "Frete Expresso",
+
+      company:
+        "VT Store",
+
+      price:
+        94.90,
+
+      delivery_time:
+        "6 a 12 dias úteis"
+
+    };
+
+  }
+
+  else {
+
+    shippingError.textContent =
+      "Ainda não temos entrega disponível para este estado.";
+
+    shippingError.style.display =
+      "block";
+
+    calculatedShippingOptions.innerHTML =
+      "";
+
+    deliveryShippingOptions.style.display =
+      "none";
+
+    return;
+
+  }
+
+
+  renderShippingOptions(
+    [
+      economic,
+      express
+    ]
+  );
+
+}
+
+
+/*
+==================================================
+RENDER OPÇÕES DE FRETE
+==================================================
+*/
+
+function renderShippingOptions(
+  options
+) {
+
+  calculatedShippingOptions.innerHTML =
+    options.map(
+      option => `
+
+        <button
+          type="button"
+          class="shipping-option"
+          data-calculated-shipping-id="${option.id}"
+        >
+
+          <div class="shipping-icon">
+            🚚
+          </div>
+
+          <div class="shipping-info">
+
+            <strong>
+              ${escapeHtml(
+                option.name
+              )}
+            </strong>
+
+            <span>
+              ${escapeHtml(
+                option.company
+              )}
+            </span>
+
+            <small>
+              ${escapeHtml(
+                option.delivery_time
+              )}
+            </small>
+
+          </div>
+
+          <div class="shipping-price">
+            ${formatPrice(
+              option.price
+            )}
+          </div>
+
+        </button>
+
+      `
+    ).join("");
+
+
+  deliveryShippingOptions.style.display =
+    "block";
+
+
+  calculatedShippingOptions
+    .querySelectorAll(
+      "[data-calculated-shipping-id]"
+    )
+    .forEach(
+      button => {
+
+        button.addEventListener(
+          "click",
+          () => {
+
+            const id =
+              button.dataset
+                .calculatedShippingId;
+
+
+            const selected =
+              options.find(
+                item =>
+                  item.id ===
+                  id
               );
 
-            }
 
-          }
-        );
-
-
-
-        /*
-        ==================================================
-        CIDADE
-        ==================================================
-        */
-
-        cityInput.addEventListener(
-          "input",
-          function () {
-
-            lastCalculatedCep =
-              "";
-
-
-            if (
-              cepInput.value
-                .replace(
-                  /\D/g,
-                  ""
-                )
-                .length === 8
-            ) {
-
-              invalidateShipping(
-                "A cidade foi alterada. Consulte o frete novamente."
-              );
-
-            }
-
-          }
-        );
-
-
-
-        /*
-        ==================================================
-        CONSULTAR CEP
-        ==================================================
-        */
-
-        cepInput.addEventListener(
-          "blur",
-          async function () {
-
-            const cep =
-              cepInput.value
-                .replace(
-                  /\D/g,
-                  ""
-                );
-
-
-            if (
-              cep.length !==
-              8
-            ) {
-
+            if (!selected) {
               return;
-
             }
-
-
-            if (
-              lastCalculatedCep ===
-              cep
-            ) {
-
-              return;
-
-            }
-
-
-            const currentRequest =
-              ++cepRequestId;
-
-
-            shippingBox.style.display =
-              "block";
-
-
-            shippingLoading.style.display =
-              "block";
-
-
-            shippingError.style.display =
-              "none";
-
-
-            shippingError.textContent =
-              "";
-
-
-            shippingOptions.innerHTML =
-              "";
 
 
             selectedShipping =
-              null;
-
-
-            customerContinueButton.disabled =
-              true;
-
-
-            customerContinueButton.style.opacity =
-              ".6";
-
-
-            customerContinueButton.textContent =
-              "Consultando CEP...";
-
-
-            try {
-
-              const response =
-                await fetch(
-                  `https://viacep.com.br/ws/${cep}/json/`,
-                  {
-                    method:
-                      "GET",
-
-                    headers:
-                      {
-                        Accept:
-                          "application/json"
-                      }
-                  }
-                );
-
-
-              if (
-                !response.ok
-              ) {
-
-                throw new Error(
-                  "Não foi possível consultar o CEP."
-                );
-
-              }
-
-
-              const data =
-                await response.json();
-
-
-              if (
-                currentRequest !==
-                cepRequestId
-              ) {
-
-                return;
-
-              }
-
-
-              if (
-                data.erro
-              ) {
-
-                throw new Error(
-                  "CEP não encontrado."
-                );
-
-              }
-
-
-              /*
-              ========================================
-              PREENCHER ENDEREÇO
-              ========================================
-              */
-
-              document.getElementById(
-                "customerAddress"
-              ).value =
-                data.logradouro ||
-                "";
-
-
-              document.getElementById(
-                "customerNeighborhood"
-              ).value =
-                data.bairro ||
-                "";
-
-
-              cityInput.value =
-                data.localidade ||
-                "";
-
-
-              stateInput.value =
-                data.uf ||
-                "";
-
-
-              lastCalculatedCep =
-                cep;
-
-
-              /*
-              ========================================
-              CALCULAR FRETE
-              ========================================
-              */
-
-              const services =
-                calculateOwnShipping(
-                  data.uf,
-                  data.localidade
-                );
-
-
-              if (
-                !services.length
-              ) {
-
-                throw new Error(
-                  "Ainda não temos uma opção de frete disponível para este estado."
-                );
-
-              }
-
-
-              renderShippingOptions(
-                services
-              );
-
-
-            } catch (
-              error
-            ) {
-
-              console.error(
-                "Erro no CEP:",
-                error
-              );
-
-
-              shippingError.textContent =
-                error instanceof Error
-                  ? error.message
-                  : "Não foi possível consultar o CEP.";
-
-
-              shippingError.style.display =
-                "block";
-
-
-              customerContinueButton.disabled =
-                true;
-
-
-              customerContinueButton.style.opacity =
-                ".6";
-
-
-              customerContinueButton.textContent =
-                "Não foi possível calcular o frete";
-
-
-            } finally {
-
-              if (
-                currentRequest ===
-                cepRequestId
-              ) {
-
-                shippingLoading.style.display =
-                  "none";
-
-              }
-
-            }
-
-          }
-        );
-
-
-
-        /*
-        ==================================================
-        MOSTRAR FRETES
-        ==================================================
-        */
-
-        function renderShippingOptions(
-          services
-        ) {
-
-          shippingOptions.innerHTML =
-            "";
-
-
-          if (
-            !Array.isArray(
-              services
-            ) ||
-            !services.length
-          ) {
-
-            invalidateShipping(
-              "Nenhuma opção de frete disponível."
-            );
-
-            return;
-
-          }
-
-
-          shippingBox.style.display =
-            "block";
-
-
-          services.forEach(
-            function (
-              service,
-              index
-            ) {
-
-              const price =
-                Number(
-                  service.price
-                );
-
-
-              if (
-                !Number.isFinite(
-                  price
-                )
-              ) {
-
-                return;
-
-              }
-
-
-              const option =
-                document.createElement(
-                  "label"
-                );
-
-
-              option.style.display =
-                "block";
-
-
-              option.style.cursor =
-                "pointer";
-
-
-              option.style.marginBottom =
-                "10px";
-
-
-              const isPickup =
-                service.id ===
-                "vt-retirada";
-
-
-              option.innerHTML = `
-
-                <input
-                  type="radio"
-                  name="shippingService"
-                  value="${service.id}"
-                  style="display:none;"
-                >
-
-                <div
-                  class="shipping-option-card"
-                  style="
-                    background:#fff;
-                    border:2px solid #ddd;
-                    border-radius:12px;
-                    padding:14px;
-                    transition:.2s;
-                  "
-                >
-
-                  <div
-                    style="
-                      display:flex;
-                      justify-content:space-between;
-                      align-items:center;
-                      gap:10px;
-                    "
-                  >
-
-                    <div>
-
-                      <strong
-                        style="
-                          display:block;
-                          font-size:16px;
-                          color:#111;
-                        "
-                      >
-                        ${
-                          isPickup
-                            ? "🏪 "
-                            : ""
-                        }${service.name}
-                      </strong>
-
-                      <small
-                        style="
-                          display:block;
-                          margin-top:4px;
-                          color:#666;
-                        "
-                      >
-                        ${service.company}
-                        •
-                        ${service.delivery_time}
-                      </small>
-
-                    </div>
-
-                    <strong
-                      style="
-                        color:#7c3aed;
-                        font-size:17px;
-                        white-space:nowrap;
-                      "
-                    >
-                      ${
-                        price === 0
-                          ? "GRÁTIS"
-                          : formatCurrency(price)
-                      }
-                    </strong>
-
-                  </div>
-
-                </div>
-              `;
-
-
-              const radio =
-                option.querySelector(
-                  "input"
-                );
-
-
-              const card =
-                option.querySelector(
-                  ".shipping-option-card"
-                );
-
-
-              radio.addEventListener(
-                "change",
-                function () {
-
-                  document
-                    .querySelectorAll(
-                      ".shipping-option-card"
-                    )
-                    .forEach(
-                      function (
-                        element
-                      ) {
-
-                        element.style.border =
-                          "2px solid #ddd";
-
-                        element.style.background =
-                          "#fff";
-
-                      }
-                    );
-
-
-                  card.style.border =
-                    "2px solid #7c3aed";
-
-
-                  card.style.background =
-                    "#f5f0ff";
-
-
-                  selectedShipping = {
-
-                    id:
-                      service.id,
-
-                    name:
-                      service.name,
-
-                    company:
-                      service.company,
-
-                    price:
-                      price,
-
-                    delivery_time:
-                      service.delivery_time
-
-                  };
-
-
-                  customerContinueButton.disabled =
-                    false;
-
-
-                  customerContinueButton.style.opacity =
-                    "1";
-
-
-                  customerContinueButton.textContent =
-                    "Continuar para pagamento";
-
-                }
-              );
-
-
-              shippingOptions.appendChild(
-                option
-              );
-
-
-              /*
-              ========================================
-              PRIMEIRA OPÇÃO
-              ========================================
-              */
-
-              if (
-                index ===
-                0
-              ) {
-
-                radio.checked =
-                  true;
-
-
-                radio.dispatchEvent(
-                  new Event(
-                    "change"
+              selected;
+
+
+            calculatedShippingOptions
+              .querySelectorAll(
+                ".shipping-option"
+              )
+              .forEach(
+                item =>
+                  item.classList.remove(
+                    "selected"
                   )
-                );
-
-              }
-
-            }
-          );
-
-        }
-
-
-
-        /*
-        ==================================================
-        SUBMIT CHECKOUT
-        ==================================================
-        */
-
-        customerForm.addEventListener(
-          "submit",
-          async function (
-            event
-          ) {
-
-            event.preventDefault();
-
-
-            customerFormError.style.display =
-              "none";
-
-
-            customerFormError.textContent =
-              "";
-
-
-            /*
-            ========================================
-            FRETE
-            ========================================
-            */
-
-            if (
-              !selectedShipping
-            ) {
-
-              customerFormError.textContent =
-                "Selecione uma opção de entrega ou retirada para continuar.";
-
-
-              customerFormError.style.display =
-                "block";
-
-
-              return;
-
-            }
-
-
-            /*
-            ========================================
-            CLIENTE
-            ========================================
-            */
-
-            const customer = {
-
-              name:
-                document.getElementById(
-                  "customerName"
-                ).value.trim(),
-
-              phone:
-                document.getElementById(
-                  "customerPhone"
-                ).value.trim(),
-
-              email:
-                document.getElementById(
-                  "customerEmail"
-                ).value.trim(),
-
-              cep:
-                document.getElementById(
-                  "customerCep"
-                ).value
-                  .replace(
-                    /\D/g,
-                    ""
-                  ),
-
-              address:
-                document.getElementById(
-                  "customerAddress"
-                ).value.trim(),
-
-              number:
-                document.getElementById(
-                  "customerNumber"
-                ).value.trim(),
-
-              neighborhood:
-                document.getElementById(
-                  "customerNeighborhood"
-                ).value.trim(),
-
-              city:
-                document.getElementById(
-                  "customerCity"
-                ).value.trim(),
-
-              state:
-                document.getElementById(
-                  "customerState"
-                ).value
-                  .trim()
-                  .toUpperCase(),
-
-              complement:
-                document.getElementById(
-                  "customerComplement"
-                ).value.trim()
-
-            };
-
-
-            /*
-            ========================================
-            VALIDAÇÃO
-            ========================================
-            */
-
-            if (
-              !customer.name ||
-              !customer.phone ||
-              !customer.email ||
-              !customer.cep ||
-              !customer.address ||
-              !customer.number ||
-              !customer.neighborhood ||
-              !customer.city ||
-              !customer.state
-            ) {
-
-              customerFormError.textContent =
-                "Preencha todos os campos obrigatórios.";
-
-
-              customerFormError.style.display =
-                "block";
-
-
-              return;
-
-            }
-
-
-            if (
-              customer.cep.length !==
-              8
-            ) {
-
-              customerFormError.textContent =
-                "Informe um CEP válido.";
-
-
-              customerFormError.style.display =
-                "block";
-
-
-              return;
-
-            }
-
-
-            /*
-            ========================================
-            CARRINHO
-            ========================================
-            */
-
-            const cart =
-              getCart();
-
-
-            if (
-              !cart.length
-            ) {
-
-              customerFormError.textContent =
-                "Seu carrinho está vazio. Adicione um produto antes de continuar.";
-
-
-              customerFormError.style.display =
-                "block";
-
-
-              return;
-
-            }
-
-
-            /*
-            ========================================
-            BLOQUEAR BOTÃO
-            ========================================
-            */
-
-            customerContinueButton.disabled =
-              true;
-
-
-            customerContinueButton.style.opacity =
-              ".6";
-
-
-            customerContinueButton.textContent =
-              "Criando pagamento...";
-
-
-            try {
-
-              /*
-              ======================================
-              ITENS
-              ======================================
-              */
-
-              const items =
-                cart.map(
-                  function (
-                    item
-                  ) {
-
-                    return {
-
-                      id:
-                        item.id,
-
-                      name:
-                        item.name ||
-                        "",
-
-                      price:
-                        Number(
-                          item.price
-                        ),
-
-                      quantity:
-                        Number(
-                          item.quantity
-                        )
-
-                    };
-
-                  }
-                );
-
-
-              /*
-              ======================================
-              VALIDAR ITENS
-              ======================================
-              */
-
-              const invalidItem =
-                items.find(
-                  function (
-                    item
-                  ) {
-
-                    return (
-                      !item.id ||
-                      !Number.isInteger(
-                        item.quantity
-                      ) ||
-                      item.quantity <=
-                        0
-                    );
-
-                  }
-                );
-
-
-              if (
-                invalidItem
-              ) {
-
-                throw new Error(
-                  "Há um produto inválido no carrinho. Atualize a página e tente novamente."
-                );
-
-              }
-
-
-              /*
-              ======================================
-              CREATE CHECKOUT
-              ======================================
-              */
-
-              const response =
-                await fetch(
-                  "https://knmwxyxgcgytzhggzhhd.supabase.co/functions/v1/create-checkout",
-                  {
-
-                    method:
-                      "POST",
-
-                    headers: {
-
-                      "Content-Type":
-                        "application/json",
-
-                      "apikey":
-                        window
-                          .VT_CONFIG
-                          .SUPABASE_ANON_KEY
-
-                    },
-
-                    body:
-                      JSON.stringify({
-
-                        items:
-                          items,
-
-                        customer:
-                          customer,
-
-                        shipping: {
-
-                          id:
-                            selectedShipping.id
-
-                        }
-
-                      })
-
-                  }
-                );
-
-
-              /*
-              ======================================
-              LER RESPOSTA
-              ======================================
-              */
-
-              const responseText =
-                await response.text();
-
-
-              let data =
-                null;
-
-
-              try {
-
-                data =
-                  responseText
-                    ? JSON.parse(
-                        responseText
-                      )
-                    : null;
-
-              } catch {
-
-                data = null;
-
-              }
-
-
-              if (
-                !response.ok
-              ) {
-
-                throw new Error(
-                  data?.error ||
-                  "Não foi possível criar o pagamento."
-                );
-
-              }
-
-
-              if (
-                !data ||
-                !data.checkout_url
-              ) {
-
-                throw new Error(
-                  "A InfinitePay não retornou o link de pagamento."
-                );
-
-              }
-
-
-              /*
-              ======================================
-              SALVAR DADOS
-              ======================================
-              */
-
-              localStorage.setItem(
-                "vt_last_customer",
-                JSON.stringify(
-                  customer
-                )
               );
 
 
-              localStorage.setItem(
-                "vt_last_shipping",
-                JSON.stringify(
-                  data.shipping ||
-                  selectedShipping
-                )
-              );
-
-
-              localStorage.setItem(
-                "vt_last_order_nsu",
-                String(
-                  data.order_nsu ||
-                  ""
-                )
-              );
-
-
-              /*
-              ======================================
-              IR PARA PAGAMENTO
-              ======================================
-              */
-
-              window.location.href =
-                data.checkout_url;
-
-            } catch (
-              error
-            ) {
-
-              console.error(
-                "Erro ao criar checkout:",
-                error
-              );
-
-
-              customerFormError.textContent =
-                error instanceof Error
-                  ? error.message
-                  : "Erro ao criar pagamento. Tente novamente.";
-
-
-              customerFormError.style.display =
-                "block";
-
-
-              customerContinueButton.disabled =
-                false;
-
-
-              customerContinueButton.style.opacity =
-                "1";
-
-
-              customerContinueButton.textContent =
-                "Continuar para pagamento";
-
-            }
+            button.classList.add(
+              "selected"
+            );
 
           }
         );
@@ -3466,7 +3174,725 @@
       }
     );
 
-  </script>
+}
+
+
+/*
+==================================================
+MONTAR DADOS DO CLIENTE
+==================================================
+*/
+
+function getCustomerData() {
+
+  return {
+
+    name:
+      customerName.value.trim(),
+
+    phone:
+      customerPhone.value.trim(),
+
+    email:
+      customerEmail.value.trim(),
+
+    cep:
+      customerCep.value
+        .replace(
+          /\D/g,
+          ""
+        ),
+
+    address:
+      customerAddress.value.trim(),
+
+    number:
+      customerNumber.value.trim(),
+
+    neighborhood:
+      customerNeighborhood.value.trim(),
+
+    city:
+      customerCity.value.trim(),
+
+    state:
+      customerState.value
+        .trim()
+        .toUpperCase(),
+
+    complement:
+      customerComplement.value.trim()
+
+  };
+
+}
+
+
+/*
+==================================================
+SALVAR DADOS
+==================================================
+*/
+
+function saveCustomerData(
+  customer
+) {
+
+  localStorage.setItem(
+    "vt_store_customer",
+    JSON.stringify(
+      customer
+    )
+  );
+
+}
+
+
+/*
+==================================================
+CARREGAR DADOS SALVOS
+==================================================
+*/
+
+function loadSavedCustomer() {
+
+  try {
+
+    const saved =
+      localStorage.getItem(
+        "vt_store_customer"
+      );
+
+    if (!saved) {
+      return;
+    }
+
+    const customer =
+      JSON.parse(
+        saved
+      );
+
+
+    customerName.value =
+      customer.name ||
+      "";
+
+    customerPhone.value =
+      customer.phone ||
+      "";
+
+    customerEmail.value =
+      customer.email ||
+      "";
+
+    customerCep.value =
+      customer.cep ||
+      "";
+
+    customerAddress.value =
+      customer.address ||
+      "";
+
+    customerNumber.value =
+      customer.number ||
+      "";
+
+    customerNeighborhood.value =
+      customer.neighborhood ||
+      "";
+
+    customerCity.value =
+      customer.city ||
+      "";
+
+    customerState.value =
+      customer.state ||
+      "";
+
+    customerComplement.value =
+      customer.complement ||
+      "";
+
+  } catch {
+
+    console.warn(
+      "Não foi possível carregar os dados salvos."
+    );
+
+  }
+
+}
+
+
+/*
+==================================================
+FINALIZAR CHECKOUT
+==================================================
+*/
+
+finalCheckoutButton.addEventListener(
+  "click",
+  async () => {
+
+    customerFormError.style.display =
+      "none";
+
+    customerFormError.textContent =
+      "";
+
+
+    if (
+      cart.length === 0
+    ) {
+
+      customerFormError.textContent =
+        "Seu carrinho está vazio.";
+
+      customerFormError.style.display =
+        "block";
+
+      return;
+
+    }
+
+
+    const customer =
+      getCustomerData();
+
+
+    /*
+    ==============================================
+    DADOS BÁSICOS
+    ==============================================
+    */
+
+    if (
+      customer.name.length < 3
+    ) {
+
+      showCustomerError(
+        "Informe seu nome completo."
+      );
+
+      customerName.focus();
+
+      return;
+
+    }
+
+
+    if (
+      customer.phone.length < 8
+    ) {
+
+      showCustomerError(
+        "Informe um WhatsApp válido."
+      );
+
+      customerPhone.focus();
+
+      return;
+
+    }
+
+
+    if (
+      !/^[^\s@]+@[^\s@]+\.[^\s@]+$/
+        .test(
+          customer.email
+        )
+    ) {
+
+      showCustomerError(
+        "Informe um e-mail válido."
+      );
+
+      customerEmail.focus();
+
+      return;
+
+    }
+
+
+    /*
+    ==============================================
+    RETIRADA
+    ==============================================
+    */
+
+    const isPickup =
+      selectedShipping.id ===
+      "vt-retirada";
+
+
+    /*
+    ==============================================
+    ENTREGA
+    ==============================================
+    */
+
+    if (
+      !isPickup
+    ) {
+
+      if (
+        customer.cep.length !== 8
+      ) {
+
+        showCustomerError(
+          "Informe um CEP válido."
+        );
+
+        customerCep.focus();
+
+        return;
+
+      }
+
+
+      if (
+        customer.address.length < 3
+      ) {
+
+        showCustomerError(
+          "Informe o endereço."
+        );
+
+        customerAddress.focus();
+
+        return;
+
+      }
+
+
+      if (
+        customer.number.length < 1
+      ) {
+
+        showCustomerError(
+          "Informe o número."
+        );
+
+        customerNumber.focus();
+
+        return;
+
+      }
+
+
+      if (
+        customer.neighborhood.length < 2
+      ) {
+
+        showCustomerError(
+          "Informe o bairro."
+        );
+
+        customerNeighborhood.focus();
+
+        return;
+
+      }
+
+
+      if (
+        customer.city.length < 2
+      ) {
+
+        showCustomerError(
+          "Informe a cidade."
+        );
+
+        customerCity.focus();
+
+        return;
+
+      }
+
+
+      if (
+        customer.state.length !== 2
+      ) {
+
+        showCustomerError(
+          "Informe o estado."
+        );
+
+        customerState.focus();
+
+        return;
+
+      }
+
+
+      if (
+        !selectedShipping ||
+        (
+          selectedShipping.id !==
+          "vt-economico" &&
+          selectedShipping.id !==
+          "vt-expresso"
+        )
+      ) {
+
+        showCustomerError(
+          "Selecione uma opção de entrega."
+        );
+
+        return;
+
+      }
+
+    }
+
+
+    /*
+    ==============================================
+    RETIRADA SEM ENDEREÇO
+    ==============================================
+    */
+
+    if (
+      isPickup
+    ) {
+
+      customer.cep =
+        "";
+
+      customer.address =
+        "";
+
+      customer.number =
+        "";
+
+      customer.neighborhood =
+        "";
+
+      customer.city =
+        "";
+
+      customer.state =
+        "";
+
+      customer.complement =
+        "";
+
+    }
+
+
+    /*
+    ==============================================
+    DESABILITAR BOTÃO
+    ==============================================
+    */
+
+    const originalText =
+      finalCheckoutButton.textContent;
+
+    finalCheckoutButton.disabled =
+      true;
+
+    finalCheckoutButton.textContent =
+      "Criando pagamento...";
+
+
+    try {
+
+      const items =
+        cart.map(
+          item => ({
+
+            id:
+              item.id,
+
+            quantity:
+              Number(
+                item.quantity
+              )
+
+          })
+        );
+
+
+      const payload = {
+
+        items:
+
+          items,
+
+        customer:
+
+          customer,
+
+        shipping: {
+
+          id:
+            selectedShipping.id
+
+        }
+
+      };
+
+
+      const response =
+        await fetch(
+          `${SUPABASE_URL}/functions/v1/create-checkout`,
+          {
+
+            method:
+              "POST",
+
+            headers: {
+
+              "Content-Type":
+                "application/json",
+
+              apikey:
+                SUPABASE_ANON_KEY,
+
+              Authorization:
+                `Bearer ${SUPABASE_ANON_KEY}`
+
+            },
+
+            body:
+              JSON.stringify(
+                payload
+              )
+
+          }
+        );
+
+
+      const data =
+        await response.json();
+
+
+      if (
+        !response.ok
+      ) {
+
+        throw new Error(
+          data?.error ||
+          "Não foi possível criar o checkout."
+        );
+
+      }
+
+
+      if (
+        !data?.checkout_url
+      ) {
+
+        throw new Error(
+          "A InfinitePay não retornou o link de pagamento."
+        );
+
+      }
+
+
+      /*
+      ============================================
+      SALVAR DADOS
+      ============================================
+      */
+
+      saveCustomerData(
+        customer
+      );
+
+
+      localStorage.setItem(
+        "vt_store_shipping",
+        JSON.stringify(
+          data.shipping ||
+          selectedShipping
+        )
+      );
+
+
+      localStorage.setItem(
+        "vt_store_order_nsu",
+        data.order_nsu ||
+        ""
+      );
+
+
+      /*
+      ============================================
+      REDIRECIONAR
+      ============================================
+      */
+
+      window.location.href =
+        data.checkout_url;
+
+
+    } catch (
+      error
+    ) {
+
+      console.error(
+        "Erro no checkout:",
+        error
+      );
+
+
+      showCustomerError(
+        error?.message ||
+        "Não foi possível iniciar o pagamento."
+      );
+
+
+      finalCheckoutButton.disabled =
+        false;
+
+      finalCheckoutButton.textContent =
+        originalText;
+
+    }
+
+  }
+);
+
+
+/*
+==================================================
+ERRO DO CLIENTE
+==================================================
+*/
+
+function showCustomerError(
+  message
+) {
+
+  customerFormError.textContent =
+    message;
+
+  customerFormError.style.display =
+    "block";
+
+}
+
+
+/*
+==================================================
+FECHAR MODAIS AO CLICAR FORA
+==================================================
+*/
+
+[
+  cartOverlay,
+  customerOverlay,
+  productModal
+].forEach(
+  overlay => {
+
+    overlay.addEventListener(
+      "click",
+      event => {
+
+        if (
+          event.target ===
+          overlay
+        ) {
+
+          overlay.classList.remove(
+            "active"
+          );
+
+        }
+
+      }
+    );
+
+  }
+);
+
+
+/*
+==================================================
+FECHAR MODAL PRODUTO
+==================================================
+*/
+
+closeProductModal.addEventListener(
+  "click",
+  closeProductModalFunction
+);
+
+
+/*
+==================================================
+ESC
+==================================================
+*/
+
+document.addEventListener(
+  "keydown",
+  event => {
+
+    if (
+      event.key !==
+      "Escape"
+    ) {
+
+      return;
+
+    }
+
+
+    cartOverlay.classList.remove(
+      "active"
+    );
+
+    customerOverlay.classList.remove(
+      "active"
+    );
+
+    productModal.classList.remove(
+      "active"
+    );
+
+  }
+);
+
+
+/*
+==================================================
+INICIALIZAÇÃO
+==================================================
+*/
+
+updateCartCount();
+
+renderCart();
+
+loadProducts();
+
+
+/*
+==================================================
+EXPOR FUNÇÕES
+==================================================
+*/
+
+window.addToCart =
+  addToCart;
+
+window.removeFromCart =
+  removeFromCart;
+
+window.changeQuantity =
+  changeQuantity;
+
+window.openProductModal =
+  openProductModal;
+
+window.closeProductModalFunction =
+  closeProductModalFunction;
+
+</script>
 
 </body>
 
