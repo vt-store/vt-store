@@ -48,7 +48,7 @@
     input:focus,
     select:focus,
     textarea:focus {
-      border-color: #fff;
+      border-color: #8b5cf6;
     }
 
     textarea {
@@ -57,8 +57,8 @@
     }
 
     .btn-primary {
-      background: #fff;
-      color: #000;
+      background: #8b5cf6;
+      color: #fff;
     }
 
     .btn-secondary {
@@ -160,7 +160,7 @@
     }
 
     .logo span {
-      color: #999;
+      color: #8b5cf6;
     }
 
     main {
@@ -257,7 +257,7 @@
     table {
       width: 100%;
       border-collapse: collapse;
-      min-width: 950px;
+      min-width: 1150px;
     }
 
     th,
@@ -279,11 +279,36 @@
     }
 
     tr:hover td {
-      background: rgba(255,255,255,.015);
+      background: rgba(139,92,246,.025);
     }
 
     .status {
       min-width: 145px;
+    }
+
+    .delivery-badge {
+      display: inline-block;
+      padding: 5px 8px;
+      border-radius: 7px;
+      background: #292e36;
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+
+    .delivery-home {
+      background: rgba(139,92,246,.16);
+      color: #c4a7ff;
+    }
+
+    .delivery-pickup {
+      background: rgba(25,135,84,.18);
+      color: #72e0a5;
+    }
+
+    .shipping-price {
+      color: #9da4af;
+      font-size: 12px;
     }
 
     /* PRODUTOS */
@@ -393,7 +418,7 @@
 
     .modal-content {
       width: 100%;
-      max-width: 750px;
+      max-width: 850px;
       max-height: 90vh;
       overflow-y: auto;
       background: #15181d;
@@ -462,10 +487,39 @@
       margin-top: 18px;
     }
 
+    .shipping-box {
+      margin-top: 18px;
+      background: #0e1115;
+      border: 1px solid #292e36;
+      border-radius: 10px;
+      padding: 15px;
+    }
+
+    .shipping-box h3 {
+      margin: 0 0 12px;
+    }
+
+    .shipping-line {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      padding: 7px 0;
+      border-bottom: 1px solid #292e36;
+    }
+
+    .shipping-line:last-child {
+      border-bottom: 0;
+    }
+
     .empty {
       text-align: center;
       padding: 35px;
       color: #8f97a3;
+    }
+
+    .small-muted {
+      color: #8e96a2;
+      font-size: 12px;
     }
 
     @media (max-width: 1100px) {
@@ -509,6 +563,7 @@
 <body>
 
   <!-- LOGIN -->
+
   <div id="loginScreen" class="login">
 
     <div class="login-box">
@@ -551,6 +606,7 @@
 
 
   <!-- PAINEL -->
+
   <div id="panel">
 
     <header>
@@ -580,6 +636,7 @@
       <div class="stats">
 
         <div class="stat">
+
           <div class="stat-title">
             Total de pedidos
           </div>
@@ -590,10 +647,12 @@
           >
             0
           </div>
+
         </div>
 
 
         <div class="stat">
+
           <div class="stat-title">
             Pendentes
           </div>
@@ -604,10 +663,12 @@
           >
             0
           </div>
+
         </div>
 
 
         <div class="stat">
+
           <div class="stat-title">
             Pagos
           </div>
@@ -618,10 +679,12 @@
           >
             0
           </div>
+
         </div>
 
 
         <div class="stat">
+
           <div class="stat-title">
             Enviados
           </div>
@@ -632,10 +695,12 @@
           >
             0
           </div>
+
         </div>
 
 
         <div class="stat">
+
           <div class="stat-title">
             Entregues
           </div>
@@ -646,10 +711,12 @@
           >
             0
           </div>
+
         </div>
 
 
         <div class="stat">
+
           <div class="stat-title">
             Total vendido
           </div>
@@ -660,6 +727,7 @@
           >
             R$ 0,00
           </div>
+
         </div>
 
       </div>
@@ -854,8 +922,10 @@
 
                 <th>Pedido</th>
                 <th>Cliente</th>
+                <th>Entrega</th>
                 <th>Endereço</th>
                 <th>Produtos</th>
+                <th>Frete</th>
                 <th>Valor</th>
                 <th>Status</th>
                 <th>Data</th>
@@ -1272,46 +1342,45 @@ async function createProduct() {
       "Criando produto...";
 
 
-    const data =
-      await apiRequest({
+    await apiRequest({
 
-        method: "POST",
+      method: "POST",
 
-        headers: {
-          "Content-Type":
-            "application/json"
-        },
+      headers: {
+        "Content-Type":
+          "application/json"
+      },
 
-        body:
-          JSON.stringify({
+      body:
+        JSON.stringify({
 
-            action:
-              "create_product",
+          action:
+            "create_product",
 
-            name:
-              name,
+          name:
+            name,
 
-            category:
-              category,
+          category:
+            category,
 
-            description:
-              description,
+          description:
+            description,
 
-            price:
-              price,
+          price:
+            price,
 
-            stock:
-              stock,
+          stock:
+            stock,
 
-            active:
-              active,
+          active:
+            active,
 
-            promotion:
-              promotion
+          promotion:
+            promotion
 
-          })
+        })
 
-      });
+    });
 
 
     message.style.color =
@@ -1497,7 +1566,7 @@ function renderOrders() {
     tbody.innerHTML =
       `
         <tr>
-          <td colspan="8">
+          <td colspan="10">
             <div class="empty">
               Nenhum pedido encontrado.
             </div>
@@ -1525,6 +1594,11 @@ function renderOrders() {
                   item.name ||
                   item.product_name ||
                   "Produto"
+                ) +
+                (
+                  Number(item.quantity || 1) > 1
+                    ? " x" + Number(item.quantity)
+                    : ""
                 )
             )
             .join("<br>");
@@ -1540,16 +1614,29 @@ function renderOrders() {
           .join(", ");
 
 
+        const deliveryInfo =
+          getDeliveryInfo(order);
+
+
+        const shippingPrice =
+          getShippingPrice(order);
+
+
         return `
           <tr>
 
             <td>
               <strong>
-                ${escapeHtml(order.order_nsu)}
+                ${escapeHtml(
+                  order.order_nsu ||
+                  "-"
+                )}
               </strong>
             </td>
 
+
             <td>
+
               ${escapeHtml(
                 order.customer_name ||
                 "Não informado"
@@ -1563,12 +1650,44 @@ function renderOrders() {
                   ""
                 )}
               </small>
+
             </td>
 
+
             <td>
+
+              <span
+                class="delivery-badge ${
+                  deliveryInfo.type === "pickup"
+                    ? "delivery-pickup"
+                    : "delivery-home"
+                }"
+              >
+                ${escapeHtml(
+                  deliveryInfo.label
+                )}
+              </span>
+
+              <br>
+
+              <span class="small-muted">
+                ${escapeHtml(
+                  deliveryInfo.detail
+                )}
+              </span>
+
+            </td>
+
+
+            <td>
+
               ${escapeHtml(
                 address ||
-                "Não informado"
+                (
+                  deliveryInfo.type === "pickup"
+                    ? "Retirada em Itapetininga/SP"
+                    : "Não informado"
+                )
               )}
 
               ${
@@ -1584,17 +1703,36 @@ function renderOrders() {
                   `
                   : ""
               }
+
             </td>
+
 
             <td>
               ${productNames || "-"}
             </td>
 
+
             <td>
+
+              <strong>
+                ${
+                  shippingPrice > 0
+                    ? formatMoney(shippingPrice)
+                    : "Grátis"
+                }
+              </strong>
+
+            </td>
+
+
+            <td>
+
               <strong>
                 ${formatMoney(order.total)}
               </strong>
+
             </td>
+
 
             <td>
 
@@ -1640,9 +1778,11 @@ function renderOrders() {
 
             </td>
 
+
             <td>
               ${formatDate(order.created_at)}
             </td>
+
 
             <td>
 
@@ -1662,6 +1802,198 @@ function renderOrders() {
 
       }
     ).join("");
+
+}
+
+
+/* =========================================================
+   ENTREGA
+========================================================= */
+
+function getDeliveryInfo(order) {
+
+  const shipping =
+    order.shipping ||
+    order.shipping_data ||
+    order.delivery ||
+    null;
+
+
+  const shippingId =
+    shipping &&
+    typeof shipping === "object"
+      ? (
+          shipping.id ||
+          shipping.shipping_id ||
+          ""
+        )
+      : "";
+
+
+  const shippingName =
+    shipping &&
+    typeof shipping === "object"
+      ? (
+          shipping.name ||
+          shipping.label ||
+          ""
+        )
+      : "";
+
+
+  if (
+    shippingId === "vt-retirada" ||
+    /retirada/i.test(
+      shippingName
+    ) ||
+    (
+      !order.customer_address &&
+      !order.customer_cep &&
+      Number(order.shipping_price || 0) === 0
+    )
+  ) {
+
+    return {
+      type: "pickup",
+      label: "🎁 Retirada grátis",
+      detail: "Itapetininga/SP"
+    };
+
+  }
+
+
+  return {
+    type: "delivery",
+    label: "🚚 Receber em casa",
+    detail:
+      shippingName ||
+      "Entrega"
+  };
+
+}
+
+
+function getShippingPrice(order) {
+
+  const possibleValues = [
+
+    order.shipping_price,
+
+    order.shipping_cost,
+
+    order.freight,
+
+    order.delivery_price,
+
+    order.shipping_amount
+
+  ];
+
+
+  for (
+    const value of possibleValues
+  ) {
+
+    const number =
+      Number(value);
+
+
+    if (
+      Number.isFinite(number)
+    ) {
+
+      return number;
+
+    }
+
+  }
+
+
+  const shipping =
+    order.shipping;
+
+
+  if (
+    shipping &&
+    typeof shipping === "object"
+  ) {
+
+    const number =
+      Number(
+        shipping.price ||
+        shipping.amount ||
+        shipping.cost ||
+        0
+      );
+
+
+    if (
+      Number.isFinite(number)
+    ) {
+
+      return number;
+
+    }
+
+  }
+
+
+  /*
+    Compatibilidade com pedidos antigos:
+
+    Se o pedido não possui campo de frete,
+    tentamos descobrir pelo total dos itens.
+  */
+
+  const items =
+    parseItems(order.items);
+
+
+  const itemsTotal =
+    items.reduce(
+      (sum, item) => {
+
+        const quantity =
+          Number(
+            item.quantity || 1
+          );
+
+        const price =
+          Number(
+            item.price ||
+            item.unit_price ||
+            0
+          );
+
+        return sum +
+          (price * quantity);
+
+      },
+      0
+    );
+
+
+  const total =
+    Number(
+      order.total || 0
+    );
+
+
+  const difference =
+    total -
+    itemsTotal;
+
+
+  if (
+    difference > 0.009
+  ) {
+
+    return difference;
+
+  }
+
+
+  return 0;
 
 }
 
@@ -1810,6 +2142,14 @@ function openOrder(orderNsu) {
     parseItems(order.items);
 
 
+  const deliveryInfo =
+    getDeliveryInfo(order);
+
+
+  const shippingPrice =
+    getShippingPrice(order);
+
+
   const address =
     [
       order.customer_address,
@@ -1841,121 +2181,366 @@ function openOrder(orderNsu) {
     buildWhatsAppMessage(order);
 
 
+  const itemsTotal =
+    items.reduce(
+      (sum, item) => {
+
+        const quantity =
+          Number(
+            item.quantity || 1
+          );
+
+        const price =
+          Number(
+            item.price ||
+            item.unit_price ||
+            0
+          );
+
+        return sum +
+          price * quantity;
+
+      },
+      0
+    );
+
+
   const html = `
 
     <div class="order-info">
 
-      <div class="info-box">
-        <small>Número do pedido</small>
-        <strong>
-          ${escapeHtml(order.order_nsu)}
-        </strong>
-      </div>
 
       <div class="info-box">
+
+        <small>Número do pedido</small>
+
+        <strong>
+          ${escapeHtml(
+            order.order_nsu ||
+            "-"
+          )}
+        </strong>
+
+      </div>
+
+
+      <div class="info-box">
+
         <small>Status</small>
+
         <strong>
           ${statusLabel(order.status)}
         </strong>
+
       </div>
 
+
       <div class="info-box">
+
         <small>Cliente</small>
+
         <strong>
           ${escapeHtml(
             order.customer_name ||
             "Não informado"
           )}
         </strong>
+
       </div>
 
+
       <div class="info-box">
+
         <small>Telefone</small>
+
         <strong>
           ${escapeHtml(
             order.customer_phone ||
             "Não informado"
           )}
         </strong>
+
       </div>
 
+
       <div class="info-box">
+
         <small>E-mail</small>
+
         <strong>
           ${escapeHtml(
             order.customer_email ||
             "Não informado"
           )}
         </strong>
+
       </div>
+
 
       <div class="info-box">
-        <small>CEP</small>
+
+        <small>Forma de recebimento</small>
+
         <strong>
           ${escapeHtml(
-            order.customer_cep ||
-            "Não informado"
+            deliveryInfo.label
           )}
         </strong>
+
+        <br>
+
+        <span class="small-muted">
+          ${escapeHtml(
+            deliveryInfo.detail
+          )}
+        </span>
+
       </div>
 
-      <div
-        class="info-box"
-        style="grid-column:1/-1;"
-      >
-        <small>Endereço</small>
-        <strong>
-          ${escapeHtml(
-            fullAddress ||
-            "Não informado"
-          )}
-        </strong>
-      </div>
+
+      ${
+        deliveryInfo.type === "delivery"
+          ? `
+            <div class="info-box">
+
+              <small>CEP</small>
+
+              <strong>
+                ${escapeHtml(
+                  order.customer_cep ||
+                  "Não informado"
+                )}
+              </strong>
+
+            </div>
+
+
+            <div
+              class="info-box"
+              style="grid-column:1/-1;"
+            >
+
+              <small>Endereço</small>
+
+              <strong>
+                ${escapeHtml(
+                  fullAddress ||
+                  "Não informado"
+                )}
+              </strong>
+
+            </div>
+          `
+          : `
+            <div
+              class="info-box"
+              style="grid-column:1/-1;"
+            >
+
+              <small>Local de retirada</small>
+
+              <strong>
+                VT Store — Itapetininga/SP
+              </strong>
+
+            </div>
+          `
+      }
+
 
       <div class="info-box">
+
         <small>Pagamento</small>
+
         <strong>
           ${escapeHtml(
             order.payment_method ||
             "Aguardando pagamento"
           )}
         </strong>
+
       </div>
 
+
       <div class="info-box">
+
         <small>ID do pagamento</small>
+
         <strong>
           ${escapeHtml(
             order.payment_id ||
             "Não informado"
           )}
         </strong>
+
       </div>
 
+
       <div class="info-box">
+
         <small>Data da compra</small>
+
         <strong>
-          ${formatDate(order.created_at)}
+          ${formatDate(
+            order.created_at
+          )}
         </strong>
+
       </div>
 
+
       <div class="info-box">
+
         <small>Pagamento confirmado</small>
+
         <strong>
           ${
             order.paid_at
-              ? formatDate(order.paid_at)
+              ? formatDate(
+                  order.paid_at
+                )
               : "Não"
           }
         </strong>
+
       </div>
+
+
+      ${
+        order.transaction_nsu
+          ? `
+            <div
+              class="info-box"
+              style="grid-column:1/-1;"
+            >
+
+              <small>Transaction NSU InfinitePay</small>
+
+              <strong>
+                ${escapeHtml(
+                  order.transaction_nsu
+                )}
+              </strong>
+
+            </div>
+          `
+          : ""
+      }
 
     </div>
 
 
+    <!-- ENTREGA -->
+
+    <div class="shipping-box">
+
+      <h3>
+        🚚 Entrega / Retirada
+      </h3>
+
+
+      <div class="shipping-line">
+
+        <span>
+          Forma de recebimento
+        </span>
+
+        <strong>
+          ${escapeHtml(
+            deliveryInfo.label
+          )}
+        </strong>
+
+      </div>
+
+
+      <div class="shipping-line">
+
+        <span>
+          Opção
+        </span>
+
+        <strong>
+          ${escapeHtml(
+            deliveryInfo.detail
+          )}
+        </strong>
+
+      </div>
+
+
+      <div class="shipping-line">
+
+        <span>
+          Frete
+        </span>
+
+        <strong>
+          ${
+            shippingPrice > 0
+              ? formatMoney(
+                  shippingPrice
+                )
+              : "Grátis"
+          }
+        </strong>
+
+      </div>
+
+
+      ${
+        deliveryInfo.type === "delivery" &&
+        order.shipping_delivery_time
+          ? `
+            <div class="shipping-line">
+
+              <span>
+                Prazo estimado
+              </span>
+
+              <strong>
+                ${escapeHtml(
+                  order.shipping_delivery_time
+                )}
+              </strong>
+
+            </div>
+          `
+          : ""
+      }
+
+
+      ${
+        order.shipping_name
+          ? `
+            <div class="shipping-line">
+
+              <span>
+                Serviço
+              </span>
+
+              <strong>
+                ${escapeHtml(
+                  order.shipping_name
+                )}
+              </strong>
+
+            </div>
+          `
+          : ""
+      }
+
+    </div>
+
+
+    <!-- PRODUTOS -->
+
     <div class="order-items">
 
-      <h3>Produtos</h3>
+      <h3>
+        Produtos
+      </h3>
+
 
       ${
         items.length
@@ -1998,6 +2583,7 @@ function openOrder(orderNsu) {
 
                     </div>
 
+
                     <strong>
                       ${formatMoney(
                         price * quantity
@@ -2019,13 +2605,78 @@ function openOrder(orderNsu) {
     </div>
 
 
+    <!-- RESUMO -->
+
+    <div class="shipping-box">
+
+      <h3>
+        💰 Resumo do pedido
+      </h3>
+
+
+      <div class="shipping-line">
+
+        <span>
+          Produtos
+        </span>
+
+        <strong>
+          ${formatMoney(
+            itemsTotal
+          )}
+        </strong>
+
+      </div>
+
+
+      <div class="shipping-line">
+
+        <span>
+          Frete
+        </span>
+
+        <strong>
+          ${
+            shippingPrice > 0
+              ? formatMoney(
+                  shippingPrice
+                )
+              : "Grátis"
+          }
+        </strong>
+
+      </div>
+
+
+      <div class="shipping-line">
+
+        <span>
+          Total pago
+        </span>
+
+        <strong>
+          ${formatMoney(
+            order.total
+          )}
+        </strong>
+
+      </div>
+
+    </div>
+
+
     <div class="order-total">
+
       Total:
-      ${formatMoney(order.total)}
+      ${formatMoney(
+        order.total
+      )}
+
     </div>
 
 
     <div class="actions">
+
 
       ${
         phone
@@ -2059,6 +2710,23 @@ function openOrder(orderNsu) {
       >
         Copiar pedido
       </button>
+
+
+      ${
+        deliveryInfo.type === "delivery"
+          ? `
+            <button
+              class="btn-primary"
+              onclick="copyAddress(
+                '${escapeJs(order.order_nsu)}'
+              )"
+            >
+              Copiar endereço
+            </button>
+          `
+          : ""
+      }
+
 
     </div>
 
@@ -2151,6 +2819,7 @@ function renderProductCard(
 
     <div class="product-card">
 
+
       ${
         mainImage
           ? `
@@ -2178,7 +2847,9 @@ function renderProductCard(
 
       <div class="field">
 
-        <label>Nome</label>
+        <label>
+          Nome
+        </label>
 
         <input
           id="name-${product.id}"
@@ -2192,7 +2863,9 @@ function renderProductCard(
 
       <div class="field">
 
-        <label>Categoria</label>
+        <label>
+          Categoria
+        </label>
 
         <input
           id="category-${product.id}"
@@ -2206,7 +2879,9 @@ function renderProductCard(
 
       <div class="field">
 
-        <label>Descrição</label>
+        <label>
+          Descrição
+        </label>
 
         <textarea
           id="description-${product.id}"
@@ -2219,7 +2894,9 @@ function renderProductCard(
 
       <div class="field">
 
-        <label>Preço</label>
+        <label>
+          Preço
+        </label>
 
         <input
           type="number"
@@ -2236,7 +2913,9 @@ function renderProductCard(
 
       <div class="field">
 
-        <label>Estoque</label>
+        <label>
+          Estoque
+        </label>
 
         <div class="stock-row">
 
@@ -2327,7 +3006,9 @@ function renderProductCard(
 
       <div>
 
-        <strong>Fotos</strong>
+        <strong>
+          Fotos
+        </strong>
 
         <input
           type="file"
@@ -2382,7 +3063,9 @@ function renderProductCard(
 
       <div style="margin-top:18px;">
 
-        <strong>Vídeos</strong>
+        <strong>
+          Vídeos
+        </strong>
 
         <input
           type="file"
@@ -2687,6 +3370,7 @@ async function uploadImage(
       "Erro ao enviar foto."
     );
 
+
     input.value =
       "";
 
@@ -2769,6 +3453,7 @@ async function uploadVideo(
       "Erro ao enviar vídeo."
     );
 
+
     input.value =
       "";
 
@@ -2790,7 +3475,9 @@ async function deleteImage(
       "Excluir esta foto?"
     )
   ) {
+
     return;
+
   }
 
 
@@ -2849,7 +3536,9 @@ async function deleteVideo(
       "Excluir este vídeo?"
     )
   ) {
+
     return;
+
   }
 
 
@@ -2933,6 +3622,14 @@ function buildWhatsAppMessage(
   order
 ) {
 
+  const delivery =
+    getDeliveryInfo(order);
+
+
+  const shippingPrice =
+    getShippingPrice(order);
+
+
   let message =
     "Olá! Aqui é da VT Store.";
 
@@ -2942,7 +3639,9 @@ function buildWhatsAppMessage(
     (order.order_nsu || "");
 
 
-  if (order.status === "paid") {
+  if (
+    order.status === "paid"
+  ) {
 
     message +=
       "\n\nSeu pagamento foi confirmado!";
@@ -2950,7 +3649,9 @@ function buildWhatsAppMessage(
   }
 
 
-  if (order.status === "shipped") {
+  if (
+    order.status === "shipped"
+  ) {
 
     message +=
       "\n\nSeu pedido foi enviado!";
@@ -2958,12 +3659,70 @@ function buildWhatsAppMessage(
   }
 
 
-  if (order.status === "delivered") {
+  if (
+    order.status === "delivered"
+  ) {
 
     message +=
       "\n\nSeu pedido foi marcado como entregue.";
 
   }
+
+
+  message +=
+    "\n\nForma de recebimento: " +
+    delivery.label;
+
+
+  if (
+    delivery.type === "pickup"
+  ) {
+
+    message +=
+      "\nLocal: Itapetininga/SP";
+
+  } else {
+
+    const address =
+      [
+        order.customer_address,
+        order.customer_number,
+        order.customer_complement,
+        order.customer_neighborhood,
+        order.customer_city,
+        order.customer_state
+      ]
+      .filter(Boolean)
+      .join(", ");
+
+
+    if (address) {
+
+      message +=
+        "\nEndereço: " +
+        address;
+
+    }
+
+  }
+
+
+  message +=
+    "\nFrete: " +
+    (
+      shippingPrice > 0
+        ? formatMoney(
+            shippingPrice
+          )
+        : "Grátis"
+    );
+
+
+  message +=
+    "\nTotal: " +
+    formatMoney(
+      order.total
+    );
 
 
   message +=
@@ -3000,29 +3759,70 @@ async function copyOrder(
     parseItems(order.items);
 
 
+  const delivery =
+    getDeliveryInfo(order);
+
+
+  const shippingPrice =
+    getShippingPrice(order);
+
+
   const text =
     [
+
       "VT STORE",
+
       "",
+
       "PEDIDO: " +
         order.order_nsu,
+
       "",
+
       "Cliente: " +
         (order.customer_name || ""),
+
       "Telefone: " +
         (order.customer_phone || ""),
+
       "E-mail: " +
         (order.customer_email || ""),
+
+      "",
+
+      "FORMA DE RECEBIMENTO: " +
+        delivery.label,
+
+      "OPÇÃO: " +
+        delivery.detail,
+
+      "",
+
       "CEP: " +
         (order.customer_cep || ""),
+
       "Endereço: " +
         (order.customer_address || ""),
+
       "Número: " +
         (order.customer_number || ""),
+
       "Complemento: " +
         (order.customer_complement || ""),
+
+      "Bairro: " +
+        (order.customer_neighborhood || ""),
+
+      "Cidade: " +
+        (order.customer_city || ""),
+
+      "Estado: " +
+        (order.customer_state || ""),
+
       "",
+
       "PRODUTOS:",
+
       ...items.map(
         item =>
           "- " +
@@ -3034,12 +3834,30 @@ async function copyOrder(
           " x" +
           (item.quantity || 1)
       ),
+
       "",
+
+      "FRETE: " +
+        (
+          shippingPrice > 0
+            ? formatMoney(
+                shippingPrice
+              )
+            : "Grátis"
+        ),
+
       "TOTAL: " +
-        formatMoney(order.total),
+        formatMoney(
+          order.total
+        ),
+
       "",
+
       "STATUS: " +
-        statusLabel(order.status)
+        statusLabel(
+          order.status
+        )
+
     ].join("\n");
 
 
@@ -3059,6 +3877,76 @@ async function copyOrder(
 
     alert(
       "Não foi possível copiar automaticamente."
+    );
+
+  }
+
+}
+
+
+/* =========================================================
+   COPIAR ENDEREÇO
+========================================================= */
+
+async function copyAddress(
+  orderNsu
+) {
+
+  const order =
+    orders.find(
+      o =>
+        String(o.order_nsu) ===
+        String(orderNsu)
+    );
+
+
+  if (!order) {
+    return;
+  }
+
+
+  const text =
+    [
+
+      order.customer_address,
+
+      order.customer_number,
+
+      order.customer_complement,
+
+      order.customer_neighborhood,
+
+      order.customer_city,
+
+      order.customer_state,
+
+      "CEP: " +
+        (
+          order.customer_cep ||
+          ""
+        )
+
+    ]
+    .filter(Boolean)
+    .join(", ");
+
+
+  try {
+
+    await navigator.clipboard.writeText(
+      text
+    );
+
+
+    alert(
+      "Endereço copiado!"
+    );
+
+
+  } catch (error) {
+
+    alert(
+      "Não foi possível copiar o endereço."
     );
 
   }
@@ -3087,6 +3975,7 @@ function parseItems(
 
       const parsed =
         JSON.parse(items);
+
 
       return Array.isArray(parsed)
         ? parsed
