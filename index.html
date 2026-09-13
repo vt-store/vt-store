@@ -2,7 +2,6 @@
 <html lang="pt-BR">
 
 <head>
-
   <meta charset="UTF-8">
 
   <meta
@@ -17,13 +16,9 @@
     content="VT Store - Consoles, games e iPhones com ótimos preços."
   >
 
-  <link
-    rel="stylesheet"
-    href="styles.css"
-  >
+  <link rel="stylesheet" href="styles.css">
 
   <script src="config.js"></script>
-
 </head>
 
 <body>
@@ -36,31 +31,15 @@ HEADER
 
   <div class="container header-content">
 
-    <a
-      href="#inicio"
-      class="logo"
-    >
+    <a href="#inicio" class="logo">
       VT<span>STORE</span>
     </a>
 
     <nav class="nav">
-
-      <a href="#inicio">
-        Início
-      </a>
-
-      <a href="#produtos">
-        Produtos
-      </a>
-
-      <a href="#ofertas">
-        Ofertas
-      </a>
-
-      <a href="#contato">
-        Contato
-      </a>
-
+      <a href="#inicio">Início</a>
+      <a href="#produtos">Produtos</a>
+      <a href="#ofertas">Ofertas</a>
+      <a href="#contato">Contato</a>
     </nav>
 
     <div class="header-actions">
@@ -68,7 +47,8 @@ HEADER
       <a
         href="https://wa.me/5515991713864"
         target="_blank"
-        class="whatsapp-button"
+        rel="noopener noreferrer"
+        class="header-whatsapp"
       >
         WhatsApp
       </a>
@@ -77,11 +57,10 @@ HEADER
         type="button"
         class="cart-button"
         id="cartButton"
+        aria-label="Abrir carrinho"
       >
         🛒
-        <span id="cartCount">
-          0
-        </span>
+        <span id="cartCount">0</span>
       </button>
 
     </div>
@@ -95,22 +74,19 @@ HEADER
 HERO
 ================================================== -->
 
-<section
-  id="inicio"
-  class="hero"
->
+<section id="inicio" class="hero">
 
   <div class="container hero-content">
 
     <div class="hero-text">
 
-      <span class="hero-badge">
+      <span class="hero-tag">
         🎮 VT STORE
       </span>
 
       <h1>
         A sua próxima compra
-        <span>está na VT Store.</span>
+        <strong>está na VT Store.</strong>
       </h1>
 
       <p>
@@ -130,10 +106,34 @@ HERO
         <a
           href="https://wa.me/5515991713864?text=Vim%20pelo%20site%20da%20VT%20Store"
           target="_blank"
+          rel="noopener noreferrer"
           class="btn btn-secondary"
         >
           Falar no WhatsApp
         </a>
+
+      </div>
+
+    </div>
+
+    <div class="hero-card">
+
+      <div class="hero-card-content">
+
+        <span>
+          VT STORE
+        </span>
+
+        <h2>
+          Games,
+          <strong>consoles</strong>
+          e iPhones.
+        </h2>
+
+        <p>
+          Produtos selecionados,
+          preços competitivos e compra segura.
+        </p>
 
       </div>
 
@@ -148,11 +148,11 @@ HERO
 CATEGORIAS
 ================================================== -->
 
-<section class="categories-section">
+<section class="categories">
 
   <div class="container">
 
-    <div class="section-title">
+    <div class="section-heading">
 
       <span>
         CATEGORIAS
@@ -164,42 +164,89 @@ CATEGORIAS
 
     </div>
 
-    <div class="categories">
+    <div class="category-grid">
 
       <button
         type="button"
-        class="category-button active"
+        class="category-card active"
         data-category="todos"
       >
-        🎮
-        <strong>Todos</strong>
+
+        <span class="category-icon">
+          🎮
+        </span>
+
+        <strong>
+          Todos
+        </strong>
+
+        <small>
+          Ver todos os produtos
+        </small>
+
       </button>
+
 
       <button
         type="button"
-        class="category-button"
+        class="category-card"
         data-category="xbox"
       >
-        🟢
-        <strong>Xbox</strong>
+
+        <span class="category-icon">
+          🟢
+        </span>
+
+        <strong>
+          Xbox
+        </strong>
+
+        <small>
+          Consoles e acessórios
+        </small>
+
       </button>
+
 
       <button
         type="button"
-        class="category-button"
+        class="category-card"
         data-category="playstation"
       >
-        🔵
-        <strong>PlayStation</strong>
+
+        <span class="category-icon">
+          🔵
+        </span>
+
+        <strong>
+          PlayStation
+        </strong>
+
+        <small>
+          PS4, PS5 e mais
+        </small>
+
       </button>
+
 
       <button
         type="button"
-        class="category-button"
+        class="category-card"
         data-category="iphone"
       >
-        📱
-        <strong>iPhone</strong>
+
+        <span class="category-icon">
+          📱
+        </span>
+
+        <strong>
+          iPhone
+        </strong>
+
+        <small>
+          iPhones selecionados
+        </small>
+
       </button>
 
     </div>
@@ -220,9 +267,9 @@ PRODUTOS
 
   <div class="container">
 
-    <div class="products-header">
+    <div class="section-top">
 
-      <div class="section-title">
+      <div class="section-heading">
 
         <span>
           NOSSA LOJA
@@ -241,9 +288,8 @@ PRODUTOS
           id="searchInput"
           placeholder="Buscar produto..."
           autocomplete="off"
+          aria-label="Buscar produto"
         >
-
-        🔎
 
       </div>
 
@@ -255,7 +301,7 @@ PRODUTOS
       class="products-grid"
     >
 
-      <div class="loading-products">
+      <div class="loading">
         Carregando produtos...
       </div>
 
@@ -272,7 +318,7 @@ OFERTAS
 
 <section
   id="ofertas"
-  class="offers-section"
+  class="offers"
 >
 
   <div class="container">
@@ -281,7 +327,7 @@ OFERTAS
 
       <div>
 
-        <span>
+        <span class="offer-label">
           🔥 OFERTAS VT STORE
         </span>
 
@@ -299,7 +345,8 @@ OFERTAS
       <a
         href="https://wa.me/5515991713864?text=Quero%20saber%20sobre%20as%20ofertas%20da%20VT%20Store"
         target="_blank"
-        class="btn btn-primary"
+        rel="noopener noreferrer"
+        class="btn btn-light"
       >
         Ver ofertas
       </a>
@@ -317,12 +364,12 @@ CONTATO
 
 <section
   id="contato"
-  class="contact-section"
+  class="contact"
 >
 
-  <div class="container">
+  <div class="container contact-content">
 
-    <div class="section-title">
+    <div>
 
       <span>
         FALE CONOSCO
@@ -344,17 +391,36 @@ CONTATO
       <a
         href="https://wa.me/5515991713864?text=Vim%20pelo%20site%20da%20VT%20Store"
         target="_blank"
-        class="btn btn-primary"
+        rel="noopener noreferrer"
+        class="contact-button"
       >
-        WhatsApp
+
+        <strong>
+          WhatsApp
+        </strong>
+
+        <small>
+          Fale com a VT Store
+        </small>
+
       </a>
+
 
       <a
         href="https://www.tiktok.com/@vt_store015"
         target="_blank"
-        class="btn btn-secondary"
+        rel="noopener noreferrer"
+        class="contact-button"
       >
-        TikTok
+
+        <strong>
+          TikTok
+        </strong>
+
+        <small>
+          @vt_store015
+        </small>
+
       </a>
 
     </div>
@@ -418,47 +484,91 @@ CARRINHO
 
 <div
   id="cartOverlay"
-  class="modal-overlay"
+  class="cart-overlay"
 >
 
-  <div class="modal cart-modal">
+  <div
+    class="cart-panel"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="cartTitle"
+  >
 
-    <button
-      type="button"
-      class="modal-close"
-      id="closeCart"
-    >
-      ×
-    </button>
+    <div class="cart-header">
 
-    <h2>
-      Seu carrinho
-    </h2>
+      <div>
+
+        <span>
+          VT STORE
+        </span>
+
+        <h2 id="cartTitle">
+          Seu carrinho
+        </h2>
+
+      </div>
+
+      <button
+        type="button"
+        id="closeCart"
+        aria-label="Fechar carrinho"
+      >
+        ×
+      </button>
+
+    </div>
+
 
     <div
       id="cartItems"
       class="cart-items"
     ></div>
 
-    <div class="cart-total">
 
-      <span>
-        Total
-      </span>
+    <div
+      id="cartEmpty"
+      class="cart-empty"
+    >
 
-      <strong id="cartTotal">
-        R$ 0,00
-      </strong>
+      <div>
+        🛒
+      </div>
+
+      <h3>
+        Seu carrinho está vazio
+      </h3>
+
+      <p>
+        Adicione algum produto para continuar.
+      </p>
 
     </div>
 
-    <button
-      type="button"
-      id="checkoutButton"
-      class="btn btn-primary btn-full"
-    >
-      Continuar compra
-    </button>
+
+    <div class="cart-footer">
+
+      <div class="cart-total">
+
+        <span>
+          Total
+        </span>
+
+        <strong id="cartTotal">
+          R$ 0,00
+        </strong>
+
+      </div>
+
+      <button
+        type="button"
+        id="checkoutButton"
+        class="cart-checkout"
+        disabled
+      >
+        Continuar compra
+      </button>
+
+    </div>
 
   </div>
 
@@ -471,22 +581,24 @@ MODAL DE DADOS
 
 <div
   id="customerOverlay"
-  class="modal-overlay"
+  class="gallery-overlay"
+  style="display:none;"
 >
 
-  <div class="modal customer-modal">
+  <div class="gallery-modal customer-modal">
 
     <button
       type="button"
-      class="modal-close"
+      class="gallery-close"
       id="closeCustomer"
+      aria-label="Fechar"
     >
       ×
     </button>
 
-    <h2>
+    <div class="gallery-title">
       Dados da compra
-    </h2>
+    </div>
 
     <p class="modal-description">
       Preencha seus dados para escolher entre
@@ -495,9 +607,7 @@ MODAL DE DADOS
     </p>
 
 
-    <!-- ==============================================
-    DADOS BÁSICOS
-    ============================================== -->
+    <!-- DADOS BÁSICOS -->
 
     <div class="form-grid">
 
@@ -554,9 +664,7 @@ MODAL DE DADOS
     </div>
 
 
-    <!-- ==============================================
-    RECEBIMENTO
-    ============================================== -->
+    <!-- RECEBIMENTO -->
 
     <div class="shipping-section">
 
@@ -575,7 +683,6 @@ MODAL DE DADOS
         class="shipping-options"
       >
 
-        <!-- RETIRADA -->
         <button
           type="button"
           class="shipping-option selected"
@@ -609,7 +716,6 @@ MODAL DE DADOS
         </button>
 
 
-        <!-- ENTREGA -->
         <button
           type="button"
           class="shipping-option"
@@ -661,10 +767,6 @@ MODAL DE DADOS
       ></div>
 
 
-      <!-- ============================================
-      OPÇÕES DE FRETE
-      ============================================ -->
-
       <div
         id="deliveryShippingOptions"
         style="display:none;"
@@ -680,9 +782,7 @@ MODAL DE DADOS
     </div>
 
 
-    <!-- ==============================================
-    ENDEREÇO
-    ============================================== -->
+    <!-- ENDEREÇO -->
 
     <div
       id="deliveryFields"
@@ -820,9 +920,7 @@ MODAL DE DADOS
     </div>
 
 
-    <!-- ==============================================
-    RETIRADA INFO
-    ============================================== -->
+    <!-- RETIRADA -->
 
     <div
       id="pickupInfo"
@@ -851,10 +949,6 @@ MODAL DE DADOS
     </div>
 
 
-    <!-- ==============================================
-    ERRO
-    ============================================== -->
-
     <div
       id="customerFormError"
       class="form-error"
@@ -862,14 +956,10 @@ MODAL DE DADOS
     ></div>
 
 
-    <!-- ==============================================
-    FINALIZAR
-    ============================================== -->
-
     <button
       type="button"
       id="finalCheckoutButton"
-      class="btn btn-primary btn-full"
+      class="btn btn-primary"
     >
       Ir para pagamento
     </button>
@@ -893,22 +983,22 @@ MODAL PRODUTO
 
 <div
   id="productModal"
-  class="modal-overlay"
+  class="gallery-overlay"
+  style="display:none;"
 >
 
-  <div class="modal product-modal">
+  <div class="gallery-modal product-modal">
 
     <button
       type="button"
-      class="modal-close"
+      class="gallery-close"
       id="closeProductModal"
+      aria-label="Fechar"
     >
       ×
     </button>
 
-    <div
-      id="productModalContent"
-    ></div>
+    <div id="productModalContent"></div>
 
   </div>
 
@@ -924,11 +1014,9 @@ JAVASCRIPT
 "use strict";
 
 
-/*
-==================================================
-CONFIGURAÇÃO
-==================================================
-*/
+/* ==================================================
+CONFIG
+================================================== */
 
 const SUPABASE_URL =
   window.VT_CONFIG?.SUPABASE_URL ||
@@ -939,136 +1027,84 @@ const SUPABASE_ANON_KEY =
   "";
 
 
-/*
-==================================================
+/* ==================================================
 ELEMENTOS
-==================================================
-*/
+================================================== */
 
 const productsGrid =
-  document.getElementById(
-    "productsGrid"
-  );
+  document.getElementById("productsGrid");
 
 const searchInput =
-  document.getElementById(
-    "searchInput"
-  );
+  document.getElementById("searchInput");
 
 const categoryButtons =
-  document.querySelectorAll(
-    ".category-button"
-  );
+  document.querySelectorAll(".category-card");
 
 const cartButton =
-  document.getElementById(
-    "cartButton"
-  );
+  document.getElementById("cartButton");
 
 const cartCount =
-  document.getElementById(
-    "cartCount"
-  );
+  document.getElementById("cartCount");
 
 const cartOverlay =
-  document.getElementById(
-    "cartOverlay"
-  );
+  document.getElementById("cartOverlay");
 
 const closeCart =
-  document.getElementById(
-    "closeCart"
-  );
+  document.getElementById("closeCart");
 
 const cartItems =
-  document.getElementById(
-    "cartItems"
-  );
+  document.getElementById("cartItems");
+
+const cartEmpty =
+  document.getElementById("cartEmpty");
 
 const cartTotal =
-  document.getElementById(
-    "cartTotal"
-  );
+  document.getElementById("cartTotal");
 
 const checkoutButton =
-  document.getElementById(
-    "checkoutButton"
-  );
+  document.getElementById("checkoutButton");
 
 const customerOverlay =
-  document.getElementById(
-    "customerOverlay"
-  );
+  document.getElementById("customerOverlay");
 
 const closeCustomer =
-  document.getElementById(
-    "closeCustomer"
-  );
+  document.getElementById("closeCustomer");
 
 const finalCheckoutButton =
-  document.getElementById(
-    "finalCheckoutButton"
-  );
+  document.getElementById("finalCheckoutButton");
 
 const customerFormError =
-  document.getElementById(
-    "customerFormError"
-  );
+  document.getElementById("customerFormError");
 
 const customerName =
-  document.getElementById(
-    "customerName"
-  );
+  document.getElementById("customerName");
 
 const customerPhone =
-  document.getElementById(
-    "customerPhone"
-  );
+  document.getElementById("customerPhone");
 
 const customerEmail =
-  document.getElementById(
-    "customerEmail"
-  );
+  document.getElementById("customerEmail");
 
 const customerCep =
-  document.getElementById(
-    "customerCep"
-  );
+  document.getElementById("customerCep");
 
 const customerNumber =
-  document.getElementById(
-    "customerNumber"
-  );
+  document.getElementById("customerNumber");
 
 const customerAddress =
-  document.getElementById(
-    "customerAddress"
-  );
+  document.getElementById("customerAddress");
 
 const customerNeighborhood =
-  document.getElementById(
-    "customerNeighborhood"
-  );
+  document.getElementById("customerNeighborhood");
 
 const customerCity =
-  document.getElementById(
-    "customerCity"
-  );
+  document.getElementById("customerCity");
 
 const customerState =
-  document.getElementById(
-    "customerState"
-  );
+  document.getElementById("customerState");
 
 const customerComplement =
-  document.getElementById(
-    "customerComplement"
-  );
-
-const shippingOptions =
-  document.getElementById(
-    "shippingOptions"
-  );
+  document.getElementById("customerComplement");
 
 const calculatedShippingOptions =
   document.getElementById(
@@ -1081,29 +1117,19 @@ const deliveryShippingOptions =
   );
 
 const deliveryFields =
-  document.getElementById(
-    "deliveryFields"
-  );
+  document.getElementById("deliveryFields");
 
 const pickupInfo =
-  document.getElementById(
-    "pickupInfo"
-  );
+  document.getElementById("pickupInfo");
 
 const shippingLoading =
-  document.getElementById(
-    "shippingLoading"
-  );
+  document.getElementById("shippingLoading");
 
 const shippingError =
-  document.getElementById(
-    "shippingError"
-  );
+  document.getElementById("shippingError");
 
 const productModal =
-  document.getElementById(
-    "productModal"
-  );
+  document.getElementById("productModal");
 
 const productModalContent =
   document.getElementById(
@@ -1116,77 +1142,64 @@ const closeProductModal =
   );
 
 
-/*
-==================================================
+/* ==================================================
 ESTADO
-==================================================
-*/
+================================================== */
 
 let products = [];
 
 let cart = [];
 
-let currentCategory =
-  "todos";
+let currentCategory = "todos";
 
 let selectedShipping = {
   id: "vt-retirada",
   name: "Retirada na loja",
   company: "VT Store",
   price: 0,
-  delivery_time:
-    "Retire em Itapetininga/SP"
+  delivery_time: "Retire em Itapetininga/SP"
 };
 
 
-/*
-==================================================
+/* ==================================================
 LOCAL STORAGE
-==================================================
-*/
+================================================== */
 
 try {
 
   const savedCart =
-    localStorage.getItem(
-      "vt_store_cart"
-    );
+    localStorage.getItem("vt_store_cart");
 
   if (savedCart) {
 
     const parsed =
-      JSON.parse(
-        savedCart
-      );
+      JSON.parse(savedCart);
 
-    if (
-      Array.isArray(parsed)
-    ) {
+    if (Array.isArray(parsed)) {
       cart = parsed;
     }
 
   }
 
-} catch {
+} catch (error) {
+
+  console.warn(
+    "Não foi possível carregar o carrinho.",
+    error
+  );
 
   cart = [];
 
 }
 
 
-/*
-==================================================
-FORMATAÇÃO
-==================================================
-*/
+/* ==================================================
+UTILITÁRIOS
+================================================== */
 
-function formatPrice(
-  value
-) {
+function formatPrice(value) {
 
-  return Number(
-    value || 0
-  ).toLocaleString(
+  return Number(value || 0).toLocaleString(
     "pt-BR",
     {
       style: "currency",
@@ -1197,48 +1210,31 @@ function formatPrice(
 }
 
 
-/*
-==================================================
-ESCAPE HTML
-==================================================
-*/
+function escapeHtml(value) {
 
-function escapeHtml(
-  value
-) {
-
-  return String(
-    value ?? ""
-  )
-    .replace(
-      /&/g,
-      "&amp;"
-    )
-    .replace(
-      /</g,
-      "&lt;"
-    )
-    .replace(
-      />/g,
-      "&gt;"
-    )
-    .replace(
-      /"/g,
-      "&quot;"
-    )
-    .replace(
-      /'/g,
-      "&#039;"
-    );
+  return String(value ?? "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
 
 }
 
 
-/*
-==================================================
-SALVAR CARRINHO
-==================================================
-*/
+function normalizeText(value) {
+
+  return String(value || "")
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "");
+
+}
+
+
+/* ==================================================
+CARRINHO
+================================================== */
 
 function saveCart() {
 
@@ -1250,54 +1246,28 @@ function saveCart() {
 }
 
 
-/*
-==================================================
-CONTADOR DO CARRINHO
-==================================================
-*/
-
 function updateCartCount() {
 
   const total =
     cart.reduce(
-      (
-        sum,
-        item
-      ) =>
-        sum +
-        Number(
-          item.quantity || 0
-        ),
+      (sum, item) =>
+        sum + Number(item.quantity || 0),
       0
     );
 
-  cartCount.textContent =
-    total;
+  cartCount.textContent = total;
 
 }
 
 
-/*
-==================================================
-TOTAL DO CARRINHO
-==================================================
-*/
-
 function getCartTotal() {
 
   return cart.reduce(
-    (
-      total,
-      item
-    ) =>
+    (total, item) =>
       total +
       (
-        Number(
-          item.price || 0
-        ) *
-        Number(
-          item.quantity || 0
-        )
+        Number(item.price || 0) *
+        Number(item.quantity || 0)
       ),
     0
   );
@@ -1305,15 +1275,24 @@ function getCartTotal() {
 }
 
 
-/*
-==================================================
-ADICIONAR AO CARRINHO
-==================================================
-*/
+function addToCart(product) {
 
-function addToCart(
-  product
-) {
+  if (!product || !product.id) {
+    return;
+  }
+
+  const stock =
+    Number(product.stock || 0);
+
+  if (stock <= 0) {
+
+    alert(
+      "Este produto está sem estoque."
+    );
+
+    return;
+
+  }
 
   const existing =
     cart.find(
@@ -1322,35 +1301,40 @@ function addToCart(
         String(product.id)
     );
 
+
   if (existing) {
 
+    if (
+      Number(existing.quantity) >= stock
+    ) {
+
+      alert(
+        "Você já adicionou todo o estoque disponível."
+      );
+
+      return;
+
+    }
+
     existing.quantity =
-      Number(
-        existing.quantity
-      ) + 1;
+      Number(existing.quantity) + 1;
 
   } else {
 
     cart.push({
 
-      id:
-        product.id,
+      id: product.id,
 
-      name:
-        product.name,
+      name: product.name,
 
-      price:
-        Number(
-          product.price
-        ),
+      price: Number(product.price || 0),
 
       image:
         product.image ||
         product.image_url ||
         "",
 
-      quantity:
-        1
+      quantity: 1
 
     });
 
@@ -1369,15 +1353,7 @@ function addToCart(
 }
 
 
-/*
-==================================================
-REMOVER DO CARRINHO
-==================================================
-*/
-
-function removeFromCart(
-  productId
-) {
+function removeFromCart(productId) {
 
   cart =
     cart.filter(
@@ -1395,12 +1371,6 @@ function removeFromCart(
 }
 
 
-/*
-==================================================
-ALTERAR QUANTIDADE
-==================================================
-*/
-
 function changeQuantity(
   productId,
   change
@@ -1417,22 +1387,45 @@ function changeQuantity(
     return;
   }
 
-  item.quantity =
-    Number(
-      item.quantity
-    ) + change;
 
-  if (
-    item.quantity <= 0
-  ) {
+  const product =
+    products.find(
+      product =>
+        String(product.id) ===
+        String(productId)
+    );
 
-    removeFromCart(
-      productId
+
+  const stock =
+    Number(product?.stock || 999999);
+
+
+  const newQuantity =
+    Number(item.quantity) + Number(change);
+
+
+  if (newQuantity > stock) {
+
+    alert(
+      "Você atingiu o estoque disponível deste produto."
     );
 
     return;
 
   }
+
+
+  if (newQuantity <= 0) {
+
+    removeFromCart(productId);
+
+    return;
+
+  }
+
+
+  item.quantity =
+    newQuantity;
 
   saveCart();
 
@@ -1443,101 +1436,135 @@ function changeQuantity(
 }
 
 
-/*
-==================================================
-RENDER CARRINHO
-==================================================
-*/
-
 function renderCart() {
 
-  if (
-    cart.length === 0
-  ) {
+  const hasItems =
+    cart.length > 0;
 
-    cartItems.innerHTML = `
-      <div class="empty-cart">
-        <div>🛒</div>
-        <p>Seu carrinho está vazio.</p>
-      </div>
-    `;
+
+  cartEmpty.classList.toggle(
+    "active",
+    !hasItems
+  );
+
+
+  checkoutButton.disabled =
+    !hasItems;
+
+
+  if (!hasItems) {
+
+    cartItems.innerHTML = "";
 
     cartTotal.textContent =
       formatPrice(0);
-
-    checkoutButton.disabled =
-      true;
 
     return;
 
   }
 
-  checkoutButton.disabled =
-    false;
 
   cartItems.innerHTML =
     cart.map(
-      item => `
+      item => {
 
-        <div class="cart-item">
+        const image =
+          item.image || "";
 
-          <div class="cart-item-info">
 
-            <strong>
-              ${escapeHtml(
-                item.name
-              )}
-            </strong>
+        return `
 
-            <span>
-              ${formatPrice(
-                item.price
-              )}
-            </span>
+          <div class="cart-item">
+
+            <div class="cart-item-image">
+
+              ${
+                image
+                  ? `
+                    <img
+                      src="${escapeHtml(image)}"
+                      alt="${escapeHtml(item.name)}"
+                    >
+                  `
+                  : `
+                    <div
+                      style="
+                        width:100%;
+                        height:100%;
+                        display:flex;
+                        align-items:center;
+                        justify-content:center;
+                        font-size:28px;
+                      "
+                    >
+                      🎮
+                    </div>
+                  `
+              }
+
+            </div>
+
+
+            <div class="cart-item-info">
+
+              <h3>
+                ${escapeHtml(item.name)}
+              </h3>
+
+              <div class="cart-item-price">
+                ${formatPrice(item.price)}
+              </div>
+
+
+              <div class="cart-item-actions">
+
+                <div class="cart-quantity">
+
+                  <button
+                    type="button"
+                    data-action="decrease"
+                    data-id="${escapeHtml(item.id)}"
+                    aria-label="Diminuir quantidade"
+                  >
+                    −
+                  </button>
+
+                  <span>
+                    ${Number(item.quantity || 0)}
+                  </span>
+
+                  <button
+                    type="button"
+                    data-action="increase"
+                    data-id="${escapeHtml(item.id)}"
+                    aria-label="Aumentar quantidade"
+                  >
+                    +
+                  </button>
+
+                </div>
+
+
+                <button
+                  type="button"
+                  class="cart-remove"
+                  data-action="remove"
+                  data-id="${escapeHtml(item.id)}"
+                >
+                  Remover
+                </button>
+
+              </div>
+
+            </div>
 
           </div>
 
-          <div class="cart-item-actions">
+        `;
 
-            <button
-              type="button"
-              onclick="changeQuantity(
-                '${String(item.id)}',
-                -1
-              )"
-            >
-              −
-            </button>
-
-            <span>
-              ${item.quantity}
-            </span>
-
-            <button
-              type="button"
-              onclick="changeQuantity(
-                '${String(item.id)}',
-                1
-              )"
-            >
-              +
-            </button>
-
-            <button
-              type="button"
-              onclick="removeFromCart(
-                '${String(item.id)}'
-              )"
-            >
-              🗑️
-            </button>
-
-          </div>
-
-        </div>
-
-      `
+      }
     ).join("");
+
 
   cartTotal.textContent =
     formatPrice(
@@ -1547,19 +1574,101 @@ function renderCart() {
 }
 
 
-/*
-==================================================
-CARREGAR PRODUTOS
-==================================================
-*/
+/* ==================================================
+EVENTOS DO CARRINHO
+================================================== */
+
+cartItems.addEventListener(
+  "click",
+  event => {
+
+    const button =
+      event.target.closest(
+        "[data-action]"
+      );
+
+    if (!button) {
+      return;
+    }
+
+    const id =
+      button.dataset.id;
+
+    const action =
+      button.dataset.action;
+
+
+    if (action === "increase") {
+
+      changeQuantity(id, 1);
+
+    }
+
+
+    if (action === "decrease") {
+
+      changeQuantity(id, -1);
+
+    }
+
+
+    if (action === "remove") {
+
+      removeFromCart(id);
+
+    }
+
+  }
+);
+
+
+cartButton.addEventListener(
+  "click",
+  () => {
+
+    renderCart();
+
+    cartOverlay.classList.add(
+      "active"
+    );
+
+    document.body.style.overflow =
+      "hidden";
+
+  }
+);
+
+
+closeCart.addEventListener(
+  "click",
+  closeCartFunction
+);
+
+
+function closeCartFunction() {
+
+  cartOverlay.classList.remove(
+    "active"
+  );
+
+  document.body.style.overflow =
+    "";
+
+}
+
+
+/* ==================================================
+PRODUTOS
+================================================== */
 
 async function loadProducts() {
 
   productsGrid.innerHTML = `
-    <div class="loading-products">
+    <div class="loading">
       Carregando produtos...
     </div>
   `;
+
 
   try {
 
@@ -1579,9 +1688,8 @@ async function loadProducts() {
         }
       );
 
-    if (
-      !response.ok
-    ) {
+
+    if (!response.ok) {
 
       throw new Error(
         "Erro ao carregar produtos."
@@ -1589,19 +1697,20 @@ async function loadProducts() {
 
     }
 
+
     products =
       await response.json();
+
 
     renderProducts();
 
   } catch (error) {
 
-    console.error(
-      error
-    );
+    console.error(error);
 
     productsGrid.innerHTML = `
-      <div class="products-error">
+
+      <div class="empty-products">
 
         <h3>
           Não foi possível carregar os produtos.
@@ -1612,6 +1721,7 @@ async function loadProducts() {
         </p>
 
       </div>
+
     `;
 
   }
@@ -1619,39 +1729,20 @@ async function loadProducts() {
 }
 
 
-/*
-==================================================
-CATEGORIA DO PRODUTO
-==================================================
-*/
-
-function getProductCategory(
-  product
-) {
+function getProductCategory(product) {
 
   const category =
-    String(
+    normalizeText(
       product.category ||
       product.categoria ||
       ""
-    )
-      .toLowerCase()
-      .normalize("NFD")
-      .replace(
-        /[\u0300-\u036f]/g,
-        ""
-      );
+    );
+
 
   const name =
-    String(
+    normalizeText(
       product.name || ""
-    )
-      .toLowerCase()
-      .normalize("NFD")
-      .replace(
-        /[\u0300-\u036f]/g,
-        ""
-      );
+    );
 
 
   if (
@@ -1691,26 +1782,17 @@ function getProductCategory(
   }
 
 
-  return category ||
-    "outros";
+  return category || "outros";
 
 }
 
 
-/*
-==================================================
-RENDER PRODUTOS
-==================================================
-*/
-
 function renderProducts() {
 
   const search =
-    String(
-      searchInput.value || ""
-    )
-      .trim()
-      .toLowerCase();
+    normalizeText(
+      searchInput.value
+    );
 
 
   const filtered =
@@ -1722,32 +1804,28 @@ function renderProducts() {
             product
           );
 
+
         const name =
-          String(
-            product.name || ""
-          ).toLowerCase();
+          normalizeText(
+            product.name
+          );
+
 
         const description =
-          String(
-            product.description || ""
-          ).toLowerCase();
+          normalizeText(
+            product.description
+          );
 
 
         const matchesCategory =
-          currentCategory ===
-          "todos" ||
-          category ===
-          currentCategory;
+          currentCategory === "todos" ||
+          category === currentCategory;
 
 
         const matchesSearch =
           !search ||
-          name.includes(
-            search
-          ) ||
-          description.includes(
-            search
-          );
+          name.includes(search) ||
+          description.includes(search);
 
 
         return (
@@ -1759,12 +1837,11 @@ function renderProducts() {
     );
 
 
-  if (
-    filtered.length === 0
-  ) {
+  if (!filtered.length) {
 
     productsGrid.innerHTML = `
-      <div class="products-error">
+
+      <div class="empty-products">
 
         <h3>
           Nenhum produto encontrado.
@@ -1775,6 +1852,7 @@ function renderProducts() {
         </p>
 
       </div>
+
     `;
 
     return;
@@ -1791,15 +1869,13 @@ function renderProducts() {
           product.image_url ||
           "";
 
+
         const stock =
-          Number(
-            product.stock || 0
-          );
+          Number(product.stock || 0);
+
 
         const category =
-          getProductCategory(
-            product
-          );
+          getProductCategory(product);
 
 
         return `
@@ -1809,10 +1885,8 @@ function renderProducts() {
           >
 
             <div
-              class="product-image"
-              onclick="openProductModal(
-                '${String(product.id)}'
-              )"
+              class="product-image product-open"
+              data-id="${escapeHtml(product.id)}"
             >
 
               ${
@@ -1827,6 +1901,9 @@ function renderProducts() {
                   : `
                     <div class="no-image">
                       🎮
+                      <small>
+                        Sem imagem
+                      </small>
                     </div>
                   `
               }
@@ -1834,94 +1911,72 @@ function renderProducts() {
             </div>
 
 
-            <div class="product-card-content">
+            <div class="product-info">
 
-              <span class="product-category">
-                ${escapeHtml(
-                  category
-                )}
-              </span>
+              <div class="product-category">
+                ${escapeHtml(category)}
+              </div>
 
-              <h3>
-                ${escapeHtml(
-                  product.name
-                )}
+
+              <h3 class="product-name">
+                ${escapeHtml(product.name)}
               </h3>
 
-              ${
-                product.description
-                  ? `
-                    <p>
-                      ${escapeHtml(
+
+              <p class="product-description">
+
+                ${
+                  product.description
+                    ? escapeHtml(
                         product.description
-                      )}
-                    </p>
-                  `
-                  : ""
-              }
+                      )
+                    : "Produto disponível na VT Store."
+                }
+
+              </p>
 
 
               <div class="product-price">
 
-                ${formatPrice(
-                  product.price
-                )}
+                ${formatPrice(product.price)}
 
               </div>
 
 
-              ${
-                stock > 0
-                  ? `
-                    <span class="stock">
-                      ✓ Em estoque
-                    </span>
-                  `
-                  : `
-                    <span class="stock out">
-                      Sem estoque
-                    </span>
-                  `
-              }
+              <div class="product-stock">
 
-
-              <div class="product-buttons">
-
-                <button
-                  type="button"
-                  class="btn btn-primary"
-                  ${
-                    stock <= 0
-                      ? "disabled"
-                      : ""
-                  }
-                  onclick="addToCart(
-                    ${JSON.stringify(
-                      product
-                    ).replace(
-                      /"/g,
-                      "&quot;"
-                    )}
-                  )"
-                >
-                  ${
-                    stock > 0
-                      ? "Adicionar ao carrinho"
-                      : "Indisponível"
-                  }
-                </button>
-
-                <button
-                  type="button"
-                  class="btn btn-secondary"
-                  onclick="openProductModal(
-                    '${String(product.id)}'
-                  )"
-                >
-                  Ver detalhes
-                </button>
+                ${
+                  stock > 0
+                    ? `✓ ${stock} em estoque`
+                    : "Sem estoque"
+                }
 
               </div>
+
+
+              <button
+                type="button"
+                class="product-whatsapp"
+                data-whatsapp-id="${escapeHtml(product.id)}"
+              >
+                Falar no WhatsApp
+              </button>
+
+
+              <button
+                type="button"
+                class="product-cart-button"
+                data-cart-id="${escapeHtml(product.id)}"
+                ${stock <= 0 ? "disabled" : ""}
+              >
+
+                ${
+                  stock > 0
+                    ? "🛒 Adicionar ao carrinho"
+                    : "Indisponível"
+                }
+
+              </button>
 
             </div>
 
@@ -1935,147 +1990,110 @@ function renderProducts() {
 }
 
 
-/*
-==================================================
-MODAL PRODUTO
-==================================================
-*/
+/* ==================================================
+EVENTOS DOS PRODUTOS
+================================================== */
 
-function openProductModal(
-  productId
-) {
+productsGrid.addEventListener(
+  "click",
+  event => {
 
-  const product =
-    products.find(
-      item =>
-        String(item.id) ===
-        String(productId)
-    );
-
-  if (!product) {
-    return;
-  }
-
-  const image =
-    product.image ||
-    product.image_url ||
-    "";
-
-  const stock =
-    Number(
-      product.stock || 0
-    );
+    const cartButtonElement =
+      event.target.closest(
+        "[data-cart-id]"
+      );
 
 
-  productModalContent.innerHTML = `
+    if (cartButtonElement) {
 
-    <div class="product-detail">
+      const product =
+        products.find(
+          item =>
+            String(item.id) ===
+            String(
+              cartButtonElement.dataset.cartId
+            )
+        );
 
-      ${
-        image
-          ? `
-            <img
-              src="${escapeHtml(image)}"
-              alt="${escapeHtml(product.name)}"
-            >
-          `
-          : `
-            <div class="no-image">
-              🎮
-            </div>
-          `
+
+      if (product) {
+
+        addToCart(product);
+
+      }
+
+      return;
+
+    }
+
+
+    const productOpen =
+      event.target.closest(
+        ".product-open"
+      );
+
+
+    if (productOpen) {
+
+      openProductModal(
+        productOpen.dataset.id
+      );
+
+      return;
+
+    }
+
+
+    const whatsappButton =
+      event.target.closest(
+        "[data-whatsapp-id]"
+      );
+
+
+    if (whatsappButton) {
+
+      const product =
+        products.find(
+          item =>
+            String(item.id) ===
+            String(
+              whatsappButton.dataset.whatsappId
+            )
+        );
+
+
+      if (!product) {
+        return;
       }
 
 
-      <div>
+      const message =
+        `Olá! Tenho interesse no produto ${product.name} da VT Store.`;
 
-        <span class="product-category">
-          ${escapeHtml(
-            getProductCategory(
-              product
-            )
-          )}
-        </span>
+      window.open(
+        `https://wa.me/5515991713864?text=${encodeURIComponent(message)}`,
+        "_blank"
+      );
 
-        <h2>
-          ${escapeHtml(
-            product.name
-          )}
-        </h2>
+    }
 
-        ${
-          product.description
-            ? `
-              <p>
-                ${escapeHtml(
-                  product.description
-                )}
-              </p>
-            `
-            : ""
-        }
-
-        <h3>
-          ${formatPrice(
-            product.price
-          )}
-        </h3>
-
-        <p>
-          ${
-            stock > 0
-              ? "✓ Produto disponível"
-              : "Produto sem estoque"
-          }
-        </p>
-
-        <button
-          type="button"
-          class="btn btn-primary"
-          ${
-            stock <= 0
-              ? "disabled"
-              : ""
-          }
-          onclick="addToCart(
-            ${JSON.stringify(
-              product
-            ).replace(
-              /"/g,
-              "&quot;"
-            )}
-          ); closeProductModalFunction();"
-        >
-          Adicionar ao carrinho
-        </button>
-
-      </div>
-
-    </div>
-
-  `;
-
-  productModal.classList.add(
-    "active"
-  );
-
-}
+  }
+);
 
 
-function closeProductModalFunction() {
+/* ==================================================
+BUSCA
+================================================== */
 
-  productModal.classList.remove(
-    "active"
-  );
+searchInput.addEventListener(
+  "input",
+  renderProducts
+);
 
-}
 
-
-/*
-==================================================
+/* ==================================================
 CATEGORIAS
-==================================================
-*/
+================================================== */
 
 categoryButtons.forEach(
   button => {
@@ -2091,13 +2109,16 @@ categoryButtons.forEach(
             )
         );
 
+
         button.classList.add(
           "active"
         );
 
+
         currentCategory =
           button.dataset.category ||
           "todos";
+
 
         renderProducts();
 
@@ -2108,83 +2129,244 @@ categoryButtons.forEach(
 );
 
 
-/*
-==================================================
-BUSCA
-==================================================
-*/
+/* ==================================================
+MODAL PRODUTO
+================================================== */
 
-searchInput.addEventListener(
-  "input",
-  renderProducts
-);
+function openProductModal(productId) {
+
+  const product =
+    products.find(
+      item =>
+        String(item.id) ===
+        String(productId)
+    );
 
 
-/*
-==================================================
-CARRINHO
-==================================================
-*/
+  if (!product) {
+    return;
+  }
 
-cartButton.addEventListener(
-  "click",
-  () => {
 
-    renderCart();
+  const image =
+    product.image ||
+    product.image_url ||
+    "";
 
-    cartOverlay.classList.add(
-      "active"
+
+  const stock =
+    Number(product.stock || 0);
+
+
+  productModalContent.innerHTML = `
+
+    <div
+      style="
+        display:grid;
+        grid-template-columns:1fr 1fr;
+        gap:30px;
+        align-items:center;
+      "
+      class="product-detail"
+    >
+
+      <div
+        style="
+          min-height:320px;
+          border-radius:12px;
+          overflow:hidden;
+          background:#07080d;
+          display:flex;
+          align-items:center;
+          justify-content:center;
+        "
+      >
+
+        ${
+          image
+            ? `
+              <img
+                src="${escapeHtml(image)}"
+                alt="${escapeHtml(product.name)}"
+                style="
+                  width:100%;
+                  height:100%;
+                  max-height:500px;
+                  object-fit:contain;
+                "
+              >
+            `
+            : `
+              <div class="no-image">
+                🎮
+                <small>
+                  Sem imagem
+                </small>
+              </div>
+            `
+        }
+
+      </div>
+
+
+      <div>
+
+        <div class="product-category">
+          ${escapeHtml(
+            getProductCategory(product)
+          )}
+        </div>
+
+
+        <h2
+          style="
+            margin:8px 0 15px;
+            font-size:28px;
+          "
+        >
+          ${escapeHtml(product.name)}
+        </h2>
+
+
+        ${
+          product.description
+            ? `
+              <p
+                style="
+                  color:var(--muted);
+                  margin-bottom:20px;
+                "
+              >
+                ${escapeHtml(
+                  product.description
+                )}
+              </p>
+            `
+            : ""
+        }
+
+
+        <div
+          class="product-price"
+          style="margin-bottom:8px;"
+        >
+          ${formatPrice(product.price)}
+        </div>
+
+
+        <p
+          style="
+            color:${stock > 0
+              ? "var(--green)"
+              : "var(--danger)"};
+            margin-bottom:20px;
+            font-weight:700;
+          "
+        >
+          ${
+            stock > 0
+              ? `✓ ${stock} em estoque`
+              : "Produto sem estoque"
+          }
+        </p>
+
+
+        <button
+          type="button"
+          class="btn btn-primary"
+          id="modalAddToCart"
+          ${stock <= 0 ? "disabled" : ""}
+        >
+          ${
+            stock > 0
+              ? "🛒 Adicionar ao carrinho"
+              : "Indisponível"
+          }
+        </button>
+
+      </div>
+
+    </div>
+
+  `;
+
+
+  productModal.classList.add(
+    "active"
+  );
+
+  productModal.style.display =
+    "flex";
+
+  document.body.style.overflow =
+    "hidden";
+
+
+  const modalAddToCart =
+    document.getElementById(
+      "modalAddToCart"
+    );
+
+
+  if (modalAddToCart) {
+
+    modalAddToCart.addEventListener(
+      "click",
+      () => {
+
+        addToCart(product);
+
+        closeProductModalFunction();
+
+      }
     );
 
   }
-);
+
+}
 
 
-closeCart.addEventListener(
+function closeProductModalFunction() {
+
+  productModal.classList.remove(
+    "active"
+  );
+
+  productModal.style.display =
+    "none";
+
+  document.body.style.overflow =
+    "";
+
+}
+
+
+closeProductModal.addEventListener(
   "click",
-  () => {
-
-    cartOverlay.classList.remove(
-      "active"
-    );
-
-  }
+  closeProductModalFunction
 );
 
 
-/*
-==================================================
-ABRIR CHECKOUT
-==================================================
-*/
+/* ==================================================
+CHECKOUT
+================================================== */
 
 checkoutButton.addEventListener(
   "click",
   () => {
 
-    if (
-      cart.length === 0
-    ) {
-
+    if (!cart.length) {
       return;
-
     }
 
-    cartOverlay.classList.remove(
-      "active"
-    );
+
+    closeCartFunction();
 
     openCustomerModal();
 
   }
 );
 
-
-/*
-==================================================
-ABRIR MODAL DO CLIENTE
-==================================================
-*/
 
 function openCustomerModal() {
 
@@ -2197,17 +2379,13 @@ function openCustomerModal() {
 
   selectedShipping = {
 
-    id:
-      "vt-retirada",
+    id: "vt-retirada",
 
-    name:
-      "Retirada na loja",
+    name: "Retirada na loja",
 
-    company:
-      "VT Store",
+    company: "VT Store",
 
-    price:
-      0,
+    price: 0,
 
     delivery_time:
       "Retire em Itapetininga/SP"
@@ -2223,58 +2401,59 @@ function openCustomerModal() {
   loadSavedCustomer();
 
 
+  customerOverlay.style.display =
+    "flex";
+
+
   customerOverlay.classList.add(
     "active"
   );
 
+
+  document.body.style.overflow =
+    "hidden";
+
 }
 
 
-/*
-==================================================
-FECHAR MODAL DO CLIENTE
-==================================================
-*/
+function closeCustomerFunction() {
+
+  customerOverlay.classList.remove(
+    "active"
+  );
+
+  customerOverlay.style.display =
+    "none";
+
+  document.body.style.overflow =
+    "";
+
+}
+
 
 closeCustomer.addEventListener(
   "click",
-  () => {
-
-    customerOverlay.classList.remove(
-      "active"
-    );
-
-  }
+  closeCustomerFunction
 );
 
 
-/*
-==================================================
+/* ==================================================
 MODO RETIRADA / ENTREGA
-==================================================
-*/
+================================================== */
 
-function setShippingMode(
-  mode
-) {
+function setShippingMode(mode) {
 
-  if (
-    mode === "pickup"
-  ) {
+  if (mode === "pickup") {
 
     selectedShipping = {
 
-      id:
-        "vt-retirada",
+      id: "vt-retirada",
 
-      name:
-        "Retirada na loja",
+      name: "Retirada na loja",
 
-      company:
-        "VT Store",
+      company: "VT Store",
 
-      price:
-        0,
+      price: 0,
 
       delivery_time:
         "Retire em Itapetininga/SP"
@@ -2285,16 +2464,16 @@ function setShippingMode(
     deliveryFields.style.display =
       "none";
 
+
     deliveryShippingOptions.style.display =
       "none";
+
 
     pickupInfo.style.display =
       "flex";
 
 
-    setDeliveryFieldsRequired(
-      false
-    );
+    setDeliveryFieldsRequired(false);
 
 
     shippingError.style.display =
@@ -2303,28 +2482,20 @@ function setShippingMode(
 
     document
       .querySelectorAll(
-        ".shipping-option"
+        "#shippingOptions .shipping-option"
       )
       .forEach(
         option => {
 
-          option.classList.remove(
-            "selected"
-          );
-
-          if (
+          option.classList.toggle(
+            "selected",
             option.dataset.shippingId ===
             "vt-retirada"
-          ) {
-
-            option.classList.add(
-              "selected"
-            );
-
-          }
+          );
 
         }
       );
+
 
     return;
 
@@ -2334,36 +2505,26 @@ function setShippingMode(
   deliveryFields.style.display =
     "block";
 
+
   pickupInfo.style.display =
     "none";
 
 
-  setDeliveryFieldsRequired(
-    true
-  );
+  setDeliveryFieldsRequired(true);
 
 
   document
     .querySelectorAll(
-      ".shipping-option"
+      "#shippingOptions .shipping-option"
     )
     .forEach(
       option => {
 
-        option.classList.remove(
-          "selected"
-        );
-
-        if (
+        option.classList.toggle(
+          "selected",
           option.dataset.shippingId ===
           "vt-entrega"
-        ) {
-
-          option.classList.add(
-            "selected"
-          );
-
-        }
+        );
 
       }
     );
@@ -2381,9 +2542,14 @@ function setShippingMode(
   } else {
 
     calculatedShippingOptions.innerHTML = `
+
       <div class="shipping-message">
-        Informe seu CEP para calcular as opções de entrega.
+
+        Informe seu CEP para calcular
+        as opções de entrega.
+
       </div>
+
     `;
 
     deliveryShippingOptions.style.display =
@@ -2394,46 +2560,29 @@ function setShippingMode(
 }
 
 
-/*
-==================================================
-CAMPOS OBRIGATÓRIOS
-==================================================
-*/
-
 function setDeliveryFieldsRequired(
   required
 ) {
 
   [
-
     customerCep,
     customerNumber,
     customerAddress,
     customerNeighborhood,
     customerCity,
     customerState
-
   ].forEach(
     input => {
-
-      input.required =
-        required;
-
+      input.required = required;
     }
   );
 
 }
 
 
-/*
-==================================================
-BOTÕES RETIRADA / ENTREGA
-==================================================
-*/
-
 document
   .querySelectorAll(
-    ".shipping-option"
+    "#shippingOptions .shipping-option"
   )
   .forEach(
     option => {
@@ -2446,20 +2595,13 @@ document
             option.dataset.shippingId;
 
 
-          if (
-            id ===
-            "vt-retirada"
-          ) {
+          if (id === "vt-retirada") {
 
-            setShippingMode(
-              "pickup"
-            );
+            setShippingMode("pickup");
 
           } else {
 
-            setShippingMode(
-              "delivery"
-            );
+            setShippingMode("delivery");
 
           }
 
@@ -2470,59 +2612,41 @@ document
   );
 
 
-/*
-==================================================
-MÁSCARA CEP
-==================================================
-*/
+/* ==================================================
+CEP
+================================================== */
 
 customerCep.addEventListener(
   "input",
   () => {
 
     let value =
-      customerCep.value.replace(
-        /\D/g,
-        ""
-      ).slice(
-        0,
-        8
-      );
+      customerCep.value
+        .replace(/\D/g, "")
+        .slice(0, 8);
 
-    if (
-      value.length > 5
-    ) {
+
+    if (value.length > 5) {
 
       value =
-        value.slice(
-          0,
-          5
-        ) +
+        value.slice(0, 5) +
         "-" +
-        value.slice(
-          5
-        );
+        value.slice(5);
 
     }
+
 
     customerCep.value =
       value;
 
 
     const cep =
-      value.replace(
-        /\D/g,
-        ""
-      );
+      value.replace(/\D/g, "");
 
 
-    if (
-      cep.length === 8
-    ) {
+    if (cep.length === 8) {
 
-      searchCep(
-        cep
-      );
+      searchCep(cep);
 
     }
 
@@ -2530,15 +2654,7 @@ customerCep.addEventListener(
 );
 
 
-/*
-==================================================
-BUSCAR CEP
-==================================================
-*/
-
-async function searchCep(
-  cep
-) {
+async function searchCep(cep) {
 
   shippingLoading.style.display =
     "block";
@@ -2555,9 +2671,7 @@ async function searchCep(
       );
 
 
-    if (
-      !response.ok
-    ) {
+    if (!response.ok) {
 
       throw new Error(
         "Erro ao consultar CEP."
@@ -2570,9 +2684,7 @@ async function searchCep(
       await response.json();
 
 
-    if (
-      data.erro
-    ) {
+    if (data.erro) {
 
       throw new Error(
         "CEP não encontrado."
@@ -2582,27 +2694,21 @@ async function searchCep(
 
 
     customerAddress.value =
-      data.logradouro ||
-      "";
+      data.logradouro || "";
 
     customerNeighborhood.value =
-      data.bairro ||
-      "";
+      data.bairro || "";
 
     customerCity.value =
-      data.localidade ||
-      "";
+      data.localidade || "";
 
     customerState.value =
-      data.uf ||
-      "";
+      data.uf || "";
 
 
-    await calculateOwnShipping();
+    calculateOwnShipping();
 
-  } catch (
-    error
-  ) {
+  } catch (error) {
 
     shippingError.textContent =
       error.message ||
@@ -2621,11 +2727,9 @@ async function searchCep(
 }
 
 
-/*
-==================================================
-CALCULAR FRETE VT STORE
-==================================================
-*/
+/* ==================================================
+FRETE VT STORE
+================================================== */
 
 function calculateOwnShipping() {
 
@@ -2634,47 +2738,16 @@ function calculateOwnShipping() {
       .trim()
       .toUpperCase();
 
+
   const city =
-    customerCity.value
-      .trim()
-      .toUpperCase()
-      .normalize(
-        "NFD"
-      )
-      .replace(
-        /[\u0300-\u036f]/g,
-        ""
-      );
+    normalizeText(
+      customerCity.value
+    ).toUpperCase();
 
 
-  if (
-    !state ||
-    !city
-  ) {
-
+  if (!state || !city) {
     return;
-
   }
-
-
-  const pickup = {
-
-    id:
-      "vt-retirada",
-
-    name:
-      "Retirada na loja",
-
-    company:
-      "VT Store",
-
-    price:
-      0,
-
-    delivery_time:
-      "Retire em Itapetininga/SP"
-
-  };
 
 
   let economic;
@@ -2688,17 +2761,13 @@ function calculateOwnShipping() {
 
     economic = {
 
-      id:
-        "vt-economico",
+      id: "vt-economico",
 
-      name:
-        "Frete Econômico",
+      name: "Frete Econômico",
 
-      company:
-        "VT Store",
+      company: "VT Store",
 
-      price:
-        15,
+      price: 15,
 
       delivery_time:
         "2 a 5 dias úteis"
@@ -2708,17 +2777,13 @@ function calculateOwnShipping() {
 
     express = {
 
-      id:
-        "vt-expresso",
+      id: "vt-expresso",
 
-      name:
-        "Frete Expresso",
+      name: "Frete Expresso",
 
-      company:
-        "VT Store",
+      company: "VT Store",
 
-      price:
-        25,
+      price: 25,
 
       delivery_time:
         "1 a 2 dias úteis"
@@ -2727,23 +2792,17 @@ function calculateOwnShipping() {
 
   }
 
-  else if (
-    state === "SP"
-  ) {
+  else if (state === "SP") {
 
     economic = {
 
-      id:
-        "vt-economico",
+      id: "vt-economico",
 
-      name:
-        "Frete Econômico",
+      name: "Frete Econômico",
 
-      company:
-        "VT Store",
+      company: "VT Store",
 
-      price:
-        29.90,
+      price: 29.90,
 
       delivery_time:
         "4 a 8 dias úteis"
@@ -2753,17 +2812,13 @@ function calculateOwnShipping() {
 
     express = {
 
-      id:
-        "vt-expresso",
+      id: "vt-expresso",
 
-      name:
-        "Frete Expresso",
+      name: "Frete Expresso",
 
-      company:
-        "VT Store",
+      company: "VT Store",
 
-      price:
-        39.90,
+      price: 39.90,
 
       delivery_time:
         "2 a 5 dias úteis"
@@ -2773,26 +2828,18 @@ function calculateOwnShipping() {
   }
 
   else if (
-    [
-      "MG",
-      "RJ",
-      "ES"
-    ].includes(state)
+    ["MG", "RJ", "ES"].includes(state)
   ) {
 
     economic = {
 
-      id:
-        "vt-economico",
+      id: "vt-economico",
 
-      name:
-        "Frete Econômico",
+      name: "Frete Econômico",
 
-      company:
-        "VT Store",
+      company: "VT Store",
 
-      price:
-        39.90,
+      price: 39.90,
 
       delivery_time:
         "5 a 9 dias úteis"
@@ -2802,17 +2849,13 @@ function calculateOwnShipping() {
 
     express = {
 
-      id:
-        "vt-expresso",
+      id: "vt-expresso",
 
-      name:
-        "Frete Expresso",
+      name: "Frete Expresso",
 
-      company:
-        "VT Store",
+      company: "VT Store",
 
-      price:
-        54.90,
+      price: 54.90,
 
       delivery_time:
         "3 a 6 dias úteis"
@@ -2822,26 +2865,18 @@ function calculateOwnShipping() {
   }
 
   else if (
-    [
-      "PR",
-      "SC",
-      "RS"
-    ].includes(state)
+    ["PR", "SC", "RS"].includes(state)
   ) {
 
     economic = {
 
-      id:
-        "vt-economico",
+      id: "vt-economico",
 
-      name:
-        "Frete Econômico",
+      name: "Frete Econômico",
 
-      company:
-        "VT Store",
+      company: "VT Store",
 
-      price:
-        49.90,
+      price: 49.90,
 
       delivery_time:
         "6 a 10 dias úteis"
@@ -2851,17 +2886,13 @@ function calculateOwnShipping() {
 
     express = {
 
-      id:
-        "vt-expresso",
+      id: "vt-expresso",
 
-      name:
-        "Frete Expresso",
+      name: "Frete Expresso",
 
-      company:
-        "VT Store",
+      company: "VT Store",
 
-      price:
-        64.90,
+      price: 64.90,
 
       delivery_time:
         "3 a 7 dias úteis"
@@ -2871,27 +2902,18 @@ function calculateOwnShipping() {
   }
 
   else if (
-    [
-      "GO",
-      "MT",
-      "MS",
-      "DF"
-    ].includes(state)
+    ["GO", "MT", "MS", "DF"].includes(state)
   ) {
 
     economic = {
 
-      id:
-        "vt-economico",
+      id: "vt-economico",
 
-      name:
-        "Frete Econômico",
+      name: "Frete Econômico",
 
-      company:
-        "VT Store",
+      company: "VT Store",
 
-      price:
-        54.90,
+      price: 54.90,
 
       delivery_time:
         "7 a 12 dias úteis"
@@ -2901,17 +2923,13 @@ function calculateOwnShipping() {
 
     express = {
 
-      id:
-        "vt-expresso",
+      id: "vt-expresso",
 
-      name:
-        "Frete Expresso",
+      name: "Frete Expresso",
 
-      company:
-        "VT Store",
+      company: "VT Store",
 
-      price:
-        69.90,
+      price: 69.90,
 
       delivery_time:
         "4 a 8 dias úteis"
@@ -2936,17 +2954,13 @@ function calculateOwnShipping() {
 
     economic = {
 
-      id:
-        "vt-economico",
+      id: "vt-economico",
 
-      name:
-        "Frete Econômico",
+      name: "Frete Econômico",
 
-      company:
-        "VT Store",
+      company: "VT Store",
 
-      price:
-        64.90,
+      price: 64.90,
 
       delivery_time:
         "8 a 15 dias úteis"
@@ -2956,17 +2970,13 @@ function calculateOwnShipping() {
 
     express = {
 
-      id:
-        "vt-expresso",
+      id: "vt-expresso",
 
-      name:
-        "Frete Expresso",
+      name: "Frete Expresso",
 
-      company:
-        "VT Store",
+      company: "VT Store",
 
-      price:
-        79.90,
+      price: 79.90,
 
       delivery_time:
         "5 a 10 dias úteis"
@@ -2989,17 +2999,13 @@ function calculateOwnShipping() {
 
     economic = {
 
-      id:
-        "vt-economico",
+      id: "vt-economico",
 
-      name:
-        "Frete Econômico",
+      name: "Frete Econômico",
 
-      company:
-        "VT Store",
+      company: "VT Store",
 
-      price:
-        74.90,
+      price: 74.90,
 
       delivery_time:
         "10 a 18 dias úteis"
@@ -3009,17 +3015,13 @@ function calculateOwnShipping() {
 
     express = {
 
-      id:
-        "vt-expresso",
+      id: "vt-expresso",
 
-      name:
-        "Frete Expresso",
+      name: "Frete Expresso",
 
-      company:
-        "VT Store",
+      company: "VT Store",
 
-      price:
-        94.90,
+      price: 94.90,
 
       delivery_time:
         "6 a 12 dias úteis"
@@ -3047,25 +3049,19 @@ function calculateOwnShipping() {
   }
 
 
-  renderShippingOptions(
-    [
-      economic,
-      express
-    ]
-  );
+  shippingError.style.display =
+    "none";
+
+
+  renderShippingOptions([
+    economic,
+    express
+  ]);
 
 }
 
 
-/*
-==================================================
-RENDER OPÇÕES DE FRETE
-==================================================
-*/
-
-function renderShippingOptions(
-  options
-) {
+function renderShippingOptions(options) {
 
   calculatedShippingOptions.innerHTML =
     options.map(
@@ -3084,29 +3080,21 @@ function renderShippingOptions(
           <div class="shipping-info">
 
             <strong>
-              ${escapeHtml(
-                option.name
-              )}
+              ${escapeHtml(option.name)}
             </strong>
 
             <span>
-              ${escapeHtml(
-                option.company
-              )}
+              ${escapeHtml(option.company)}
             </span>
 
             <small>
-              ${escapeHtml(
-                option.delivery_time
-              )}
+              ${escapeHtml(option.delivery_time)}
             </small>
 
           </div>
 
           <div class="shipping-price">
-            ${formatPrice(
-              option.price
-            )}
+            ${formatPrice(option.price)}
           </div>
 
         </button>
@@ -3119,69 +3107,64 @@ function renderShippingOptions(
     "block";
 
 
-  calculatedShippingOptions
-    .querySelectorAll(
+  const shippingButtons =
+    calculatedShippingOptions.querySelectorAll(
       "[data-calculated-shipping-id]"
-    )
-    .forEach(
-      button => {
-
-        button.addEventListener(
-          "click",
-          () => {
-
-            const id =
-              button.dataset
-                .calculatedShippingId;
+    );
 
 
-            const selected =
-              options.find(
-                item =>
-                  item.id ===
-                  id
-              );
+  shippingButtons.forEach(
+    button => {
+
+      button.addEventListener(
+        "click",
+        () => {
+
+          const id =
+            button.dataset
+              .calculatedShippingId;
 
 
-            if (!selected) {
-              return;
-            }
-
-
-            selectedShipping =
-              selected;
-
-
-            calculatedShippingOptions
-              .querySelectorAll(
-                ".shipping-option"
-              )
-              .forEach(
-                item =>
-                  item.classList.remove(
-                    "selected"
-                  )
-              );
-
-
-            button.classList.add(
-              "selected"
+          const selected =
+            options.find(
+              item =>
+                item.id === id
             );
 
-          }
-        );
 
-      }
-    );
+          if (!selected) {
+            return;
+          }
+
+
+          selectedShipping =
+            selected;
+
+
+          shippingButtons.forEach(
+            item =>
+              item.classList.remove(
+                "selected"
+              )
+          );
+
+
+          button.classList.add(
+            "selected"
+          );
+
+        }
+      );
+
+    }
+  );
 
 }
 
 
-/*
-==================================================
-MONTAR DADOS DO CLIENTE
-==================================================
-*/
+/* ==================================================
+CLIENTE
+================================================== */
 
 function getCustomerData() {
 
@@ -3197,11 +3180,10 @@ function getCustomerData() {
       customerEmail.value.trim(),
 
     cep:
-      customerCep.value
-        .replace(
-          /\D/g,
-          ""
-        ),
+      customerCep.value.replace(
+        /\D/g,
+        ""
+      ),
 
     address:
       customerAddress.value.trim(),
@@ -3228,31 +3210,15 @@ function getCustomerData() {
 }
 
 
-/*
-==================================================
-SALVAR DADOS
-==================================================
-*/
-
-function saveCustomerData(
-  customer
-) {
+function saveCustomerData(customer) {
 
   localStorage.setItem(
     "vt_store_customer",
-    JSON.stringify(
-      customer
-    )
+    JSON.stringify(customer)
   );
 
 }
 
-
-/*
-==================================================
-CARREGAR DADOS SALVOS
-==================================================
-*/
 
 function loadSavedCustomer() {
 
@@ -3263,60 +3229,51 @@ function loadSavedCustomer() {
         "vt_store_customer"
       );
 
+
     if (!saved) {
       return;
     }
 
+
     const customer =
-      JSON.parse(
-        saved
-      );
+      JSON.parse(saved);
 
 
     customerName.value =
-      customer.name ||
-      "";
+      customer.name || "";
 
     customerPhone.value =
-      customer.phone ||
-      "";
+      customer.phone || "";
 
     customerEmail.value =
-      customer.email ||
-      "";
+      customer.email || "";
 
     customerCep.value =
-      customer.cep ||
-      "";
+      customer.cep || "";
 
     customerAddress.value =
-      customer.address ||
-      "";
+      customer.address || "";
 
     customerNumber.value =
-      customer.number ||
-      "";
+      customer.number || "";
 
     customerNeighborhood.value =
-      customer.neighborhood ||
-      "";
+      customer.neighborhood || "";
 
     customerCity.value =
-      customer.city ||
-      "";
+      customer.city || "";
 
     customerState.value =
-      customer.state ||
-      "";
+      customer.state || "";
 
     customerComplement.value =
-      customer.complement ||
-      "";
+      customer.complement || "";
 
-  } catch {
+  } catch (error) {
 
     console.warn(
-      "Não foi possível carregar os dados salvos."
+      "Não foi possível carregar os dados salvos.",
+      error
     );
 
   }
@@ -3324,11 +3281,9 @@ function loadSavedCustomer() {
 }
 
 
-/*
-==================================================
+/* ==================================================
 FINALIZAR CHECKOUT
-==================================================
-*/
+================================================== */
 
 finalCheckoutButton.addEventListener(
   "click",
@@ -3341,15 +3296,11 @@ finalCheckoutButton.addEventListener(
       "";
 
 
-    if (
-      cart.length === 0
-    ) {
+    if (!cart.length) {
 
-      customerFormError.textContent =
-        "Seu carrinho está vazio.";
-
-      customerFormError.style.display =
-        "block";
+      showCustomerError(
+        "Seu carrinho está vazio."
+      );
 
       return;
 
@@ -3360,15 +3311,7 @@ finalCheckoutButton.addEventListener(
       getCustomerData();
 
 
-    /*
-    ==============================================
-    DADOS BÁSICOS
-    ==============================================
-    */
-
-    if (
-      customer.name.length < 3
-    ) {
+    if (customer.name.length < 3) {
 
       showCustomerError(
         "Informe seu nome completo."
@@ -3381,9 +3324,7 @@ finalCheckoutButton.addEventListener(
     }
 
 
-    if (
-      customer.phone.length < 8
-    ) {
+    if (customer.phone.length < 8) {
 
       showCustomerError(
         "Informe um WhatsApp válido."
@@ -3398,9 +3339,7 @@ finalCheckoutButton.addEventListener(
 
     if (
       !/^[^\s@]+@[^\s@]+\.[^\s@]+$/
-        .test(
-          customer.email
-        )
+        .test(customer.email)
     ) {
 
       showCustomerError(
@@ -3414,30 +3353,14 @@ finalCheckoutButton.addEventListener(
     }
 
 
-    /*
-    ==============================================
-    RETIRADA
-    ==============================================
-    */
-
     const isPickup =
       selectedShipping.id ===
       "vt-retirada";
 
 
-    /*
-    ==============================================
-    ENTREGA
-    ==============================================
-    */
+    if (!isPickup) {
 
-    if (
-      !isPickup
-    ) {
-
-      if (
-        customer.cep.length !== 8
-      ) {
+      if (customer.cep.length !== 8) {
 
         showCustomerError(
           "Informe um CEP válido."
@@ -3450,9 +3373,7 @@ finalCheckoutButton.addEventListener(
       }
 
 
-      if (
-        customer.address.length < 3
-      ) {
+      if (customer.address.length < 3) {
 
         showCustomerError(
           "Informe o endereço."
@@ -3465,9 +3386,7 @@ finalCheckoutButton.addEventListener(
       }
 
 
-      if (
-        customer.number.length < 1
-      ) {
+      if (!customer.number.length) {
 
         showCustomerError(
           "Informe o número."
@@ -3495,9 +3414,7 @@ finalCheckoutButton.addEventListener(
       }
 
 
-      if (
-        customer.city.length < 2
-      ) {
+      if (customer.city.length < 2) {
 
         showCustomerError(
           "Informe a cidade."
@@ -3510,9 +3427,7 @@ finalCheckoutButton.addEventListener(
       }
 
 
-      if (
-        customer.state.length !== 2
-      ) {
+      if (customer.state.length !== 2) {
 
         showCustomerError(
           "Informe o estado."
@@ -3526,13 +3441,10 @@ finalCheckoutButton.addEventListener(
 
 
       if (
-        !selectedShipping ||
-        (
-          selectedShipping.id !==
+        selectedShipping.id !==
           "vt-economico" &&
-          selectedShipping.id !==
+        selectedShipping.id !==
           "vt-expresso"
-        )
       ) {
 
         showCustomerError(
@@ -3546,51 +3458,26 @@ finalCheckoutButton.addEventListener(
     }
 
 
-    /*
-    ==============================================
-    RETIRADA SEM ENDEREÇO
-    ==============================================
-    */
+    if (isPickup) {
 
-    if (
-      isPickup
-    ) {
-
-      customer.cep =
-        "";
-
-      customer.address =
-        "";
-
-      customer.number =
-        "";
-
-      customer.neighborhood =
-        "";
-
-      customer.city =
-        "";
-
-      customer.state =
-        "";
-
-      customer.complement =
-        "";
+      customer.cep = "";
+      customer.address = "";
+      customer.number = "";
+      customer.neighborhood = "";
+      customer.city = "";
+      customer.state = "";
+      customer.complement = "";
 
     }
 
 
-    /*
-    ==============================================
-    DESABILITAR BOTÃO
-    ==============================================
-    */
-
     const originalText =
       finalCheckoutButton.textContent;
 
+
     finalCheckoutButton.disabled =
       true;
+
 
     finalCheckoutButton.textContent =
       "Criando pagamento...";
@@ -3606,9 +3493,7 @@ finalCheckoutButton.addEventListener(
               item.id,
 
             quantity:
-              Number(
-                item.quantity
-              )
+              Number(item.quantity)
 
           })
         );
@@ -3616,13 +3501,9 @@ finalCheckoutButton.addEventListener(
 
       const payload = {
 
-        items:
+        items,
 
-          items,
-
-        customer:
-
-          customer,
+        customer,
 
         shipping: {
 
@@ -3639,8 +3520,7 @@ finalCheckoutButton.addEventListener(
           `${SUPABASE_URL}/functions/v1/create-checkout`,
           {
 
-            method:
-              "POST",
+            method: "POST",
 
             headers: {
 
@@ -3656,9 +3536,7 @@ finalCheckoutButton.addEventListener(
             },
 
             body:
-              JSON.stringify(
-                payload
-              )
+              JSON.stringify(payload)
 
           }
         );
@@ -3668,9 +3546,7 @@ finalCheckoutButton.addEventListener(
         await response.json();
 
 
-      if (
-        !response.ok
-      ) {
+      if (!response.ok) {
 
         throw new Error(
           data?.error ||
@@ -3680,9 +3556,7 @@ finalCheckoutButton.addEventListener(
       }
 
 
-      if (
-        !data?.checkout_url
-      ) {
+      if (!data?.checkout_url) {
 
         throw new Error(
           "A InfinitePay não retornou o link de pagamento."
@@ -3691,15 +3565,7 @@ finalCheckoutButton.addEventListener(
       }
 
 
-      /*
-      ============================================
-      SALVAR DADOS
-      ============================================
-      */
-
-      saveCustomerData(
-        customer
-      );
+      saveCustomerData(customer);
 
 
       localStorage.setItem(
@@ -3713,24 +3579,15 @@ finalCheckoutButton.addEventListener(
 
       localStorage.setItem(
         "vt_store_order_nsu",
-        data.order_nsu ||
-        ""
+        data.order_nsu || ""
       );
 
-
-      /*
-      ============================================
-      REDIRECIONAR
-      ============================================
-      */
 
       window.location.href =
         data.checkout_url;
 
 
-    } catch (
-      error
-    ) {
+    } catch (error) {
 
       console.error(
         "Erro no checkout:",
@@ -3747,6 +3604,7 @@ finalCheckoutButton.addEventListener(
       finalCheckoutButton.disabled =
         false;
 
+
       finalCheckoutButton.textContent =
         originalText;
 
@@ -3756,15 +3614,7 @@ finalCheckoutButton.addEventListener(
 );
 
 
-/*
-==================================================
-ERRO DO CLIENTE
-==================================================
-*/
-
-function showCustomerError(
-  message
-) {
+function showCustomerError(message) {
 
   customerFormError.textContent =
     message;
@@ -3775,66 +3625,71 @@ function showCustomerError(
 }
 
 
-/*
-==================================================
-FECHAR MODAIS AO CLICAR FORA
-==================================================
-*/
+/* ==================================================
+FECHAR AO CLICAR FORA
+================================================== */
 
-[
-  cartOverlay,
-  customerOverlay,
-  productModal
-].forEach(
-  overlay => {
+cartOverlay.addEventListener(
+  "click",
+  event => {
 
-    overlay.addEventListener(
-      "click",
-      event => {
+    if (
+      event.target ===
+      cartOverlay
+    ) {
 
-        if (
-          event.target ===
-          overlay
-        ) {
+      closeCartFunction();
 
-          overlay.classList.remove(
-            "active"
-          );
-
-        }
-
-      }
-    );
+    }
 
   }
 );
 
 
-/*
-==================================================
-FECHAR MODAL PRODUTO
-==================================================
-*/
-
-closeProductModal.addEventListener(
+customerOverlay.addEventListener(
   "click",
-  closeProductModalFunction
+  event => {
+
+    if (
+      event.target ===
+      customerOverlay
+    ) {
+
+      closeCustomerFunction();
+
+    }
+
+  }
 );
 
 
-/*
-==================================================
+productModal.addEventListener(
+  "click",
+  event => {
+
+    if (
+      event.target ===
+      productModal
+    ) {
+
+      closeProductModalFunction();
+
+    }
+
+  }
+);
+
+
+/* ==================================================
 ESC
-==================================================
-*/
+================================================== */
 
 document.addEventListener(
   "keydown",
   event => {
 
     if (
-      event.key !==
-      "Escape"
+      event.key !== "Escape"
     ) {
 
       return;
@@ -3842,27 +3697,19 @@ document.addEventListener(
     }
 
 
-    cartOverlay.classList.remove(
-      "active"
-    );
+    closeCartFunction();
 
-    customerOverlay.classList.remove(
-      "active"
-    );
+    closeCustomerFunction();
 
-    productModal.classList.remove(
-      "active"
-    );
+    closeProductModalFunction();
 
   }
 );
 
 
-/*
-==================================================
+/* ==================================================
 INICIALIZAÇÃO
-==================================================
-*/
+================================================== */
 
 updateCartCount();
 
@@ -3870,30 +3717,7 @@ renderCart();
 
 loadProducts();
 
-
-/*
-==================================================
-EXPOR FUNÇÕES
-==================================================
-*/
-
-window.addToCart =
-  addToCart;
-
-window.removeFromCart =
-  removeFromCart;
-
-window.changeQuantity =
-  changeQuantity;
-
-window.openProductModal =
-  openProductModal;
-
-window.closeProductModalFunction =
-  closeProductModalFunction;
-
 </script>
 
 </body>
-
 </html>
