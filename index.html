@@ -741,7 +741,7 @@
               font-size:24px;
             "
           >
-            Dados para entrega
+            Dados da compra
           </h2>
 
         </div>
@@ -775,7 +775,7 @@
           line-height:1.5;
         "
       >
-        Preencha seus dados para calcular o frete e continuar para o pagamento seguro da InfinitePay.
+        Preencha seus dados para escolher entre entrega ou retirada na loja e continuar para o pagamento seguro da InfinitePay.
       </p>
 
 
@@ -1178,7 +1178,7 @@
 
 
         <!-- ==================================================
-             FRETE
+             FRETE / RETIRADA
         ================================================== -->
 
         <div
@@ -1200,7 +1200,7 @@
               margin-bottom:5px;
             "
           >
-            🚚 Escolha o frete
+            🚚 Escolha como receber
           </div>
 
 
@@ -1211,7 +1211,7 @@
               margin-bottom:14px;
             "
           >
-            Escolha a opção de entrega disponível para seu endereço.
+            Escolha entre retirar na loja ou receber seu pedido.
           </div>
 
 
@@ -1316,12 +1316,6 @@
       "DOMContentLoaded",
       function () {
 
-        /*
-        ==================================================
-        ELEMENTOS
-        ==================================================
-        */
-
         const checkoutButton =
           document.getElementById(
             "checkoutButton"
@@ -1398,13 +1392,6 @@
           );
 
 
-
-        /*
-        ==================================================
-        VERIFICAÇÃO
-        ==================================================
-        */
-
         if (
           !checkoutButton ||
           !customerModal ||
@@ -1420,13 +1407,6 @@
         }
 
 
-
-        /*
-        ==================================================
-        ESTADO
-        ==================================================
-        */
-
         let selectedShipping =
           null;
 
@@ -1436,13 +1416,6 @@
         let cepRequestId =
           0;
 
-
-
-        /*
-        ==================================================
-        PEGAR CARRINHO
-        ==================================================
-        */
 
         function getCart() {
 
@@ -1508,13 +1481,6 @@
         }
 
 
-
-        /*
-        ==================================================
-        NORMALIZAR TEXTO
-        ==================================================
-        */
-
         function normalizeText(
           value
         ) {
@@ -1534,13 +1500,6 @@
 
         }
 
-
-
-        /*
-        ==================================================
-        MOEDA
-        ==================================================
-        */
 
         function formatCurrency(
           value
@@ -1605,6 +1564,33 @@
 
           /*
           ==============================================
+          RETIRADA NA LOJA
+          ==============================================
+          */
+
+          const pickup = {
+
+            id:
+              "vt-retirada",
+
+            name:
+              "Retirada na loja",
+
+            company:
+              "VT Store",
+
+            price:
+              0,
+
+            delivery_time:
+              "Retire em Itapetininga/SP"
+
+          };
+
+
+
+          /*
+          ==============================================
           ITAPETININGA
           ==============================================
           */
@@ -1617,7 +1603,10 @@
 
             return [
 
+              pickup,
+
               {
+
                 id:
                   "vt-economico",
 
@@ -1632,9 +1621,11 @@
 
                 delivery_time:
                   "2 a 5 dias úteis"
+
               },
 
               {
+
                 id:
                   "vt-expresso",
 
@@ -1649,6 +1640,7 @@
 
                 delivery_time:
                   "1 a 2 dias úteis"
+
               }
 
             ];
@@ -1669,7 +1661,10 @@
 
             return [
 
+              pickup,
+
               {
+
                 id:
                   "vt-economico",
 
@@ -1684,9 +1679,11 @@
 
                 delivery_time:
                   "4 a 8 dias úteis"
+
               },
 
               {
+
                 id:
                   "vt-expresso",
 
@@ -1701,6 +1698,7 @@
 
                 delivery_time:
                   "2 a 5 dias úteis"
+
               }
 
             ];
@@ -1727,7 +1725,10 @@
 
             return [
 
+              pickup,
+
               {
+
                 id:
                   "vt-economico",
 
@@ -1742,9 +1743,11 @@
 
                 delivery_time:
                   "5 a 9 dias úteis"
+
               },
 
               {
+
                 id:
                   "vt-expresso",
 
@@ -1759,6 +1762,7 @@
 
                 delivery_time:
                   "3 a 6 dias úteis"
+
               }
 
             ];
@@ -1785,7 +1789,10 @@
 
             return [
 
+              pickup,
+
               {
+
                 id:
                   "vt-economico",
 
@@ -1800,9 +1807,11 @@
 
                 delivery_time:
                   "6 a 10 dias úteis"
+
               },
 
               {
+
                 id:
                   "vt-expresso",
 
@@ -1817,6 +1826,7 @@
 
                 delivery_time:
                   "3 a 7 dias úteis"
+
               }
 
             ];
@@ -1844,7 +1854,10 @@
 
             return [
 
+              pickup,
+
               {
+
                 id:
                   "vt-economico",
 
@@ -1859,9 +1872,11 @@
 
                 delivery_time:
                   "7 a 12 dias úteis"
+
               },
 
               {
+
                 id:
                   "vt-expresso",
 
@@ -1876,6 +1891,7 @@
 
                 delivery_time:
                   "4 a 8 dias úteis"
+
               }
 
             ];
@@ -1908,7 +1924,10 @@
 
             return [
 
+              pickup,
+
               {
+
                 id:
                   "vt-economico",
 
@@ -1923,9 +1942,11 @@
 
                 delivery_time:
                   "8 a 15 dias úteis"
+
               },
 
               {
+
                 id:
                   "vt-expresso",
 
@@ -1940,6 +1961,7 @@
 
                 delivery_time:
                   "5 a 10 dias úteis"
+
               }
 
             ];
@@ -1970,7 +1992,10 @@
 
             return [
 
+              pickup,
+
               {
+
                 id:
                   "vt-economico",
 
@@ -1985,9 +2010,11 @@
 
                 delivery_time:
                   "10 a 18 dias úteis"
+
               },
 
               {
+
                 id:
                   "vt-expresso",
 
@@ -2002,6 +2029,7 @@
 
                 delivery_time:
                   "6 a 12 dias úteis"
+
               }
 
             ];
@@ -2777,6 +2805,11 @@
                 "10px";
 
 
+              const isPickup =
+                service.id ===
+                "vt-retirada";
+
+
               option.innerHTML = `
 
                 <input
@@ -2815,7 +2848,11 @@
                           color:#111;
                         "
                       >
-                        ${service.name}
+                        ${
+                          isPickup
+                            ? "🏪 "
+                            : ""
+                        }${service.name}
                       </strong>
 
                       <small
@@ -2839,7 +2876,11 @@
                         white-space:nowrap;
                       "
                     >
-                      ${formatCurrency(price)}
+                      ${
+                        price === 0
+                          ? "GRÁTIS"
+                          : formatCurrency(price)
+                      }
                     </strong>
 
                   </div>
@@ -2995,7 +3036,7 @@
             ) {
 
               customerFormError.textContent =
-                "Selecione uma opção de frete para continuar.";
+                "Selecione uma opção de entrega ou retirada para continuar.";
 
 
               customerFormError.style.display =
