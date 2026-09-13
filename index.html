@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -776,13 +775,13 @@
           line-height:1.5;
         "
       >
-        Preencha seus dados para calcular o frete e continuar para o pagamento seguro da InfinitePay.
+        Preencha seus dados e escolha como deseja receber seu pedido.
       </p>
 
 
 
       <!-- ==================================================
-           ÁREA FRETE GRÁTIS
+           FRETE GRÁTIS / RETIRADA
       ================================================== -->
 
       <div
@@ -844,10 +843,151 @@
                 line-height:1.4;
               "
             >
-              Retirada grátis na VT Store em Itapetininga/SP.
+              Escolha a retirada grátis em Itapetininga/SP no checkout.
             </span>
 
           </div>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- ==================================================
+           FORMA DE RECEBIMENTO
+      ================================================== -->
+
+      <div
+        style="
+          margin-bottom:20px;
+        "
+      >
+
+        <div
+          style="
+            font-weight:800;
+            font-size:17px;
+            margin-bottom:10px;
+          "
+        >
+          📦 Como deseja receber?
+        </div>
+
+
+        <div
+          style="
+            display:grid;
+            grid-template-columns:1fr 1fr;
+            gap:10px;
+          "
+        >
+
+          <label
+            style="
+              cursor:pointer;
+            "
+          >
+
+            <input
+              type="radio"
+              name="deliveryMode"
+              value="delivery"
+              checked
+              style="display:none;"
+            >
+
+
+            <div
+              id="deliveryModeCard"
+              style="
+                border:2px solid #7c3aed;
+                background:#f5f0ff;
+                border-radius:12px;
+                padding:13px;
+                box-sizing:border-box;
+                height:100%;
+              "
+            >
+
+              <strong
+                style="
+                  display:block;
+                  color:#111;
+                  font-size:15px;
+                "
+              >
+                🚚 Receber em casa
+              </strong>
+
+
+              <small
+                style="
+                  display:block;
+                  margin-top:5px;
+                  color:#666;
+                  line-height:1.4;
+                "
+              >
+                Escolha o frete pelo CEP.
+              </small>
+
+            </div>
+
+          </label>
+
+
+          <label
+            style="
+              cursor:pointer;
+            "
+          >
+
+            <input
+              type="radio"
+              name="deliveryMode"
+              value="pickup"
+              style="display:none;"
+            >
+
+
+            <div
+              id="pickupModeCard"
+              style="
+                border:2px solid #ddd;
+                background:#fff;
+                border-radius:12px;
+                padding:13px;
+                box-sizing:border-box;
+                height:100%;
+              "
+            >
+
+              <strong
+                style="
+                  display:block;
+                  color:#111;
+                  font-size:15px;
+                "
+              >
+                🎁 Retirada grátis
+              </strong>
+
+
+              <small
+                style="
+                  display:block;
+                  margin-top:5px;
+                  color:#666;
+                  line-height:1.4;
+                "
+              >
+                Retire em Itapetininga/SP.
+              </small>
+
+            </div>
+
+          </label>
 
         </div>
 
@@ -970,38 +1110,116 @@
 
 
 
-        <!-- CEP / NUMERO -->
+        <!-- ==================================================
+             ENDEREÇO DE ENTREGA
+        ================================================== -->
 
-        <div
-          style="
-            display:grid;
-            grid-template-columns:1fr 1fr;
-            gap:12px;
-            margin-bottom:15px;
-          "
-        >
+        <div id="deliveryFields">
 
-          <div>
+
+          <!-- CEP / NUMERO -->
+
+          <div
+            style="
+              display:grid;
+              grid-template-columns:1fr 1fr;
+              gap:12px;
+              margin-bottom:15px;
+            "
+          >
+
+            <div>
+
+              <label
+                for="customerCep"
+                style="
+                  display:block;
+                  font-weight:700;
+                  margin-bottom:7px;
+                "
+              >
+                CEP *
+              </label>
+
+
+              <input
+                id="customerCep"
+                type="text"
+                inputmode="numeric"
+                autocomplete="postal-code"
+                placeholder="00000-000"
+                maxlength="9"
+                required
+                style="
+                  width:100%;
+                  box-sizing:border-box;
+                  padding:13px;
+                  border:1px solid #ccc;
+                  border-radius:10px;
+                  font-size:16px;
+                "
+              >
+
+            </div>
+
+
+            <div>
+
+              <label
+                for="customerNumber"
+                style="
+                  display:block;
+                  font-weight:700;
+                  margin-bottom:7px;
+                "
+              >
+                Número *
+              </label>
+
+
+              <input
+                id="customerNumber"
+                type="text"
+                autocomplete="address-line2"
+                placeholder="123"
+                required
+                style="
+                  width:100%;
+                  box-sizing:border-box;
+                  padding:13px;
+                  border:1px solid #ccc;
+                  border-radius:10px;
+                  font-size:16px;
+                "
+              >
+
+            </div>
+
+          </div>
+
+
+
+          <!-- ENDEREÇO -->
+
+          <div style="margin-bottom:15px;">
 
             <label
-              for="customerCep"
+              for="customerAddress"
               style="
                 display:block;
                 font-weight:700;
                 margin-bottom:7px;
               "
             >
-              CEP *
+              Endereço *
             </label>
 
 
             <input
-              id="customerCep"
+              id="customerAddress"
               type="text"
-              inputmode="numeric"
-              autocomplete="postal-code"
-              placeholder="00000-000"
-              maxlength="9"
+              autocomplete="street-address"
+              placeholder="Rua, Avenida..."
               required
               style="
                 width:100%;
@@ -1016,26 +1234,157 @@
           </div>
 
 
-          <div>
+
+          <!-- BAIRRO -->
+
+          <div style="margin-bottom:15px;">
 
             <label
-              for="customerNumber"
+              for="customerNeighborhood"
               style="
                 display:block;
                 font-weight:700;
                 margin-bottom:7px;
               "
             >
-              Número *
+              Bairro *
             </label>
 
 
             <input
-              id="customerNumber"
+              id="customerNeighborhood"
+              type="text"
+              autocomplete="address-level3"
+              placeholder="Seu bairro"
+              required
+              style="
+                width:100%;
+                box-sizing:border-box;
+                padding:13px;
+                border:1px solid #ccc;
+                border-radius:10px;
+                font-size:16px;
+              "
+            >
+
+          </div>
+
+
+
+          <!-- CIDADE / ESTADO -->
+
+          <div
+            style="
+              display:grid;
+              grid-template-columns:1fr 1fr;
+              gap:12px;
+              margin-bottom:15px;
+            "
+          >
+
+            <div>
+
+              <label
+                for="customerCity"
+                style="
+                  display:block;
+                  font-weight:700;
+                  margin-bottom:7px;
+                "
+              >
+                Cidade *
+              </label>
+
+
+              <input
+                id="customerCity"
+                type="text"
+                autocomplete="address-level2"
+                placeholder="Cidade"
+                required
+                style="
+                  width:100%;
+                  box-sizing:border-box;
+                  padding:13px;
+                  border:1px solid #ccc;
+                  border-radius:10px;
+                  font-size:16px;
+                "
+              >
+
+            </div>
+
+
+            <div>
+
+              <label
+                for="customerState"
+                style="
+                  display:block;
+                  font-weight:700;
+                  margin-bottom:7px;
+                "
+              >
+                Estado *
+              </label>
+
+
+              <input
+                id="customerState"
+                type="text"
+                autocomplete="address-level1"
+                placeholder="SP"
+                maxlength="2"
+                required
+                style="
+                  width:100%;
+                  box-sizing:border-box;
+                  padding:13px;
+                  border:1px solid #ccc;
+                  border-radius:10px;
+                  font-size:16px;
+                  text-transform:uppercase;
+                "
+              >
+
+            </div>
+
+          </div>
+
+
+
+          <!-- COMPLEMENTO -->
+
+          <div style="margin-bottom:22px;">
+
+            <label
+              for="customerComplement"
+              style="
+                display:block;
+                font-weight:700;
+                margin-bottom:7px;
+              "
+            >
+
+              Complemento
+
+              <span
+                style="
+                  font-weight:400;
+                  color:#777;
+                "
+              >
+                (opcional)
+              </span>
+
+            </label>
+
+
+            <input
+              id="customerComplement"
               type="text"
               autocomplete="address-line2"
-              placeholder="123"
-              required
+              placeholder="Apartamento, casa, bloco..."
               style="
                 width:100%;
                 box-sizing:border-box;
@@ -1047,206 +1396,6 @@
             >
 
           </div>
-
-        </div>
-
-
-
-        <!-- ENDEREÇO -->
-
-        <div style="margin-bottom:15px;">
-
-          <label
-            for="customerAddress"
-            style="
-              display:block;
-              font-weight:700;
-              margin-bottom:7px;
-            "
-          >
-            Endereço *
-          </label>
-
-
-          <input
-            id="customerAddress"
-            type="text"
-            autocomplete="street-address"
-            placeholder="Rua, Avenida..."
-            required
-            style="
-              width:100%;
-              box-sizing:border-box;
-              padding:13px;
-              border:1px solid #ccc;
-              border-radius:10px;
-              font-size:16px;
-            "
-          >
-
-        </div>
-
-
-
-        <!-- BAIRRO -->
-
-        <div style="margin-bottom:15px;">
-
-          <label
-            for="customerNeighborhood"
-            style="
-              display:block;
-              font-weight:700;
-              margin-bottom:7px;
-            "
-          >
-            Bairro *
-          </label>
-
-
-          <input
-            id="customerNeighborhood"
-            type="text"
-            autocomplete="address-level3"
-            placeholder="Seu bairro"
-            required
-            style="
-              width:100%;
-              box-sizing:border-box;
-              padding:13px;
-              border:1px solid #ccc;
-              border-radius:10px;
-              font-size:16px;
-            "
-          >
-
-        </div>
-
-
-
-        <!-- CIDADE / ESTADO -->
-
-        <div
-          style="
-            display:grid;
-            grid-template-columns:1fr 1fr;
-            gap:12px;
-            margin-bottom:15px;
-          "
-        >
-
-          <div>
-
-            <label
-              for="customerCity"
-              style="
-                display:block;
-                font-weight:700;
-                margin-bottom:7px;
-              "
-            >
-              Cidade *
-            </label>
-
-
-            <input
-              id="customerCity"
-              type="text"
-              autocomplete="address-level2"
-              placeholder="Cidade"
-              required
-              style="
-                width:100%;
-                box-sizing:border-box;
-                padding:13px;
-                border:1px solid #ccc;
-                border-radius:10px;
-                font-size:16px;
-              "
-            >
-
-          </div>
-
-
-          <div>
-
-            <label
-              for="customerState"
-              style="
-                display:block;
-                font-weight:700;
-                margin-bottom:7px;
-              "
-            >
-              Estado *
-            </label>
-
-
-            <input
-              id="customerState"
-              type="text"
-              autocomplete="address-level1"
-              placeholder="SP"
-              maxlength="2"
-              required
-              style="
-                width:100%;
-                box-sizing:border-box;
-                padding:13px;
-                border:1px solid #ccc;
-                border-radius:10px;
-                font-size:16px;
-                text-transform:uppercase;
-              "
-            >
-
-          </div>
-
-        </div>
-
-
-
-        <!-- COMPLEMENTO -->
-
-        <div style="margin-bottom:22px;">
-
-          <label
-            for="customerComplement"
-            style="
-              display:block;
-              font-weight:700;
-              margin-bottom:7px;
-            "
-          >
-
-            Complemento
-
-            <span
-              style="
-                font-weight:400;
-                color:#777;
-              "
-            >
-              (opcional)
-            </span>
-
-          </label>
-
-
-          <input
-            id="customerComplement"
-            type="text"
-            autocomplete="address-line2"
-            placeholder="Apartamento, casa, bloco..."
-            style="
-              width:100%;
-              box-sizing:border-box;
-              padding:13px;
-              border:1px solid #ccc;
-              border-radius:10px;
-              font-size:16px;
-            "
-          >
 
         </div>
 
@@ -1361,7 +1510,7 @@
             opacity:.6;
           "
         >
-          Digite seu CEP para calcular o frete
+          Escolha como deseja receber
         </button>
 
 
@@ -1466,6 +1615,25 @@
             "customerCity"
           );
 
+        const deliveryFields =
+          document.getElementById(
+            "deliveryFields"
+          );
+
+        const deliveryModeCards = {
+
+          delivery:
+            document.getElementById(
+              "deliveryModeCard"
+            ),
+
+          pickup:
+            document.getElementById(
+              "pickupModeCard"
+            )
+
+        };
+
 
         if (
           !checkoutButton ||
@@ -1484,6 +1652,9 @@
 
         let selectedShipping =
           null;
+
+        let selectedMode =
+          "delivery";
 
         let lastCalculatedCep =
           "";
@@ -2040,7 +2211,181 @@
 
 
           customerContinueButton.textContent =
-            "Digite seu CEP para calcular o frete";
+            "Escolha como deseja receber";
+
+        }
+
+
+        function setDeliveryMode(
+          mode
+        ) {
+
+          selectedMode =
+            mode;
+
+
+          if (
+            mode ===
+            "pickup"
+          ) {
+
+            selectedShipping = {
+
+              id:
+                "vt-retirada",
+
+              name:
+                "Retirada grátis",
+
+              company:
+                "VT Store",
+
+              price:
+                0,
+
+              delivery_time:
+                "Retirada em Itapetininga/SP"
+
+            };
+
+
+            deliveryFields.style.display =
+              "none";
+
+
+            shippingBox.style.display =
+              "none";
+
+
+            shippingOptions.innerHTML =
+              "";
+
+            shippingError.textContent =
+              "";
+
+            shippingError.style.display =
+              "none";
+
+            shippingLoading.style.display =
+              "none";
+
+
+            [
+              "customerCep",
+              "customerNumber",
+              "customerAddress",
+              "customerNeighborhood",
+              "customerCity",
+              "customerState"
+            ].forEach(
+              function (
+                id
+              ) {
+
+                const element =
+                  document.getElementById(
+                    id
+                  );
+
+                if (
+                  element
+                ) {
+
+                  element.required =
+                    false;
+
+                }
+
+              }
+            );
+
+
+            deliveryModeCards.delivery.style.border =
+              "2px solid #ddd";
+
+            deliveryModeCards.delivery.style.background =
+              "#fff";
+
+
+            deliveryModeCards.pickup.style.border =
+              "2px solid #7c3aed";
+
+            deliveryModeCards.pickup.style.background =
+              "#f5f0ff";
+
+
+            customerContinueButton.disabled =
+              false;
+
+
+            customerContinueButton.style.opacity =
+              "1";
+
+
+            customerContinueButton.textContent =
+              "Continuar para pagamento";
+
+
+            return;
+
+          }
+
+
+          deliveryFields.style.display =
+            "block";
+
+
+          [
+            "customerCep",
+            "customerNumber",
+            "customerAddress",
+            "customerNeighborhood",
+            "customerCity",
+            "customerState"
+          ].forEach(
+            function (
+              id
+            ) {
+
+              const element =
+                document.getElementById(
+                  id
+                );
+
+              if (
+                element
+              ) {
+
+                element.required =
+                  true;
+
+              }
+
+            }
+          );
+
+
+          deliveryModeCards.delivery.style.border =
+            "2px solid #7c3aed";
+
+          deliveryModeCards.delivery.style.background =
+            "#f5f0ff";
+
+
+          deliveryModeCards.pickup.style.border =
+            "2px solid #ddd";
+
+          deliveryModeCards.pickup.style.background =
+            "#fff";
+
+
+          invalidateShipping(
+            ""
+          );
+
+
+          lastCalculatedCep =
+            "";
 
         }
 
@@ -2065,8 +2410,28 @@
             "";
 
 
-          invalidateShipping(
-            ""
+          selectedMode =
+            "delivery";
+
+
+          const deliveryRadio =
+            document.querySelector(
+              'input[name="deliveryMode"][value="delivery"]'
+            );
+
+
+          if (
+            deliveryRadio
+          ) {
+
+            deliveryRadio.checked =
+              true;
+
+          }
+
+
+          setDeliveryMode(
+            "delivery"
           );
 
 
@@ -2154,6 +2519,33 @@
         );
 
 
+        document
+          .querySelectorAll(
+            'input[name="deliveryMode"]'
+          )
+          .forEach(
+            function (
+              radio
+            ) {
+
+              radio.addEventListener(
+                "change",
+                function () {
+
+                  setDeliveryMode(
+                    radio.value ===
+                    "pickup"
+                      ? "pickup"
+                      : "delivery"
+                  );
+
+                }
+              );
+
+            }
+          );
+
+
         cepInput.addEventListener(
           "input",
           function () {
@@ -2196,9 +2588,16 @@
               "";
 
 
-            invalidateShipping(
-              ""
-            );
+            if (
+              selectedMode ===
+              "delivery"
+            ) {
+
+              invalidateShipping(
+                ""
+              );
+
+            }
 
           }
         );
@@ -2323,6 +2722,8 @@
 
 
             if (
+              selectedMode ===
+              "delivery" &&
               cepInput.value
                 .replace(
                   /\D/g,
@@ -2350,6 +2751,8 @@
 
 
             if (
+              selectedMode ===
+              "delivery" &&
               cepInput.value
                 .replace(
                   /\D/g,
@@ -2371,6 +2774,16 @@
         cepInput.addEventListener(
           "blur",
           async function () {
+
+            if (
+              selectedMode !==
+              "delivery"
+            ) {
+
+              return;
+
+            }
+
 
             const cep =
               cepInput.value
@@ -2863,7 +3276,7 @@
             ) {
 
               customerFormError.textContent =
-                "Selecione uma opção de frete para continuar.";
+                "Selecione como deseja receber seu pedido.";
 
 
               customerFormError.style.display =
@@ -2893,45 +3306,66 @@
                 ).value.trim(),
 
               cep:
-                document.getElementById(
-                  "customerCep"
-                ).value
-                  .replace(
-                    /\D/g,
-                    ""
-                  ),
+                selectedMode ===
+                "delivery"
+                  ? document.getElementById(
+                      "customerCep"
+                    ).value
+                      .replace(
+                        /\D/g,
+                        ""
+                      )
+                  : "",
 
               address:
-                document.getElementById(
-                  "customerAddress"
-                ).value.trim(),
+                selectedMode ===
+                "delivery"
+                  ? document.getElementById(
+                      "customerAddress"
+                    ).value.trim()
+                  : "",
 
               number:
-                document.getElementById(
-                  "customerNumber"
-                ).value.trim(),
+                selectedMode ===
+                "delivery"
+                  ? document.getElementById(
+                      "customerNumber"
+                    ).value.trim()
+                  : "",
 
               neighborhood:
-                document.getElementById(
-                  "customerNeighborhood"
-                ).value.trim(),
+                selectedMode ===
+                "delivery"
+                  ? document.getElementById(
+                      "customerNeighborhood"
+                    ).value.trim()
+                  : "",
 
               city:
-                document.getElementById(
-                  "customerCity"
-                ).value.trim(),
+                selectedMode ===
+                "delivery"
+                  ? document.getElementById(
+                      "customerCity"
+                    ).value.trim()
+                  : "",
 
               state:
-                document.getElementById(
-                  "customerState"
-                ).value
-                  .trim()
-                  .toUpperCase(),
+                selectedMode ===
+                "delivery"
+                  ? document.getElementById(
+                      "customerState"
+                    ).value
+                      .trim()
+                      .toUpperCase()
+                  : "",
 
               complement:
-                document.getElementById(
-                  "customerComplement"
-                ).value.trim()
+                selectedMode ===
+                "delivery"
+                  ? document.getElementById(
+                      "customerComplement"
+                    ).value.trim()
+                  : ""
 
             };
 
@@ -2939,17 +3373,11 @@
             if (
               !customer.name ||
               !customer.phone ||
-              !customer.email ||
-              !customer.cep ||
-              !customer.address ||
-              !customer.number ||
-              !customer.neighborhood ||
-              !customer.city ||
-              !customer.state
+              !customer.email
             ) {
 
               customerFormError.textContent =
-                "Preencha todos os campos obrigatórios.";
+                "Preencha nome, WhatsApp e e-mail para continuar.";
 
 
               customerFormError.style.display =
@@ -2962,19 +3390,48 @@
 
 
             if (
-              customer.cep.length !==
-              8
+              selectedMode ===
+              "delivery"
             ) {
 
-              customerFormError.textContent =
-                "Informe um CEP válido.";
+              if (
+                !customer.cep ||
+                !customer.address ||
+                !customer.number ||
+                !customer.neighborhood ||
+                !customer.city ||
+                !customer.state
+              ) {
+
+                customerFormError.textContent =
+                  "Preencha todos os campos obrigatórios de entrega.";
 
 
-              customerFormError.style.display =
-                "block";
+                customerFormError.style.display =
+                  "block";
 
 
-              return;
+                return;
+
+              }
+
+
+              if (
+                customer.cep.length !==
+                8
+              ) {
+
+                customerFormError.textContent =
+                  "Informe um CEP válido.";
+
+
+                customerFormError.style.display =
+                  "block";
+
+
+                return;
+
+              }
 
             }
 
@@ -3238,4 +3695,3 @@
 </body>
 
 </html>
-```
