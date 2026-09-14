@@ -20,6 +20,9 @@ const emptyProducts =
 const searchInput =
   document.getElementById("searchInput");
 
+const productFilter =
+  document.getElementById("productFilter");
+
 const cartButton =
   document.getElementById("cartButton");
 
@@ -64,6 +67,8 @@ let productImages = {};
 let productVideos = {};
 
 let selectedCategory = "Todos";
+
+let selectedFilter = "todos";
 
 let cart = [];
 
@@ -654,8 +659,7 @@ document.addEventListener(
   event => {
 
     if (
-      event.key ===
-      "Escape"
+      event.key === "Escape"
     ) {
 
       closeCart();
@@ -1093,7 +1097,7 @@ function renderProducts() {
       : "";
 
 
-  const filteredProducts =
+  let filteredProducts =
     products.filter(
       product => {
 
@@ -1119,13 +1123,79 @@ function renderProducts() {
           text.includes(search);
 
 
+        // ==================================
+        // FILTRO DE ESTOQUE
+        // ==================================
+
+        const stock =
+          Number(product.stock || 0);
+
+
+        let matchesFilter = true;
+
+
+        if (
+          selectedFilter ===
+          "disponivel"
+        ) {
+
+          matchesFilter =
+            stock > 0;
+
+        }
+
+
+        if (
+          selectedFilter ===
+          "indisponivel"
+        ) {
+
+          matchesFilter =
+            stock <= 0;
+
+        }
+
+
         return (
           matchesCategory &&
-          matchesSearch
+          matchesSearch &&
+          matchesFilter
         );
 
       }
     );
+
+
+  // ========================================
+  // ORDENAÇÃO POR PREÇO
+  // ========================================
+
+  if (
+    selectedFilter ===
+    "menor-preco"
+  ) {
+
+    filteredProducts.sort(
+      (a, b) =>
+        Number(a.price || 0) -
+        Number(b.price || 0)
+    );
+
+  }
+
+
+  if (
+    selectedFilter ===
+    "maior-preco"
+  ) {
+
+    filteredProducts.sort(
+      (a, b) =>
+        Number(b.price || 0) -
+        Number(a.price || 0)
+    );
+
+  }
 
 
   productsGrid.innerHTML =
@@ -1261,14 +1331,19 @@ function createProductCard(
         ${
           mediaCount > 1
             ? `
+
               <span class="photo-count">
+
                 📷 ${images.length}
+
                 ${
                   videos.length > 0
                     ? ` · 🎥 ${videos.length}`
                     : ""
                 }
+
               </span>
+
             `
             : ""
         }
@@ -1300,9 +1375,13 @@ function createProductCard(
         ${
           mediaCount > 1
             ? `
+
               <span class="photo-count">
+
                 🎥 ${videos.length}
+
               </span>
+
             `
             : ""
         }
@@ -1318,9 +1397,11 @@ function createProductCard(
     product.promotion
 
       ? `
+
         <span class="promotion-badge">
           OFERTA
         </span>
+
       `
 
       : "";
@@ -1416,34 +1497,44 @@ function createProductCard(
     <div class="product-info">
 
       <div class="product-category">
+
         ${escapeHTML(
           product.category
         )}
+
       </div>
 
 
       <h3 class="product-name">
+
         ${escapeHTML(
           product.name
         )}
+
       </h3>
 
 
       <p class="product-description">
+
         ${escapeHTML(
           product.description ||
           "Produto disponível na VT Store."
         )}
+
       </p>
 
 
       <div class="product-price">
+
         ${price}
+
       </div>
 
 
       <div class="product-stock">
+
         ${stockText}
+
       </div>
 
 
@@ -1579,9 +1670,11 @@ function openGallery(
 
 
       <div class="gallery-title">
+
         ${escapeHTML(
           product.name
         )}
+
       </div>
 
 
@@ -1590,12 +1683,14 @@ function openGallery(
         ${
           media.length > 1
             ? `
+
               <button
                 class="gallery-arrow gallery-prev"
                 type="button"
               >
                 ‹
               </button>
+
             `
             : ""
         }
@@ -1609,12 +1704,14 @@ function openGallery(
         ${
           media.length > 1
             ? `
+
               <button
                 class="gallery-arrow gallery-next"
                 type="button"
               >
                 ›
               </button>
+
             `
             : ""
         }
@@ -1623,13 +1720,16 @@ function openGallery(
 
 
       <div class="gallery-counter">
+
         1 / ${media.length}
+
       </div>
 
 
       ${
         media.length > 1
           ? `
+
             <div class="gallery-thumbnails">
 
               ${media
@@ -1697,6 +1797,7 @@ function openGallery(
                 .join("")}
 
             </div>
+
           `
           : ""
       }
@@ -2109,6 +2210,28 @@ if (searchInput) {
   searchInput.addEventListener(
     "input",
     () => {
+
+      renderProducts();
+
+    }
+  );
+
+}
+
+
+// ========================================
+// FILTRO DE PRODUTOS
+// ========================================
+
+if (productFilter) {
+
+  productFilter.addEventListener(
+    "change",
+    () => {
+
+      selectedFilter =
+        productFilter.value ||
+        "todos";
 
       renderProducts();
 
