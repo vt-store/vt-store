@@ -43,7 +43,8 @@ body {
 }
 
 button,
-input {
+input,
+select {
   font: inherit;
 }
 
@@ -470,10 +471,27 @@ img {
   margin-bottom: 35px;
 }
 
+
+/* ========================================
+   BUSCA + FILTRO
+======================================== */
+
+.search-box {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  flex-wrap: wrap;
+}
+
 .search-box input {
   width: 280px;
 
-  padding: 13px 15px;
+  height: 46px;
+
+  padding: 0 15px;
 
   border: 1px solid var(--border);
   border-radius: 9px;
@@ -482,11 +500,106 @@ img {
 
   background: var(--card);
   color: var(--white);
+
+  transition: .2s;
+}
+
+.search-box input::placeholder {
+  color: var(--muted);
 }
 
 .search-box input:focus {
   border-color: var(--purple);
+
+  box-shadow:
+    0 0 0 3px rgba(139, 92, 246, .10);
 }
+
+
+/* ========================================
+   FILTRO DE PRODUTOS
+======================================== */
+
+#productFilter {
+  width: 210px;
+
+  height: 46px;
+
+  padding: 0 40px 0 15px;
+
+  border: 1px solid rgba(139, 92, 246, .30);
+
+  border-radius: 9px;
+
+  outline: none;
+
+  background-color: var(--card);
+
+  color: var(--white);
+
+  font-size: 13px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: .2s;
+
+  appearance: none;
+  -webkit-appearance: none;
+
+  background-image:
+    linear-gradient(
+      45deg,
+      transparent 50%,
+      var(--purple-light) 50%
+    ),
+    linear-gradient(
+      135deg,
+      var(--purple-light) 50%,
+      transparent 50%
+    );
+
+  background-position:
+    calc(100% - 17px) 19px,
+    calc(100% - 12px) 19px;
+
+  background-size:
+    6px 6px,
+    6px 6px;
+
+  background-repeat: no-repeat;
+}
+
+#productFilter:hover {
+  border-color: var(--purple);
+
+  background-color: var(--card-hover);
+
+  box-shadow:
+    0 0 20px rgba(139, 92, 246, .10);
+
+  transform: translateY(-1px);
+}
+
+#productFilter:focus {
+  border-color: var(--purple);
+
+  box-shadow:
+    0 0 0 3px rgba(139, 92, 246, .12);
+}
+
+#productFilter option {
+  background: #11141d;
+  color: var(--white);
+
+  font-weight: 600;
+}
+
+
+/* ========================================
+   PRODUTOS
+======================================== */
 
 .products-grid {
   display: grid;
@@ -1583,8 +1696,23 @@ img {
     flex-direction: column;
   }
 
-  .search-box input {
+  .search-box {
     width: 100%;
+
+    flex-direction: column;
+
+    align-items: stretch;
+
+    gap: 9px;
+  }
+
+  .search-box input,
+  #productFilter {
+    width: 100%;
+  }
+
+  #productFilter {
+    height: 46px;
   }
 
   .products-grid {
